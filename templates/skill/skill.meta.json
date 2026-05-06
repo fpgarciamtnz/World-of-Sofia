@@ -1,0 +1,17 @@
+{
+  "id": "__ID__",
+  "slug": "__SLUG__",
+  "title": "__TITLE__",
+  "philosopher": "__PHILOSOPHER__",
+  "summary": "__SUMMARY__",
+  "tags": [
+    "__TAG__"
+  ],
+  "status": "draft",
+  "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/__SLUG__",
+  "installCommand": "npx skills add fpgarciamtnz/World-of-Sofia --skill __SLUG__",
+  "references": [
+    "references/notes.md"
+  ],
+  "version": "0.1.0"
+}

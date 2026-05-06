@@ -1,0 +1,17 @@
+{
+  "name": "world-of-sofia-showroom",
+  "main": ".output/server/index.mjs",
+  "compatibility_date": "2026-05-06",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "assets": {
+    "directory": ".output/public",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "preview_urls": true
+}
+

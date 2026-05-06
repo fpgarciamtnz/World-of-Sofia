@@ -1,0 +1,14 @@
+node_modules/
+.nuxt/
+.output/
+.data/
+dist/
+coverage/
+.wrangler/
+playwright-report/
+test-results/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+npm-debug.log*

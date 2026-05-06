@@ -1,0 +1,19 @@
+{
+  "id": "world-of-sofia.descartes-foundation-ledger",
+  "slug": "descartes-foundation-ledger",
+  "title": "Descartes Foundation Ledger",
+  "philosopher": "Rene Descartes",
+  "summary": "A planning skill that separates verified facts, explicit constraints, and unresolved assumptions before committing to a plan.",
+  "tags": [
+    "planning",
+    "verification",
+    "decision-making"
+  ],
+  "status": "alpha",
+  "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/descartes-foundation-ledger",
+  "installCommand": "npx skills add fpgarciamtnz/World-of-Sofia --skill descartes-foundation-ledger",
+  "references": [
+    "references/foundation-ledger.md"
+  ],
+  "version": "0.1.0"
+}

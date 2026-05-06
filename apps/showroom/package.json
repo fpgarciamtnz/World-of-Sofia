@@ -1,0 +1,24 @@
+{
+  "name": "@world-of-sofia/showroom",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "deploy": "wrangler deploy",
+    "preview:deploy": "wrangler versions upload",
+    "lint": "eslint app nuxt.config.ts playwright.config.ts test",
+    "typecheck": "nuxt typecheck",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@world-of-sofia/catalog": "0.1.0",
+    "nuxt": "^4.4.4",
+    "vue": "^3.5.33",
+    "vue-router": "^5.0.6"
+  }
+}

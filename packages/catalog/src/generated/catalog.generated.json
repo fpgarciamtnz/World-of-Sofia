@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-05-06T14:50:39.992Z",
+  "skills": [
+    {
+      "id": "world-of-sofia.descartes-foundation-ledger",
+      "slug": "descartes-foundation-ledger",
+      "title": "Descartes Foundation Ledger",
+      "philosopher": "Rene Descartes",
+      "summary": "A planning skill that separates verified facts, explicit constraints, and unresolved assumptions before committing to a plan.",
+      "tags": [
+        "planning",
+        "verification",
+        "decision-making"
+      ],
+      "status": "alpha",
+      "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/descartes-foundation-ledger",
+      "installCommand": "npx skills add fpgarciamtnz/World-of-Sofia --skill descartes-foundation-ledger",
+      "references": [
+        "references/foundation-ledger.md"
+      ],
+      "version": "0.1.0",
+      "philosopherSlug": "rene-descartes",
+      "readme": "# Descartes Foundation Ledger\n\nThis skill turns Cartesian skepticism into a practical planning workflow. It is designed to force a clean split between facts, constraints, assumptions, and missing evidence before a final plan is accepted.\n\n## What it does\n\n- Builds a foundation ledger before planning.\n- Forces unsupported assumptions into a separate section.\n- Adds an optional assumption-audit pass before the plan is finalized.\n\n## Distribution boundary\n\nThis folder is intentionally self-contained. If you copy `descartes-foundation-ledger` into another repository, it still contains the manifest, the skill definition, and its supporting references.\n\n",
+      "skillMarkdown": "---\nname: descartes-foundation-ledger\ndescription: \"Separate verified facts, constraints, and unresolved assumptions before final planning.\"\n---\n\n# Descartes Foundation Ledger\n\nUse this skill when planning work that would benefit from explicit evidence handling.\n\n## Workflow\n\n1. Gather direct evidence before asking planning questions.\n2. Separate facts from constraints.\n3. Mark unresolved assumptions explicitly.\n4. Offer an assumption audit before finalizing the plan.\n\n## Output\n\n- Foundation ledger\n- Data needed to upgrade unresolved assumptions\n- Optional assumption audit\n- Final plan\n\n",
+      "referencesContent": [
+        {
+          "path": "references/foundation-ledger.md",
+          "title": "foundation ledger",
+          "content": "# Foundation Ledger Reference\n\nThe core discipline of this skill is simple: do not let an inferred claim silently become a planning fact.\n\nUseful prompts:\n\n- What is directly observed?\n- What is only inferred?\n- What evidence would upgrade this assumption?\n\n"
+        }
+      ]
+    }
+  ]
+}
