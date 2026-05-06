@@ -36,7 +36,5 @@ export interface CatalogPhilosopher {
 }
 
 export interface CatalogData {
-  generatedAt: string;
   skills: CatalogSkill[];
 }
-

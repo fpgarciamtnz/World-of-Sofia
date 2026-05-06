@@ -36,7 +36,5 @@ export const catalogSkillSchema = skillManifestSchema.extend({
 });
 
 export const catalogDataSchema = z.object({
-  generatedAt: z.string().min(1),
   skills: z.array(catalogSkillSchema)
 });
-

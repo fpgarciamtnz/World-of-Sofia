@@ -207,7 +207,6 @@ export async function loadCatalogData() {
   }
 
   return {
-    generatedAt: new Date().toISOString(),
     skills
   };
 }
