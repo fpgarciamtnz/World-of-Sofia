@@ -1,4 +1,4 @@
-# Descartes Foundation Ledger
+# Audit Plan Descartes
 
 This skill turns Cartesian skepticism into a practical planning workflow. It is designed to force a clean split between facts, constraints, assumptions, and missing evidence before a final plan is accepted.
 
@@ -10,5 +10,4 @@ This skill turns Cartesian skepticism into a practical planning workflow. It is 
 
 ## Distribution boundary
 
-This folder is intentionally self-contained. If you copy `descartes-foundation-ledger` into another repository, it still contains the manifest, the skill definition, and its supporting references.
-
+This folder is intentionally self-contained. If you copy `audit-plan-descartes` into another repository, it still contains the manifest, the skill definition, and its supporting references.

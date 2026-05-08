@@ -1,0 +1,25 @@
+{
+  "id": "world-of-sofia.pattern-code-wittgenstein",
+  "slug": "pattern-code-wittgenstein",
+  "title": "Pattern Code Wittgenstein",
+  "philosopher": "Ludwig Wittgenstein",
+  "summary": "A repo-first planning skill that inspects existing patterns before implementation, reduces duplication and contradictions, and recommends whether to reuse, extend, extract, copy carefully, or create new code.",
+  "tags": [
+    "planning",
+    "patterns",
+    "code-reuse"
+  ],
+  "status": "alpha",
+  "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/pattern-code-wittgenstein",
+  "installCommand": "npx skills add fpgarciamtnz/World-of-Sofia --skill pattern-code-wittgenstein",
+  "references": [
+    "references/foundation.md",
+    "references/decision-rules.md",
+    "references/output-format.md",
+    "references/evidence-schema.md",
+    "references/scoring-policy.md",
+    "references/bounded-contexts.md",
+    "references/tooling-notes.md"
+  ],
+  "version": "0.1.0"
+}

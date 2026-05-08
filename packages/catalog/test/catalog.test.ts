@@ -10,13 +10,14 @@ describe("catalog data", () => {
   });
 
   it("finds a skill by slug", () => {
-    expect(getSkillBySlug("descartes-foundation-ledger")?.title).toBe("Descartes Foundation Ledger");
+    expect(getSkillBySlug("audit-plan-descartes")?.title).toBe("Audit Plan Descartes");
   });
 
   it("groups skills by philosopher", () => {
-    const philosopher = getPhilosopherBySlug("rene-descartes");
-    expect(philosopher?.skills).toHaveLength(1);
-    expect(getSkills()).toHaveLength(1);
+    const descartes = getPhilosopherBySlug("rene-descartes");
+    const wittgenstein = getPhilosopherBySlug("ludwig-wittgenstein");
+    expect(descartes?.skills).toHaveLength(1);
+    expect(wittgenstein?.skills).toHaveLength(1);
+    expect(getSkills()).toHaveLength(2);
   });
 });
-

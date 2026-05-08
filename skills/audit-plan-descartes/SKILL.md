@@ -1,9 +1,9 @@
 ---
-name: descartes-foundation-ledger
+name: audit-plan-descartes
 description: "Separate verified facts, constraints, and unresolved assumptions before final planning."
 ---
 
-# Descartes Foundation Ledger
+# Audit Plan Descartes
 
 Use this skill when planning work that would benefit from explicit evidence handling.
 
@@ -20,4 +20,3 @@ Use this skill when planning work that would benefit from explicit evidence hand
 - Data needed to upgrade unresolved assumptions
 - Optional assumption audit
 - Final plan
-

@@ -1,0 +1,21 @@
+{
+  "id": "copy-carefully-featured-skill-teaser",
+  "title": "Copy carefully for featured skill teaser",
+  "prompt": "Before adding a compact featured-skill teaser panel to the homepage that borrows title, summary, and status from existing skill UI but does not need the full card layout, inspect the repo and tell me whether this should be reuse, extend, extract, copy carefully, or create new.",
+  "searchHints": [
+    "featured",
+    "homepage",
+    "SkillCard",
+    "panel",
+    "teaser"
+  ],
+  "expectedRecommendation": "copy carefully",
+  "requiredPaths": [
+    "apps/showroom/app/components/SkillCard.vue",
+    "apps/showroom/app/pages/index.vue"
+  ],
+  "falseSimilarityTraps": [
+    "Do not force a generic card abstraction from one teaser variant.",
+    "Do not treat homepage hero layout as the same contract as SkillCard."
+  ]
+}

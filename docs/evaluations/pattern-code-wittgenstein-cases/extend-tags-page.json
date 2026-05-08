@@ -1,0 +1,21 @@
+{
+  "id": "extend-tags-page",
+  "title": "Extend tags slug page",
+  "prompt": "Before implementing a /tags/[slug] page that shows all skills for a tag, inspect the repo and tell me what existing patterns to reuse, what not to abstract yet, and whether this should be reuse, extend, extract, copy carefully, or create new.",
+  "searchHints": [
+    "tags",
+    "slug",
+    "SkillCard"
+  ],
+  "expectedRecommendation": "extend",
+  "requiredPaths": [
+    "packages/catalog/src/index.ts",
+    "apps/showroom/app/pages/skills/[slug].vue",
+    "apps/showroom/app/pages/philosophers/[slug].vue",
+    "apps/showroom/app/components/SkillCard.vue"
+  ],
+  "falseSimilarityTraps": [
+    "Do not extract a generic detail page abstraction.",
+    "Do not treat SkillCard alone as the whole route solution."
+  ]
+}

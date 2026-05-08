@@ -1,0 +1,21 @@
+{
+  "id": "create-new-deployment-audit-page",
+  "title": "Create new deployment audit page",
+  "prompt": "Before adding a deployment audit dashboard page for Cloudflare and Wrangler status inside the showroom, inspect the repo and tell me whether this should be reuse, extend, extract, copy carefully, or create new.",
+  "searchHints": [
+    "deployment",
+    "Cloudflare",
+    "Wrangler",
+    "dashboard",
+    "audit"
+  ],
+  "expectedRecommendation": "create new",
+  "requiredPaths": [
+    "apps/showroom/app/pages/index.vue",
+    "package.json"
+  ],
+  "falseSimilarityTraps": [
+    "Do not confuse route-shape similarity with domain similarity.",
+    "Do not extend showroom catalog pages into deployment tooling without stronger evidence."
+  ]
+}
