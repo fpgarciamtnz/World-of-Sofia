@@ -20,6 +20,28 @@ npm run test:e2e
 npm run deploy
 ```
 
+## Install skills into Codex
+
+After cloning the repo, install the project skills into Codex with an explicit install command:
+
+```bash
+npm install
+npm run validate:skills
+npm run install:skills
+```
+
+The installer copies every catalog-valid folder from `skills/<slug>` into `$CODEX_HOME/skills` when `CODEX_HOME` is set, otherwise into `~/.codex/skills`. Existing target skills are backed up under `.backups/world-of-sofia/<slug>-<timestamp>` before they are replaced.
+
+To install or update one skill:
+
+```bash
+npm run install:skill -- audit-plan-descartes
+```
+
+Rerun the same install command whenever skills change. Open a new Codex session if a newly installed or updated skill does not appear immediately.
+
+The legacy `sync:skills` and `sync:skill` aliases are still available and run the same installer.
+
 ## Cloudflare and GitHub
 
 - The showroom is configured for Cloudflare Workers in `apps/showroom/wrangler.jsonc`.

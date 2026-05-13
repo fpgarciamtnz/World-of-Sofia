@@ -9,10 +9,9 @@ describe("catalog metrics", () => {
     const metrics = getCatalogMetrics(getSkills(), getPhilosophers());
 
     expect(metrics).toEqual({
-      philosophers: 1,
-      skills: 1,
-      tags: 3
+      philosophers: 3,
+      skills: 3,
+      tags: 8
     });
   });
 });
-

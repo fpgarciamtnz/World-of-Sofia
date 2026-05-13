@@ -1,6 +1,6 @@
 ---
 name: pattern-code-wittgenstein
-description: "Inspect existing repository patterns before implementing new code. Use when Codex should find nearby precedents, avoid duplication or contradictions, check whether an abstraction already exists, or decide whether to reuse, extend, extract, copy carefully, or create a new pattern."
+description: "Inspect existing repository patterns before implementing new code or choosing an implementation path. Use when Codex should find nearby precedents, avoid duplication or contradictions before coding, check whether an abstraction already exists, or decide whether to reuse, extend, extract, copy carefully, or create a new pattern family."
 ---
 
 # Pattern Code Wittgenstein
@@ -8,6 +8,8 @@ description: "Inspect existing repository patterns before implementing new code.
 Use this skill before writing code when the real question is "what already exists here, and how close is it to the new work?"
 
 Keep the skill practical. The goal is not philosophical commentary. The goal is an evidence-backed reuse decision that makes the resulting codebase simpler, cleaner, and less contradictory.
+
+Use this skill for precedent discovery and pattern-fit decisions, not for final review of an existing diff. Once code has been written, staged, or prepared for PR review, hand off to `synthesis-code-hegel`.
 
 This v2 prototype now has a real scout pipeline. It still uses conservative heuristics, but it no longer depends only on prose discipline.
 
@@ -39,6 +41,14 @@ This v2 prototype now has a real scout pipeline. It still uses conservative heur
    - `copy carefully`
    - `create new`
 7. Return the result in the output format from [references/output-format.md](references/output-format.md).
+
+## Handoff to Hegel
+
+- If real code changes already exist, switch from this skill to `synthesis-code-hegel`.
+- If the scout finds likely duplication, wrong abstraction, or contradiction risk, tell Codex to run `synthesis-code-hegel` on the actual diff before merge.
+- Keep the roles distinct:
+  - `pattern-code-wittgenstein` answers "what existing code family should this work resemble?"
+  - `synthesis-code-hegel` answers "now that the code changed, should it be synthesized, simplified, merged, split, or left alone?"
 
 ## Prototype pipeline
 
