@@ -11,7 +11,7 @@
   ],
   "status": "alpha",
   "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/audit-plan-descartes",
-  "installCommand": "npx skills add fpgarciamtnz/World-of-Sofia --skill audit-plan-descartes",
+  "installCommand": "npm run install:skill -- audit-plan-descartes",
   "references": [
     "references/foundation-ledger.md"
   ],

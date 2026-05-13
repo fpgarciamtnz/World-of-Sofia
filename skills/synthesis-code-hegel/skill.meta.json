@@ -1,0 +1,19 @@
+{
+  "id": "world-of-sofia.synthesis-code-hegel",
+  "slug": "synthesis-code-hegel",
+  "title": "Synthesis Code Hegel",
+  "philosopher": "Georg Wilhelm Friedrich Hegel",
+  "summary": "A post-implementation review skill that inspects real diffs and decides whether code should be synthesized, simplified, merged, split, or left alone.",
+  "tags": [
+    "code-review",
+    "refactoring",
+    "synthesis"
+  ],
+  "status": "alpha",
+  "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/synthesis-code-hegel",
+  "installCommand": "npm run install:skill -- synthesis-code-hegel",
+  "references": [
+    "references/hegel-review-foundation.md"
+  ],
+  "version": "0.1.0"
+}

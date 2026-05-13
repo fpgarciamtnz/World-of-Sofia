@@ -20,6 +20,10 @@
     "test": "npm run test:pattern-code-wittgenstein && npm --workspace packages/catalog run test && npm --workspace apps/showroom run test",
     "test:e2e": "npm --workspace apps/showroom run test:e2e",
     "new:skill": "node ./scripts/new-skill.mjs",
+    "install:skills": "node ./scripts/sync-codex-skills.mjs",
+    "install:skill": "node ./scripts/sync-codex-skills.mjs --skill",
+    "sync:skills": "node ./scripts/sync-codex-skills.mjs",
+    "sync:skill": "node ./scripts/sync-codex-skills.mjs --skill",
     "prepare": "npm --workspace packages/catalog run build"
   },
   "devDependencies": {
