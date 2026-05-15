@@ -1,6 +1,15 @@
 # World of Sofia
 
-World of Sofia is a `Nuxt + Cloudflare Workers` showroom for philosopher-derived skills. The repository is structured around one hard rule: skills do not mix. Every skill lives in its own folder with its own manifest, markdown, and references so it can be extracted and distributed elsewhere without untangling shared content.
+World of Sofia turns philosophers into practical Codex skills: not as museum pieces, but as working habits an agent can pick up, run with, and apply to real software work.
+
+## Philosopher skills
+
+- **René Descartes - Audit Plan Descartes** (`I think, therefore I am`): before a plan gets to exist, this skill makes it prove what it knows by separating facts, constraints, assumptions, and missing evidence.
+- **Ludwig Wittgenstein - Pattern Code Wittgenstein** (`meaning is use`): this skill walks the repo's language-game before coding, looking at how names, shapes, tests, and patterns already behave in practice.
+- **Georg Wilhelm Friedrich Hegel - Synthesis Code Hegel** (`thesis, antithesis, synthesis`): after code changes are real, this skill studies the tension in the diff and decides whether to merge ideas, simplify them, split them, or leave them alone.
+- **Marcus Tullius Cicero - Communication Review Ciceron** (`instruct, delight, and move`): this skill reviews what a message says, what it is doing, how it may be understood, and how to revise it with evidence-linked feedback.
+
+World of Sofia is a `Nuxt + Cloudflare Workers` showroom for these philosopher-derived skills. The repository is structured around one hard rule: skills do not mix. Every skill lives in its own folder with its own manifest, markdown, and references so it can be extracted and distributed elsewhere without untangling shared content.
 
 ## Repository layout
 
