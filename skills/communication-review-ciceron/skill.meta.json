@@ -1,0 +1,20 @@
+{
+  "id": "world-of-sofia.communication-review-ciceron",
+  "slug": "communication-review-ciceron",
+  "title": "Communication Review Ciceron",
+  "philosopher": "Marcus Tullius Cicero",
+  "summary": "A communication review skill that identifies rhetorical intent, likely audience uptake, friction, and clearer reformulations.",
+  "tags": [
+    "communication",
+    "rhetoric",
+    "feedback"
+  ],
+  "status": "alpha",
+  "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/communication-review-ciceron",
+  "installCommand": "npm run install:skill -- communication-review-ciceron",
+  "references": [
+    "references/rhetorical-framework.md",
+    "references/output-format.md"
+  ],
+  "version": "0.1.0"
+}

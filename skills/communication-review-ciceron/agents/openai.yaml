@@ -1,0 +1,4 @@
+interface:
+  display_name: "Communication Review Ciceron"
+  short_description: "Review intent, tone, and audience uptake"
+  default_prompt: "Use $communication-review-ciceron to review this message for intent, likely interpretation, and a clearer rewrite."

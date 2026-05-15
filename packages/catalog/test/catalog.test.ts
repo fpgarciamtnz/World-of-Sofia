@@ -14,12 +14,14 @@ describe("catalog data", () => {
   });
 
   it("groups skills by philosopher", () => {
+    const cicero = getPhilosopherBySlug("marcus-tullius-cicero");
     const descartes = getPhilosopherBySlug("rene-descartes");
     const hegel = getPhilosopherBySlug("georg-wilhelm-friedrich-hegel");
     const wittgenstein = getPhilosopherBySlug("ludwig-wittgenstein");
+    expect(cicero?.skills).toHaveLength(1);
     expect(descartes?.skills).toHaveLength(1);
     expect(hegel?.skills).toHaveLength(1);
     expect(wittgenstein?.skills).toHaveLength(1);
-    expect(getSkills()).toHaveLength(3);
+    expect(getSkills()).toHaveLength(4);
   });
 });
