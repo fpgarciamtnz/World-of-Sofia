@@ -22,7 +22,7 @@ The prototype uses weighted evidence, not a black-box verdict.
 
 ## Prototype decision rules
 
-- Prefer `extend` when strong route/helper or component/helper families converge in the same or adjacent context.
+- Prefer `extend` when strong skill-definition, validation-helper, or install-helper families converge in the same or adjacent context.
 - Prefer `copy carefully` when one nearby precedent is useful but the target is a variant, teaser, or adaptation rather than a stable family extension.
 - Prefer `create new` when the domain is novel or when only naming-heavy, cross-context matches appear.
 - Prefer `reuse` only when a strong same-context precedent already exists.

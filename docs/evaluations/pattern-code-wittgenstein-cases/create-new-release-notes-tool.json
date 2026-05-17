@@ -1,0 +1,18 @@
+{
+  "id": "create-new-release-notes-tool",
+  "title": "Create new release notes tool",
+  "prompt": "Before adding a release note generator for project changes, inspect the repo and tell me whether this should be reuse, extend, extract, copy carefully, or create new.",
+  "searchHints": [
+    "release note",
+    "changelog",
+    "project changes"
+  ],
+  "expectedRecommendation": "create new",
+  "requiredPaths": [
+    "package.json"
+  ],
+  "falseSimilarityTraps": [
+    "Do not confuse skill manifest metadata with release note generation.",
+    "Do not extend install or validation tooling into unrelated reporting behavior."
+  ]
+}

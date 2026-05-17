@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { loadCatalogData, loadSkillRecord } from "../packages/catalog/scripts/lib.mjs";
+import { loadSkillRecord, loadSkillsData } from "./lib/skills.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -108,12 +108,12 @@ async function listProjectSkills(options) {
       const skill = await loadSkillRecord(options.skill);
       return [skill.slug];
     } catch (error) {
-      throw new Error(`Project skill is not catalog-valid: ${options.skill}. ${error.message}`);
+      throw new Error(`Project skill is not validation-valid: ${options.skill}. ${error.message}`);
     }
   }
 
-  const catalog = await loadCatalogData();
-  const skills = catalog.skills.map((skill) => skill.slug).sort();
+  const skillsData = await loadSkillsData();
+  const skills = skillsData.skills.map((skill) => skill.slug).sort();
 
   for (const slug of skills) {
     await assertSkillDirectory(path.join(sourceRoot, slug), slug);

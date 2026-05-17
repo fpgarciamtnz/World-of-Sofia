@@ -78,7 +78,7 @@ Use [scripts/seed-evidence-ledger.mjs](scripts/seed-evidence-ledger.mjs) only wh
 
 Prototype limits:
 
-- Structural evidence is strongest for TypeScript, JavaScript, and Vue script/template structure.
+- Structural evidence is strongest for TypeScript and JavaScript modules.
 - Domain evidence may still be inferred from repository paths and context maps.
 - Historical evidence exists in the schema, but is not populated yet.
 
@@ -108,6 +108,14 @@ Apply these guardrails:
 - Duplication can be cheaper than the wrong abstraction.
 
 Use [references/tooling-notes.md](references/tooling-notes.md) for the current analyzer choice and what the prototype still does not attempt.
+
+## Developer Trace Mode
+
+Activate developer trace mode only when the user asks for `developer mode`, `trace mode`, `impact evidence`, `show traces`, or equivalent visibility into this skill's effect.
+
+When active, keep the normal required output intact and append a `Skill Impact Trace` section after it. Use the field contract in [references/developer-trace-contract.md](references/developer-trace-contract.md). The trace must show what this skill actually changed in the answer: which instructions shaped the result, which resources or tools were used, what observed evidence was gathered, and what decision would be weaker without the skill.
+
+Do not claim the trace proves runtime effectiveness. Treat it as response-level evidence for this invocation.
 
 ## Required Output
 

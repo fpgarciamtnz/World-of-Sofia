@@ -2,28 +2,29 @@
 
 ## Status
 
-Accepted
+Accepted, revised.
 
 ## Decision
 
-Use an `npm` workspaces monorepo with:
+Use a root-script Node toolkit with:
 
-- `apps/showroom` for the Nuxt frontend
-- `packages/catalog` for validation and generated catalog data
 - `skills/<slug>` for self-contained skill units
+- `scripts` for creation, validation, installation, and analysis commands
+- `templates/skill` for new skill scaffolding
+- `docs` for architecture notes and evaluation cases
 
-Deploy the frontend to Cloudflare Workers with Wrangler and keep skill content in-repo.
+Keep skill content in-repo and install skills into Codex through explicit sync commands.
 
 ## Rationale
 
-- The app needs a showroom surface, not a CMS first.
-- Cloudflare Workers keeps the deployment path compatible with future dynamic features.
-- Repo-managed content is simpler to review and validate.
-- Strict per-skill folders make extraction and later redistribution practical.
+- The project is a skill collection and toolkit, not an application.
+- Root scripts keep validation and installation available without a package workspace layer.
+- Repo-managed content is simple to review and validate.
+- Strict per-skill folders make extraction and redistribution practical.
 
 ## Consequences
 
-- The app consumes generated static catalog data instead of reading the filesystem at runtime.
-- Cross-skill file references are treated as build failures.
-- Branch protection and Cloudflare secrets still require one-time GitHub repository setup.
-
+- Generated website data is no longer produced.
+- Skill validation runs from root scripts.
+- Cross-skill file references are treated as validation failures.
+- CI verifies linting, validation, isolation checks, and tests only.

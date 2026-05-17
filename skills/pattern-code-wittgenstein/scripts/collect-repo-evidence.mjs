@@ -13,7 +13,6 @@ const DEFAULT_EXTENSIONS = new Set([
   ".jsx",
   ".mjs",
   ".cjs",
-  ".vue",
   ".json",
   ".md",
   ".yml",
@@ -25,9 +24,7 @@ const DEFAULT_EXTENSIONS = new Set([
 const SKIP_DIRECTORIES = new Set([
   ".git",
   "node_modules",
-  ".nuxt",
   ".output",
-  ".wrangler",
   ".turbo",
   "dist",
   "coverage"

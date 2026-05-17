@@ -6,12 +6,16 @@ import { z } from "zod";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-export const projectRoot = path.resolve(__dirname, "../../..");
+export const projectRoot = path.resolve(__dirname, "../..");
 export const skillsRoot = path.join(projectRoot, "skills");
-export const generatedCatalogPath = path.join(
-  projectRoot,
-  "packages/catalog/src/generated/catalog.generated.json"
-);
+
+export const developerTraceSchema = z.object({
+  status: z.enum(["pilot"]),
+  mode: z.enum(["opt-in"]),
+  surfaces: z.array(z.enum(["response"])).min(1),
+  triggers: z.array(z.string().min(1)).min(1),
+  contract: z.string().min(1)
+});
 
 export const skillManifestSchema = z.object({
   id: z.string().min(1),
@@ -24,7 +28,8 @@ export const skillManifestSchema = z.object({
   sourceRepo: z.string().min(1),
   installCommand: z.string().min(1),
   references: z.array(z.string().min(1)),
-  version: z.string().regex(/^\d+\.\d+\.\d+$/)
+  version: z.string().regex(/^\d+\.\d+\.\d+$/),
+  developerTrace: developerTraceSchema.optional()
 });
 
 function slugify(input) {
@@ -86,7 +91,7 @@ function assertRelativePathInsideSkill(skillSlug, relativePath) {
   }
 }
 
-async function extractMarkdownLinks(markdown) {
+function extractMarkdownLinks(markdown) {
   const matches = [];
   const regex = /\[[^\]]+\]\(([^)]+)\)/g;
 
@@ -154,11 +159,9 @@ export async function loadSkillRecord(skillSlug) {
   }
 
   const localLinks = [
-    ...(await extractMarkdownLinks(readme)),
-    ...(await extractMarkdownLinks(skillMarkdown)),
-    ...(
-      await Promise.all(referencesContent.map((reference) => extractMarkdownLinks(reference.content)))
-    ).flat()
+    ...extractMarkdownLinks(readme),
+    ...extractMarkdownLinks(skillMarkdown),
+    ...referencesContent.flatMap((reference) => extractMarkdownLinks(reference.content))
   ];
 
   for (const link of localLinks) {
@@ -185,7 +188,7 @@ export async function loadSkillRecord(skillSlug) {
   };
 }
 
-export async function loadCatalogData() {
+export async function loadSkillsData() {
   const skillSlugs = await listSkillSlugs();
   const skills = [];
   const seenIds = new Set();
@@ -209,10 +212,4 @@ export async function loadCatalogData() {
   return {
     skills
   };
-}
-
-export async function writeGeneratedCatalog() {
-  const catalog = await loadCatalogData();
-  await fs.writeFile(generatedCatalogPath, `${JSON.stringify(catalog, null, 2)}\n`, "utf8");
-  return catalog;
 }

@@ -1,0 +1,24 @@
+{
+  "id": "reject-generic-skill-lifecycle-abstraction",
+  "title": "Reject generic skill lifecycle abstraction",
+  "prompt": "Before extracting a generic skill lifecycle abstraction for new-skill, install, validation, and a planned quick-fix command, inspect the repo and tell me what patterns actually belong together, what should stay separate, and whether the right action is reuse, extend, extract, copy carefully, or create new.",
+  "searchHints": [
+    "skill lifecycle",
+    "new-skill",
+    "install",
+    "validation",
+    "quick-fix"
+  ],
+  "expectedRecommendation": "extend",
+  "requiredPaths": [
+    "scripts/lib/skills.mjs",
+    "scripts/sync-codex-skills.mjs",
+    "scripts/new-skill.mjs",
+    "scripts/lib/skills.test.mjs"
+  ],
+  "falseSimilarityTraps": [
+    "Shared filesystem traversal does not justify one lifecycle abstraction.",
+    "Install, scaffolding, and validation have different write behavior and failure modes.",
+    "A planned quick-fix command must not be treated as already-proven family evidence."
+  ]
+}

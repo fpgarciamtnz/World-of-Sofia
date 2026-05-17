@@ -1,0 +1,20 @@
+{
+  "id": "copy-carefully-validation-helper",
+  "title": "Copy carefully for compact validation helper",
+  "prompt": "Before adding a compact quick validation helper that borrows from install and validation tooling but does not need the full install workflow, inspect the repo and tell me whether this should be reuse, extend, extract, copy carefully, or create new.",
+  "searchHints": [
+    "quick",
+    "validation",
+    "install",
+    "helper"
+  ],
+  "expectedRecommendation": "copy carefully",
+  "requiredPaths": [
+    "scripts/sync-codex-skills.mjs",
+    "scripts/lib/skills.mjs"
+  ],
+  "falseSimilarityTraps": [
+    "Do not inherit backup and copy behavior for a validation-only command.",
+    "Do not extract a broad lifecycle abstraction from one compact variant."
+  ]
+}
