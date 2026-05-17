@@ -43,7 +43,6 @@ const STOP_WORDS = new Set([
   "how",
   "i",
   "if",
-  "implementing",
   "in",
   "inspect",
   "is",
@@ -54,12 +53,9 @@ const STOP_WORDS = new Set([
   "not",
   "of",
   "or",
-  "page",
   "repo",
   "reuse",
   "should",
-  "shows",
-  "tag",
   "tell",
   "that",
   "the",
@@ -71,36 +67,15 @@ const STOP_WORDS = new Set([
 ]);
 
 const CONTEXT_ADJACENCY = {
-  "catalog access": new Set(["catalog access", "showroom route page", "catalog tests"]),
-  "showroom route page": new Set(["showroom route page", "showroom presentation", "catalog access", "showroom tests"]),
-  "showroom presentation": new Set(["showroom presentation", "showroom route page", "showroom landing page", "showroom tests"]),
-  "showroom landing page": new Set(["showroom landing page", "showroom presentation", "catalog access", "showroom tests"]),
-  "catalog tests": new Set(["catalog tests", "catalog access"]),
-  "showroom tests": new Set(["showroom tests", "showroom route page", "showroom presentation", "showroom landing page"]),
-  "skill internals": new Set(["skill internals"]),
-  "project docs": new Set(["project docs"]),
-  "project tooling": new Set(["project tooling"])
+  "skill definition": new Set(["skill definition", "skill tooling", "skill tests", "templates"]),
+  "skill tooling": new Set(["skill tooling", "skill definition", "skill tests", "templates", "project config"]),
+  "skill tests": new Set(["skill tests", "skill tooling", "skill definition"]),
+  templates: new Set(["templates", "skill definition", "skill tooling"]),
+  "project docs": new Set(["project docs", "skill definition", "project config"]),
+  "project config": new Set(["project config", "skill tooling", "project docs"])
 };
 
 const SCRIPT_PATTERNS = [
-  {
-    id: "route-hook",
-    type: "structural",
-    pattern: "useRoute($$$)",
-    rationale: "Reads route parameters using Nuxt route hooks."
-  },
-  {
-    id: "error-construction",
-    type: "behavioral",
-    pattern: "createError({$$$})",
-    rationale: "Builds route-level status or not-found errors."
-  },
-  {
-    id: "seo-meta",
-    type: "behavioral",
-    pattern: "useSeoMeta({$$$})",
-    rationale: "Configures route-level SEO metadata."
-  },
   {
     id: "export-function",
     type: "structural",
@@ -108,16 +83,16 @@ const SCRIPT_PATTERNS = [
     rationale: "Exports a reusable helper function."
   },
   {
-    id: "export-function-typed",
+    id: "export-async-function",
     type: "structural",
-    pattern: "export function $NAME($$$): $RET { $$$ }",
-    rationale: "Exports a typed reusable helper function."
+    pattern: "export async function $NAME($$$) { $$$ }",
+    rationale: "Exports an async helper function."
   },
   {
     id: "export-const",
     type: "structural",
     pattern: "export const $NAME = $$$",
-    rationale: "Exports a reusable constant or arrow function."
+    rationale: "Exports a reusable constant."
   },
   {
     id: "test-case",
@@ -130,43 +105,48 @@ const SCRIPT_PATTERNS = [
     type: "behavioral",
     pattern: "test($$$)",
     rationale: "Defines behavior-focused tests."
-  }
-];
-
-const TEMPLATE_PATTERNS = [
-  {
-    id: "skill-card",
-    type: "behavioral",
-    pattern: "<SkillCard $$$ />",
-    rationale: "Renders skills via the shared SkillCard component."
   },
   {
-    id: "philosopher-card",
+    id: "json-parse",
     type: "behavioral",
-    pattern: "<PhilosopherCard $$$ />",
-    rationale: "Renders philosophers via the shared PhilosopherCard component."
+    pattern: "JSON.parse($$$)",
+    rationale: "Parses structured project data."
   },
   {
-    id: "nuxt-link",
-    type: "structural",
-    pattern: "<NuxtLink $$$>$$$</NuxtLink>",
-    rationale: "Uses a route-aware UI navigation pattern."
+    id: "file-copy",
+    type: "behavioral",
+    pattern: "$FS.cp($$$)",
+    rationale: "Copies skill files as part of project tooling."
   }
 ];
 
 const CONTEXT_SUPPORT_PATHS = {
-  "showroom route page": [
-    "packages/catalog/src/index.ts",
-    "packages/catalog/test/catalog.test.ts",
-    "apps/showroom/test/e2e/smoke.spec.ts",
-    "apps/showroom/app/components/SkillCard.vue"
+  "skill definition": [
+    "skills/pattern-code-wittgenstein/SKILL.md",
+    "skills/pattern-code-wittgenstein/skill.meta.json",
+    "skills/pattern-code-wittgenstein/references/developer-trace-contract.md",
+    "scripts/validate-skill-traces.mjs"
   ],
-  "showroom presentation": [
-    "apps/showroom/app/pages/index.vue",
-    "apps/showroom/test/e2e/smoke.spec.ts"
+  "skill tooling": [
+    "scripts/lib/skills.mjs",
+    "scripts/sync-codex-skills.mjs",
+    "scripts/new-skill.mjs",
+    "scripts/lib/skills.test.mjs"
   ],
-  "catalog access": [
-    "packages/catalog/test/catalog.test.ts"
+  templates: [
+    "templates/skill/SKILL.md",
+    "templates/skill/skill.meta.json",
+    "scripts/new-skill.mjs"
+  ],
+  "project docs": [
+    "README.md",
+    "CONTRIBUTING.md",
+    "docs/adr/0001-foundation.md"
+  ],
+  "project config": [
+    "package.json",
+    ".github/workflows/ci.yml",
+    "eslint.config.mjs"
   ]
 };
 
@@ -174,114 +154,109 @@ function unique(items) {
   return Array.from(new Set(items.filter(Boolean)));
 }
 
-function countNewlines(input) {
-  return input.split(/\r?\n/).length - 1;
-}
-
 function normalizeWord(word) {
   return word.toLowerCase().replace(/[^a-z0-9/-]+/g, "");
 }
 
 function buildSearchTerms(task, hints = []) {
-  const routeTerms = Array.from(task.matchAll(/\/[a-z0-9-]+(?:\/\[[a-z0-9-]+\])?/gi)).flatMap((match) =>
-    match[0].split("/").filter(Boolean).map(normalizeWord).filter(Boolean)
-  );
-
   return unique(
     `${task} ${hints.join(" ")}`
       .split(/[\s,.:;!?()[\]{}"'`]+/)
       .map(normalizeWord)
       .filter((word) => word && word.length > 1 && !STOP_WORDS.has(word))
-      .concat(routeTerms)
   ).slice(0, 16);
 }
 
 export function detectBoundedContext(relativePath) {
-  if (relativePath.startsWith("packages/catalog/src/")) {
-    return "catalog access";
+  if (/^skills\/[^/]+\/(SKILL\.md|README\.md|skill\.meta\.json|references\/)/.test(relativePath)) {
+    return "skill definition";
   }
 
-  if (relativePath.startsWith("packages/catalog/test/")) {
-    return "catalog tests";
+  if (/^skills\/[^/]+\/tests\//.test(relativePath) || /^scripts\/.+\.test\.mjs$/.test(relativePath)) {
+    return "skill tests";
   }
 
-  if (relativePath.startsWith("apps/showroom/app/pages/")) {
-    return relativePath.endsWith("index.vue") ? "showroom landing page" : "showroom route page";
+  if (relativePath.startsWith("templates/skill/")) {
+    return "templates";
   }
 
-  if (relativePath.startsWith("apps/showroom/app/components/")) {
-    return "showroom presentation";
-  }
-
-  if (relativePath.startsWith("apps/showroom/test/")) {
-    return "showroom tests";
-  }
-
-  if (relativePath.startsWith("skills/pattern-code-wittgenstein/")) {
-    return "skill internals";
+  if (relativePath.startsWith("scripts/")) {
+    return "skill tooling";
   }
 
   if (relativePath.startsWith("docs/")) {
     return "project docs";
   }
 
-  return "project tooling";
+  return "project config";
 }
 
 export function detectLanguageGame(relativePath) {
-  if (/app\/pages\/.+\[slug\]\.vue$/.test(relativePath)) {
-    return "slug detail page";
+  if (relativePath.endsWith("SKILL.md")) {
+    return "skill instruction file";
   }
 
-  if (relativePath.startsWith("apps/showroom/app/pages/")) {
-    return "route page";
+  if (relativePath.endsWith("skill.meta.json")) {
+    return "skill manifest";
   }
 
-  if (relativePath.startsWith("apps/showroom/app/components/")) {
-    return "ui component";
+  if (relativePath.includes("/references/")) {
+    return "skill reference";
   }
 
-  if (relativePath.startsWith("packages/catalog/src/")) {
-    return "helper module";
-  }
-
-  if (relativePath.includes("/test/")) {
+  if (relativePath.includes("/tests/") || relativePath.endsWith(".test.mjs")) {
     return "test suite";
   }
 
-  if (relativePath.startsWith("skills/pattern-code-wittgenstein/")) {
-    return "scout tooling";
+  if (relativePath.startsWith("scripts/")) {
+    return "project script";
+  }
+
+  if (relativePath.startsWith("templates/")) {
+    return "skill template";
+  }
+
+  if (relativePath.endsWith(".md")) {
+    return "documentation";
   }
 
   return "supporting module";
 }
 
 function detectFamilyLabel(relativePath) {
-  if (/packages\/catalog\/src\/index\.ts$/.test(relativePath)) {
-    return "catalog helper family";
+  if (relativePath === "scripts/lib/skills.mjs") {
+    return "skill validation helper family";
   }
 
-  if (/apps\/showroom\/app\/pages\/.+\[slug\]\.vue$/.test(relativePath)) {
-    return "slug route page family";
+  if (relativePath === "scripts/sync-codex-skills.mjs") {
+    return "skill install workflow family";
   }
 
-  if (/apps\/showroom\/app\/components\/SkillCard\.vue$/.test(relativePath)) {
-    return "skill card presentation family";
+  if (relativePath === "scripts/new-skill.mjs") {
+    return "skill creation workflow family";
   }
 
-  if (/apps\/showroom\/app\/components\/.+Card\.vue$/.test(relativePath)) {
-    return "card presentation family";
+  if (relativePath.endsWith("developer-trace-contract.md")) {
+    return "developer trace contract family";
   }
 
-  if (/apps\/showroom\/app\/pages\/index\.vue$/.test(relativePath)) {
-    return "landing page family";
+  if (relativePath.endsWith("SKILL.md")) {
+    return "skill instruction family";
   }
 
-  if (relativePath.includes("/test/")) {
+  if (relativePath.endsWith("skill.meta.json")) {
+    return "skill manifest family";
+  }
+
+  if (relativePath.includes("/tests/") || relativePath.endsWith(".test.mjs")) {
     return "test coverage family";
   }
 
-  if (relativePath.startsWith("docs/")) {
+  if (relativePath.startsWith("templates/")) {
+    return "skill template family";
+  }
+
+  if (relativePath.startsWith("docs/") || relativePath.endsWith(".md")) {
     return "documentation family";
   }
 
@@ -290,21 +265,21 @@ function detectFamilyLabel(relativePath) {
 
 function buildTaskProfile(task, hints = []) {
   const lowerTask = task.toLowerCase();
-  let targetContext = "project tooling";
-  let targetLanguageGame = "supporting module";
+  let targetContext = "skill tooling";
+  let targetLanguageGame = "project script";
 
-  if (lowerTask.includes("/tags/[slug]") || (lowerTask.includes("slug") && lowerTask.includes("page"))) {
-    targetContext = "showroom route page";
-    targetLanguageGame = "slug detail page";
-  } else if (lowerTask.includes("card") || lowerTask.includes("panel") || lowerTask.includes("teaser")) {
-    targetContext = "showroom presentation";
-    targetLanguageGame = "ui component";
-  } else if (lowerTask.includes("page") || lowerTask.includes("route")) {
-    targetContext = "showroom route page";
-    targetLanguageGame = "route page";
-  } else if (lowerTask.includes("catalog") || lowerTask.includes("helper") || lowerTask.includes("lookup")) {
-    targetContext = "catalog access";
-    targetLanguageGame = "helper module";
+  if (/\btrace|developer trace|contract\b/.test(lowerTask)) {
+    targetContext = "skill definition";
+    targetLanguageGame = "skill metadata";
+  } else if (/\btemplate|scaffold|new skill\b/.test(lowerTask)) {
+    targetContext = "templates";
+    targetLanguageGame = "skill template";
+  } else if (/\bdoc|readme|contributing|adr\b/.test(lowerTask)) {
+    targetContext = "project docs";
+    targetLanguageGame = "documentation";
+  } else if (/\bconfig|ci|lint|package\b/.test(lowerTask)) {
+    targetContext = "project config";
+    targetLanguageGame = "supporting module";
   }
 
   return {
@@ -313,10 +288,12 @@ function buildTaskProfile(task, hints = []) {
     searchTerms: buildSearchTerms(task, hints),
     targetContext,
     targetLanguageGame,
-    wantsExtraction: /\bextract|generic|shared abstraction|common interface\b/i.test(task),
+    wantsExtraction: /\bextracting|extract a|extract an|generic|shared abstraction|common interface\b/i.test(task),
     wantsReuse: /\breuse\b/i.test(task),
-    wantsCopyCarefully: /\bcompact|teaser|variant|borrow|adapt\b/i.test(task),
-    novelDomain: /\bdeployment|audit|cloudflare|wrangler|dashboard|infra|infrastructure\b/i.test(task)
+    wantsCopyCarefully: /\bcompact|teaser|variant|borrow|adapt|quick\b/i.test(task),
+    novelDomain: /\brelease note|changelog|analytics|billing|dashboard|external service\b/i.test(task),
+    traceWork: /\btrace|developer trace|contract\b/i.test(task),
+    validationWork: /\bvalidat|manifest|reference|install|sync|isolation\b/i.test(task)
   };
 }
 
@@ -355,70 +332,19 @@ function createEvidenceItem({
   };
 }
 
-function getAstLanguage(segment) {
-  if (segment.language === "html") {
-    return Lang.Html;
-  }
-
-  if (segment.language === "tsx") {
-    return Lang.Tsx;
-  }
-
-  if (segment.language === "javascript") {
-    return Lang.JavaScript;
-  }
-
-  return Lang.TypeScript;
-}
-
-function extractVueSegments(content) {
-  const segments = [];
-  const templateRegex = /<template\b[^>]*>([\s\S]*?)<\/template>/gi;
-  const scriptRegex = /<script\b([^>]*)>([\s\S]*?)<\/script>/gi;
-
-  for (const match of content.matchAll(templateRegex)) {
-    segments.push({
-      kind: "template",
-      language: "html",
-      source: match[1] ?? "",
-      lineOffset: countNewlines(content.slice(0, match.index))
-    });
-  }
-
-  for (const match of content.matchAll(scriptRegex)) {
-    const attrs = match[1] ?? "";
-    segments.push({
-      kind: "script",
-      language: /lang=["']ts["']/i.test(attrs) ? "typescript" : "javascript",
-      source: match[2] ?? "",
-      lineOffset: countNewlines(content.slice(0, match.index))
-    });
-  }
-
-  return segments;
-}
-
 function extractSegments(relativePath, content) {
   const ext = path.extname(relativePath).toLowerCase();
 
-  if (ext === ".vue") {
-    return extractVueSegments(content);
-  }
-
   if ([".ts", ".mts", ".cts"].includes(ext)) {
-    return [{ kind: "script", language: "typescript", source: content, lineOffset: 0 }];
-  }
-
-  if ([".tsx", ".jsx"].includes(ext)) {
-    return [{ kind: "script", language: "tsx", source: content, lineOffset: 0 }];
+    return [{ language: Lang.TypeScript, source: content, lineOffset: 0 }];
   }
 
   if ([".js", ".mjs", ".cjs"].includes(ext)) {
-    return [{ kind: "script", language: "javascript", source: content, lineOffset: 0 }];
+    return [{ language: Lang.JavaScript, source: content, lineOffset: 0 }];
   }
 
-  if (ext === ".html") {
-    return [{ kind: "template", language: "html", source: content, lineOffset: 0 }];
+  if ([".tsx", ".jsx"].includes(ext)) {
+    return [{ language: Lang.Tsx, source: content, lineOffset: 0 }];
   }
 
   return [];
@@ -442,17 +368,15 @@ function analyzeSegments(relativePath, content) {
 
   for (const segment of extractSegments(relativePath, content)) {
     collaborators.push(...extractImports(segment.source));
-    const lang = getAstLanguage(segment);
-    const patterns = segment.kind === "template" ? TEMPLATE_PATTERNS : SCRIPT_PATTERNS;
 
     let root;
     try {
-      root = parse(lang, segment.source).root();
+      root = parse(segment.language, segment.source).root();
     } catch {
       continue;
     }
 
-    for (const patternConfig of patterns) {
+    for (const patternConfig of SCRIPT_PATTERNS) {
       const matches = root.findAll(patternConfig.pattern).slice(0, 3);
 
       for (const match of matches) {
@@ -472,11 +396,9 @@ function analyzeSegments(relativePath, content) {
           })
         );
 
-        if (patternConfig.id === "export-function" || patternConfig.id === "export-const") {
-          const symbolMatch = match.getMatch("NAME");
-          if (symbolMatch) {
-            exportedSymbols.push(symbolMatch.text());
-          }
+        const symbolMatch = match.getMatch("NAME");
+        if (symbolMatch) {
+          exportedSymbols.push(symbolMatch.text());
         }
       }
     }
@@ -588,7 +510,7 @@ function scoreEvidenceItems(evidenceItems, contextFit) {
 
 function deriveRelatedTests(candidate, testMatches) {
   const candidateTokens = unique(
-    candidate.relativePath.split(/[\/.-]+/).map(normalizeWord).filter(Boolean)
+    candidate.relativePath.split(/[/.-]+/).map(normalizeWord).filter(Boolean)
   );
 
   return testMatches
@@ -611,13 +533,14 @@ function buildSyntheticMatch(relativePath) {
 function appendSupportMatches(selectedMatches, profile) {
   const seeded = [...selectedMatches];
   const seen = new Set(seeded.map((match) => match.relativePath));
-  const supportPaths = [...(CONTEXT_SUPPORT_PATHS[profile.targetContext] ?? [])];
+  const supportPaths = [
+    ...(CONTEXT_SUPPORT_PATHS[profile.targetContext] ?? []),
+    ...(profile.traceWork ? CONTEXT_SUPPORT_PATHS["skill definition"] : []),
+    ...(profile.validationWork ? CONTEXT_SUPPORT_PATHS["skill tooling"] : []),
+    ...(profile.novelDomain ? CONTEXT_SUPPORT_PATHS["project config"] : [])
+  ];
 
-  if (profile.novelDomain) {
-    supportPaths.push("package.json");
-  }
-
-  for (const supportPath of supportPaths) {
+  for (const supportPath of unique(supportPaths)) {
     if (seen.has(supportPath)) {
       continue;
     }
@@ -682,26 +605,20 @@ function buildFalseSimilarityRisks(candidates, profile) {
     risks.push("Some matches are naming-heavy but live in distant bounded contexts.");
   }
 
-  if (
-    profile.targetLanguageGame === "slug detail page" &&
-    candidates.some((candidate) => candidate.familyLabel === "skill card presentation family")
-  ) {
-    risks.push("Presentation components are relevant, but they do not replace route-level data and error handling.");
+  if (profile.wantsExtraction && profile.validationWork) {
+    risks.push("Shared file traversal and manifest checks do not prove a generic skill lifecycle abstraction.");
   }
 
-  if (
-    profile.wantsExtraction &&
-    profile.targetLanguageGame === "slug detail page" &&
-    candidates.some((candidate) => candidate.familyLabel === "slug route page family")
-  ) {
-    risks.push("Shared slug parsing, createError(...), and SEO hooks do not prove a generic entity-detail page contract.");
+  if (profile.traceWork) {
+    risks.push("Response trace metadata is relevant, but it is not runtime instrumentation.");
   }
 
-  if (
-    profile.task.includes("/tags/[slug]") &&
-    !candidates.some((candidate) => candidate.target.path.includes("/tags/[slug].vue"))
-  ) {
-    risks.push("The planned /tags/[slug] route is still hypothetical, so it cannot count as proof of a stable three-page abstraction.");
+  if (profile.wantsCopyCarefully) {
+    risks.push("A compact variant can borrow local shape without inheriting the whole workflow contract.");
+  }
+
+  if (profile.task.toLowerCase().includes("quick-fix")) {
+    risks.push("The planned quick-fix command is still hypothetical, so it cannot count as proof of a stable multi-command abstraction.");
   }
 
   if (candidates.every((candidate) => candidate.relatedTests.length === 0)) {
@@ -709,13 +626,13 @@ function buildFalseSimilarityRisks(candidates, profile) {
   }
 
   if (profile.novelDomain) {
-    risks.push("The task introduces a novel domain, so route-shape similarity alone is not enough to justify reuse.");
+    risks.push("The task introduces a novel domain, so name overlap with existing skill tooling is not enough to justify reuse.");
   }
 
   return unique(risks);
 }
 
-function buildMissingEvidence(candidates, profile) {
+function buildMissingEvidence(candidates) {
   const missing = [];
 
   if (!candidates.some((candidate) => candidate.scoreBreakdown.structural >= 3)) {
@@ -726,52 +643,50 @@ function buildMissingEvidence(candidates, profile) {
     missing.push("No closely aligned tests were found to mirror the intended behavior.");
   }
 
-  if (profile.targetContext === "showroom route page" && !candidates.some((candidate) => candidate.boundedContext === "catalog access")) {
-    missing.push("A supporting catalog lookup family was not confirmed for the target route.");
-  }
-
   return missing;
 }
 
 function decideRecommendation(candidates, profile) {
-  const hasCatalogHelper = candidates.some((candidate) => candidate.familyLabel === "catalog helper family" && candidate.scoreBreakdown.total >= 4);
-  const hasSlugRoute = candidates.some((candidate) => candidate.familyLabel === "slug route page family" && candidate.scoreBreakdown.total >= 4);
-  const hasSkillCard = candidates.some((candidate) => candidate.familyLabel === "skill card presentation family" && candidate.scoreBreakdown.total >= 3);
-  const strongCandidates = candidates.filter((candidate) => candidate.scoreBreakdown.total >= 5);
-  const mostlyNamingOnly =
-    strongCandidates.length === 0 ||
-    candidates.every((candidate) => candidate.scoreBreakdown.structural < 2 && candidate.scoreBreakdown.domain < 2);
+  const hasTraceContract = candidates.some((candidate) => candidate.familyLabel === "developer trace contract family");
+  const hasValidationHelper = candidates.some((candidate) => candidate.familyLabel === "skill validation helper family");
+  const hasInstallWorkflow = candidates.some((candidate) => candidate.familyLabel === "skill install workflow family");
+  const strongSameContext = candidates.some(
+    (candidate) => candidate.contextFit === "same" && candidate.scoreBreakdown.total >= 5
+  );
 
   let recommendation = "copy carefully";
   let rationale = "The available precedents are useful, but the fit is not yet strong enough for automatic reuse.";
   const competingRecommendations = [];
 
-  if (profile.wantsExtraction && candidates.filter((candidate) => candidate.familyLabel === "catalog helper family").length >= 2) {
-    recommendation = "extract";
-    rationale = "The task explicitly asks for shared structure and there are repeated helper precedents worth consolidating.";
-    competingRecommendations.push("extend would preserve local duplication even though repeated helper structure is already visible.");
-  } else if (profile.wantsReuse && strongCandidates.some((candidate) => candidate.contextFit === "same" && candidate.scoreBreakdown.structural >= 4)) {
+  if (profile.novelDomain) {
+    recommendation = "create new";
+    rationale = "The task introduces a new domain, so forcing it through existing skill tooling would hide real differences.";
+    competingRecommendations.push("extend was rejected because structural and domain evidence do not converge strongly enough.");
+  } else if (profile.wantsExtraction && profile.validationWork) {
+    recommendation = "extend";
+    rationale = "Validation and install workflows share helper pressure, but the right move is to extend the helper boundary rather than extract a generic lifecycle abstraction.";
+    competingRecommendations.push("extract was rejected because only part of the workflow repeats.");
+  } else if (profile.traceWork && hasTraceContract && hasValidationHelper) {
+    recommendation = "extend";
+    rationale = "Developer trace work already has manifest metadata, a contract reference, and root validation support, so another trace-aware skill should extend that pattern.";
+    competingRecommendations.push("create new was rejected because the trace contract and validation path already exist.");
+  } else if (profile.wantsCopyCarefully && hasInstallWorkflow) {
+    recommendation = "copy carefully";
+    rationale = "The install workflow is instructive, but the requested command is a smaller variant and should not inherit the whole install contract.";
+    competingRecommendations.push("extract was rejected because a single compact variant is not enough pressure for a new abstraction.");
+  } else if (profile.wantsReuse && strongSameContext) {
     recommendation = "reuse";
     rationale = "A strong same-context precedent already exists and can be reused directly with minimal change.";
-    competingRecommendations.push("extend was rejected because the requested shape already exists instead of being a new variant.");
-  } else if (mostlyNamingOnly || profile.novelDomain) {
-    recommendation = "create new";
-    rationale = "The task either introduces a new domain or only has shallow matches, so forcing reuse would hide meaningful differences.";
-    competingRecommendations.push("extend was rejected because structural and domain evidence do not converge strongly enough.");
-  } else if (hasCatalogHelper && hasSlugRoute && (profile.targetLanguageGame === "slug detail page" || profile.targetLanguageGame === "route page")) {
+    competingRecommendations.push("extend was rejected because the requested shape already exists.");
+  } else if (profile.validationWork && hasValidationHelper) {
     recommendation = "extend";
-    rationale = "The task sits inside an existing route/page family and is supported by adjacent catalog helpers, so extending the established pattern is safer than inventing a new one.";
-    competingRecommendations.push("extract was rejected because there is not enough repeated page-body structure for a generic detail abstraction.");
-    competingRecommendations.push("create new was rejected because strong adjacent families already exist.");
-  } else if (profile.wantsCopyCarefully || (hasSkillCard && !hasSlugRoute && profile.targetContext === "showroom presentation")) {
-    recommendation = "copy carefully";
-    rationale = "There is an instructive precedent nearby, but the target is a presentation variant rather than a stable family extension.";
-    competingRecommendations.push("extend was rejected because the surrounding component contract is not stable enough yet.");
+    rationale = "The work sits inside the existing validation helper family, so extending that boundary is safer than creating another validator.";
+    competingRecommendations.push("create new was rejected because a local helper family already exists.");
   }
 
   const falseSimilarityRisks = buildFalseSimilarityRisks(candidates, profile);
-  const missingEvidence = buildMissingEvidence(candidates, profile);
-  const confidence = recommendation === "reuse" ? "high" : recommendation === "extend" ? "medium" : "medium";
+  const missingEvidence = buildMissingEvidence(candidates);
+  const confidence = recommendation === "reuse" ? "high" : "medium";
 
   return {
     recommendation,
@@ -860,7 +775,7 @@ export function renderScoutReport(result) {
     "",
     `- preserve: ${preserve}`,
     `- vary: adapt the target to the requested ${result.profile.targetLanguageGame} instead of forcing a generic abstraction`,
-    "- keep separate: page-body contracts that only share route shell, slug parsing, or error plumbing",
+    "- keep separate: workflows that only share file traversal or naming",
     "- avoid: name-only reuse or cross-context abstraction without stronger evidence",
     "",
     "## Tests to mirror or add",
@@ -918,15 +833,7 @@ export async function analyzePatternTask({
 
   const filteredCandidates = candidates
     .filter((candidate) => candidate.familyLabel !== "documentation family" || candidate.scoreBreakdown.total >= 3)
-    .filter((candidate) => profile.targetContext === "skill internals" || candidate.boundedContext !== "skill internals")
-    .slice(0, profile.novelDomain ? 7 : 8);
-
-  if (profile.novelDomain) {
-    const packageCandidate = candidates.find((candidate) => candidate.target.path === "package.json");
-    if (packageCandidate && !filteredCandidates.some((candidate) => candidate.target.path === packageCandidate.target.path)) {
-      filteredCandidates.push(packageCandidate);
-    }
-  }
+    .slice(0, profile.novelDomain ? 12 : 12);
 
   const decision = decideRecommendation(filteredCandidates, profile);
   const testsToMirror = buildTestsToMirror(filteredCandidates);

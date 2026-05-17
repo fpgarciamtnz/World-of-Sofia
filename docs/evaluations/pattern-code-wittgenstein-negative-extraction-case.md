@@ -2,7 +2,7 @@
 
 ## Mock Prompt
 
-Before extracting a generic `EntityDetailPage` abstraction for `skills/[slug]`, `philosophers/[slug]`, and a planned `/tags/[slug]` route, inspect the repo and tell me what patterns actually belong together, what should stay separate, and whether the right action is `reuse`, `extend`, `extract`, `copy carefully`, or `create new`.
+Before extracting a generic `skill lifecycle` abstraction for `new-skill`, install, validation, and a planned quick-fix command, inspect the repo and tell me what patterns actually belong together, what should stay separate, and whether the right action is `reuse`, `extend`, `extract`, `copy carefully`, or `create new`.
 
 ## Expected Judgment
 
@@ -11,20 +11,20 @@ Before extracting a generic `EntityDetailPage` abstraction for `skills/[slug]`, 
 
 ## Why `extend` Is Correct
 
-- Reuse the existing slug-route shell: `useRoute()`, missing-slug handling, `createError(...)`, and `useSeoMeta(...)` already form a real route-page family in the showroom.
-- Extend the catalog access layer with a tag-oriented lookup adjacent to the current slug helpers in `packages/catalog/src/index.ts`.
-- Keep `skills/[slug]` and `philosophers/[slug]` page bodies separate because they render different contracts: markdown-heavy skill detail versus philosopher summary plus linked skill cards.
-- Treat `SkillCard` as relevant supporting evidence for a future tag page, not as proof that all three detail routes belong behind one generic page abstraction.
+- Reuse and extend the root validation helper where manifest loading, reference checks, local link checks, and trace metadata validation need shared behavior.
+- Keep `scripts/new-skill.mjs` focused on template copying and placeholder replacement.
+- Keep `scripts/sync-codex-skills.mjs` focused on install safety, backups, dry-run behavior, and reserved target protection.
+- Treat a planned quick-fix command as hypothetical until it has concrete behavior and tests.
 
 ## False-Similarity Risks
 
-- Shared slug parsing and route error plumbing are route-shell similarities, not proof of a common detail-body abstraction.
-- The planned `/tags/[slug]` route is hypothetical and cannot be counted as evidence that a stable three-way family already exists.
-- `SkillCard` is a presentation precedent for listing related skills, but it does not erase the route-level differences between skill, philosopher, and tag pages.
+- Shared filesystem traversal is not enough evidence for one lifecycle abstraction.
+- Scaffolding, validation, and installation have different write behavior and failure modes.
+- A planned quick-fix command cannot count as proof that a stable multi-command family already exists.
 
 ## Pass Criteria
 
 - The scout returns `extend`.
-- The report cites both existing slug pages and the catalog helper family.
-- The report explicitly rejects generic detail-page extraction in repo terms.
-- The report mentions tests to mirror or extend, especially the showroom smoke route coverage.
+- The report cites validation helpers and install/scaffold scripts.
+- The report explicitly rejects generic lifecycle extraction in repo terms.
+- The report mentions tests to mirror or extend, especially root validation helper tests.

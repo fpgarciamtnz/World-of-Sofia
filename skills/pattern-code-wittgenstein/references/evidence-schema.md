@@ -9,7 +9,7 @@ Represents one candidate precedent family.
 Fields:
 
 - `id`: stable identifier for the candidate, currently the relative file path
-- `familyLabel`: human-readable family label such as `catalog helper family`
+- `familyLabel`: human-readable family label such as `skill validation helper family`
 - `target.path`: file path
 - `target.symbol`: first exported symbol when available
 - `boundedContext`: repo-local context label

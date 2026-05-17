@@ -58,7 +58,7 @@ describe("pattern-code-wittgenstein prototype", () => {
   it("separates observed from inferred evidence", async () => {
     const result = await analyzePatternTask({
       rootPath: projectRoot,
-      task: "Before implementing a /tags/[slug] page that shows all skills for a tag, inspect the repo."
+      task: "Before adding opt-in developer trace metadata to another skill, inspect the repo."
     });
 
     const evidence = result.candidates.flatMap((candidate) => candidate.evidenceItems);
@@ -66,16 +66,16 @@ describe("pattern-code-wittgenstein prototype", () => {
     expect(evidence.some((item) => !item.observed)).toBe(true);
   });
 
-  it("rejects a generic entity detail extraction when only the route shell aligns", async () => {
+  it("rejects a generic lifecycle abstraction when only helper pressure aligns", async () => {
     const result = await analyzePatternTask({
       rootPath: projectRoot,
-      task: "Before extracting a generic EntityDetailPage abstraction for skills/[slug], philosophers/[slug], and a planned /tags/[slug] route, inspect the repo and tell me what patterns actually belong together, what should stay separate, and whether the right action is reuse, extend, extract, copy carefully, or create new.",
-      hints: ["EntityDetailPage", "tags", "slug", "SkillCard", "createError"]
+      task: "Before extracting a generic skill lifecycle abstraction for new-skill, install, validation, and a planned quick-fix command, inspect the repo and tell me what patterns actually belong together, what should stay separate, and whether the right action is reuse, extend, extract, copy carefully, or create new.",
+      hints: ["skill lifecycle", "validation", "install", "quick-fix"]
     });
 
     expect(result.decision.recommendation).toBe("extend");
-    expect(result.report).toContain("generic entity-detail page contract");
-    expect(result.report).toContain("planned /tags/[slug] route is still hypothetical");
+    expect(result.report).toContain("generic skill lifecycle abstraction");
+    expect(result.report).toContain("planned quick-fix command is still hypothetical");
     expect(result.report).toContain("extract was rejected");
   });
 });

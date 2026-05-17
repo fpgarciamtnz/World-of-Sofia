@@ -2,48 +2,33 @@
   "name": "world-of-sofia",
   "private": true,
   "version": "0.1.0",
-  "description": "Nuxt showroom for isolated philosopher-derived skills.",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "description": "Codex skill collection and toolkit for philosopher-derived software work habits.",
   "scripts": {
-    "dev": "npm --workspace packages/catalog run build && npm --workspace apps/showroom run dev",
-    "build": "npm --workspace packages/catalog run build && npm --workspace apps/showroom run build",
-    "deploy": "npm --workspace packages/catalog run build && npm --workspace apps/showroom run deploy",
-    "lint": "npm --workspace packages/catalog run lint && npm --workspace apps/showroom run lint",
-    "typecheck": "npm --workspace packages/catalog run typecheck && npm --workspace apps/showroom run typecheck",
-    "validate:skills": "npm --workspace packages/catalog run validate:skills",
-    "check:isolation": "npm --workspace packages/catalog run check:isolation",
-    "check": "npm run lint && npm run typecheck && npm run validate:skills && npm run check:isolation",
+    "lint": "eslint scripts skills",
+    "validate:skills": "node ./scripts/validate-skills.mjs",
+    "validate:skill-traces": "node ./scripts/validate-skill-traces.mjs",
+    "check:isolation": "node ./scripts/check-isolation.mjs",
+    "check": "npm run lint && npm run validate:skills && npm run validate:skill-traces && npm run check:isolation && npm run test",
     "test:pattern-code-wittgenstein": "vitest run skills/pattern-code-wittgenstein/tests/pattern-scout.test.mjs",
-    "test": "npm run test:pattern-code-wittgenstein && npm --workspace packages/catalog run test && npm --workspace apps/showroom run test",
-    "test:e2e": "npm --workspace apps/showroom run test:e2e",
+    "test": "vitest run scripts/lib/skills.test.mjs && npm run test:pattern-code-wittgenstein",
     "new:skill": "node ./scripts/new-skill.mjs",
     "install:skills": "node ./scripts/sync-codex-skills.mjs",
     "install:skill": "node ./scripts/sync-codex-skills.mjs --skill",
     "sync:skills": "node ./scripts/sync-codex-skills.mjs",
-    "sync:skill": "node ./scripts/sync-codex-skills.mjs --skill",
-    "prepare": "npm --workspace packages/catalog run build"
+    "sync:skill": "node ./scripts/sync-codex-skills.mjs --skill"
+  },
+  "dependencies": {
+    "zod": "^4.1.12"
   },
   "devDependencies": {
     "@ast-grep/napi": "^0.42.1",
     "@eslint/js": "^9.39.1",
-    "@playwright/test": "^1.55.1",
-    "@types/markdown-it": "^14.1.2",
     "@types/node": "^24.10.0",
-    "@vue/language-core": "^3.1.5",
     "eslint": "^9.39.1",
-    "eslint-plugin-vue": "^10.5.1",
     "globals": "^16.5.0",
-    "markdown-it": "^14.1.0",
-    "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.4",
-    "vitest": "^3.2.4",
-    "vue-eslint-parser": "^10.2.0",
-    "vue-tsc": "^3.1.5",
-    "wrangler": "^4.88.0"
+    "vitest": "^3.2.4"
   },
   "engines": {
     "node": ">=24.0.0"

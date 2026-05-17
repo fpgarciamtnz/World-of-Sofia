@@ -1,0 +1,21 @@
+{
+  "id": "extend-developer-trace",
+  "title": "Extend developer trace support",
+  "prompt": "Before adding opt-in developer trace metadata to another skill, inspect the repo and tell me what existing patterns to reuse, what not to abstract yet, and whether this should be reuse, extend, extract, copy carefully, or create new.",
+  "searchHints": [
+    "developer trace",
+    "Skill Impact Trace",
+    "contract",
+    "validate"
+  ],
+  "expectedRecommendation": "extend",
+  "requiredPaths": [
+    "skills/pattern-code-wittgenstein/skill.meta.json",
+    "skills/pattern-code-wittgenstein/references/developer-trace-contract.md",
+    "scripts/validate-skill-traces.mjs"
+  ],
+  "falseSimilarityTraps": [
+    "Do not invent a second trace contract format.",
+    "Do not treat response trace metadata as runtime instrumentation."
+  ]
+}

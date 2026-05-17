@@ -19,7 +19,22 @@
     "references/evidence-schema.md",
     "references/scoring-policy.md",
     "references/bounded-contexts.md",
-    "references/tooling-notes.md"
+    "references/tooling-notes.md",
+    "references/developer-trace-contract.md"
   ],
-  "version": "0.1.0"
+  "version": "0.1.0",
+  "developerTrace": {
+    "status": "pilot",
+    "mode": "opt-in",
+    "surfaces": [
+      "response"
+    ],
+    "triggers": [
+      "developer mode",
+      "trace mode",
+      "impact evidence",
+      "show traces"
+    ],
+    "contract": "references/developer-trace-contract.md"
+  }
 }

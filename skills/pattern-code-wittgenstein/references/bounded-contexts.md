@@ -4,25 +4,24 @@ The prototype uses repository-local context labels derived from paths.
 
 ## Current context map
 
-- `catalog access`
-  - `packages/catalog/src/*`
-- `catalog tests`
-  - `packages/catalog/test/*`
-- `showroom route page`
-  - `apps/showroom/app/pages/*`
-  - except `index.vue`
-- `showroom landing page`
-  - `apps/showroom/app/pages/index.vue`
-- `showroom presentation`
-  - `apps/showroom/app/components/*`
-- `showroom tests`
-  - `apps/showroom/test/*`
-- `skill internals`
-- `skills/pattern-code-wittgenstein/*`
+- `skill definition`
+  - `skills/<slug>/SKILL.md`
+  - `skills/<slug>/README.md`
+  - `skills/<slug>/skill.meta.json`
+  - `skills/<slug>/references/*`
+- `skill tooling`
+  - `scripts/*`
+  - `scripts/lib/*`
+- `skill tests`
+  - `skills/<slug>/tests/*`
+  - `scripts/**/*.test.mjs`
+- `templates`
+  - `templates/skill/*`
 - `project docs`
   - `docs/*`
-- `project tooling`
-  - everything else
+  - root markdown files
+- `project config`
+  - package, lint, CI, and repository configuration files
 
 ## Adjacency policy
 
@@ -30,15 +29,15 @@ Not every context boundary is a hard exclusion.
 
 Expected adjacency examples:
 
-- route pages <-> presentation components
-- route pages <-> catalog access
-- route pages <-> showroom tests
-- catalog access <-> catalog tests
+- skill definition <-> skill tooling
+- skill definition <-> skill tests
+- templates <-> skill creation tooling
+- project docs <-> project config
 
 High-risk combinations:
 
-- route pages <-> skill internals
-- route pages <-> project docs
-- deployment/tooling tasks <-> showroom UI families
+- skill install workflow <-> skill template generation
+- trace metadata <-> runtime instrumentation
+- documentation examples <-> executable validation behavior
 
 This map is intentionally narrow and repo-specific. It should be revised per repository family rather than treated as universal.
