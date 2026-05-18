@@ -10,7 +10,8 @@ describe("skill validation helpers", () => {
       "audit-plan-descartes",
       "communication-review-ciceron",
       "pattern-code-wittgenstein",
-      "synthesis-code-hegel"
+      "synthesis-code-hegel",
+      "ui-attention-ciceron"
     ]);
   });
 

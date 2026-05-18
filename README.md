@@ -10,6 +10,7 @@ The repository is structured around one hard rule: skills do not mix. Every skil
 - **Pattern Code Wittgenstein**: inspects repository patterns before implementation and recommends whether to reuse, extend, extract, copy carefully, or create new code.
 - **Synthesis Code Hegel**: reviews real code changes and recommends whether to leave, rename, extract, merge, split, inline, deprecate, or delete.
 - **Communication Review Ciceron**: reviews message intent, audience uptake, tone, clarity, and reformulation.
+- **UI Attention Ciceron**: reviews final UI changes for attention hierarchy, emotional language fit, and goal alignment.
 - **Sofia Coordinator**: routes multi-skill planning, creation, update, review, and validation workflows through the smallest useful set of skills.
 
 ## Repository Layout
