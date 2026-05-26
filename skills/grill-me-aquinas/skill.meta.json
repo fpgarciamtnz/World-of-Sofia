@@ -1,0 +1,20 @@
+{
+  "id": "world-of-sofia.grill-me-aquinas",
+  "slug": "grill-me-aquinas",
+  "title": "Grill Me Aquinas",
+  "philosopher": "Thomas Aquinas",
+  "summary": "An Aquinas-derived passive learning skill built from https://github.com/onmax/skills/tree/main/skills/grill-with-docs for clarifying what the user said, meant, and actually changed.",
+  "tags": [
+    "aquinas",
+    "passive-learning",
+    "context"
+  ],
+  "status": "draft",
+  "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/grill-me-aquinas",
+  "installCommand": "npm run install:skill -- grill-me-aquinas",
+  "references": [
+    "references/aquinas-essence-map.md",
+    "deep-research-report (5).md"
+  ],
+  "version": "0.1.0"
+}

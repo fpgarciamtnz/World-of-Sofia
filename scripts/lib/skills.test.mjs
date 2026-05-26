@@ -9,6 +9,7 @@ describe("skill validation helpers", () => {
     expect(skillsData.skills.map((skill) => skill.slug).sort()).toEqual([
       "audit-plan-descartes",
       "communication-review-ciceron",
+      "grill-me-aquinas",
       "pattern-code-wittgenstein",
       "synthesis-code-hegel",
       "ui-attention-ciceron"
