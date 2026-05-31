@@ -526,7 +526,8 @@ function buildSyntheticMatch(relativePath) {
   return {
     relativePath,
     hits: [],
-    score: 1
+    score: 1,
+    supportSeeded: true
   };
 }
 
@@ -589,6 +590,7 @@ function createCandidate({ relativePath, lexicalMatch, profile, relatedTests, an
     contextFit,
     relatedTests,
     collaborators: analysis.collaborators,
+    supportSeeded: Boolean(lexicalMatch.supportSeeded),
     evidenceItems,
     scoreBreakdown: scoreEvidenceItems(evidenceItems, contextFit)
   };
@@ -831,9 +833,14 @@ export async function analyzePatternTask({
 
   candidates.sort((left, right) => right.scoreBreakdown.total - left.scoreBreakdown.total);
 
-  const filteredCandidates = candidates
-    .filter((candidate) => candidate.familyLabel !== "documentation family" || candidate.scoreBreakdown.total >= 3)
-    .slice(0, profile.novelDomain ? 12 : 12);
+  const eligibleCandidates = candidates
+    .filter((candidate) => candidate.familyLabel !== "documentation family" || candidate.scoreBreakdown.total >= 3);
+  const topCandidates = eligibleCandidates.slice(0, profile.novelDomain ? 12 : 12);
+  const topCandidatePaths = new Set(topCandidates.map((candidate) => candidate.target.path));
+  const seededSupportCandidates = eligibleCandidates.filter(
+    (candidate) => candidate.supportSeeded && !topCandidatePaths.has(candidate.target.path)
+  );
+  const filteredCandidates = [...topCandidates, ...seededSupportCandidates];
 
   const decision = decideRecommendation(filteredCandidates, profile);
   const testsToMirror = buildTestsToMirror(filteredCandidates);
