@@ -1,15 +1,22 @@
 # World of Sofia
 
-Sofia is the coordinator for a family of interconnected Codex skills. Bring her a messy request, a plan, a codebase question, a goal, a review, or a UI concern, and she routes the work to the right specialist instead of blending every responsibility into one prompt.
+Sofia is the coordinator for a family of specialist Codex skills. Bring her a messy request, a planning problem, a durable goal, a code change, a review, or a UI concern, and she routes the work to the smallest useful set of specialists.
 
-World of Sofia is the skill collection behind that coordinator: practical tools for engineers who want clearer plans, safer codebase orientation, sharper reviews, better communication, durable Codex goals, and focused UI validation.
+World of Sofia is the skill collection behind that coordinator. It helps Codex make clearer plans, create better long-running goals, orient inside a codebase before editing, review real diffs, improve communication, and validate whether a rendered UI points attention at the right thing.
 
-## What this is
+## How to call Sofia
 
-- A set of isolated, installable Codex skills under `skills/<slug>`.
-- A small toolkit for validating, testing, creating, and installing those skills.
-- A coordinator named Sofia that helps decide which skill should handle each part of the work.
-- A philosophy-inspired project, but the day-to-day value is practical: clearer plans, better reuse decisions, sharper reviews, cleaner communication, and focused UI checks.
+Call Sofia with the coordinator skill:
+
+```text
+$sofia-coordinatior
+```
+
+Use Sofia when the work spans more than one concern, when you are unsure which skill should act, or when you want a workflow that can move from planning to execution to review without blending every responsibility into one prompt.
+
+Sofia routes the work; she does not replace the specialists. Descartes audits plans, Aquinas clarifies intent and project essence, Wittgenstein finds existing code patterns, Hegel reviews real code changes, and the Ciceron skills review communication or rendered UI attention.
+
+For durable Codex Goal Mode work, Sofia prepares a Goal Mode Brief and ready-to-use goal text. Start Goal Mode itself with `/goal` in Codex, then paste the goal text Sofia produced.
 
 ## Install
 
@@ -29,66 +36,114 @@ npm run install:skill -- audit-plan-descartes
 
 Rerun the install command whenever skills change. Open a new Codex session if an installed or updated skill does not appear immediately.
 
-## Use Sofia to route work
+## Sofia workflow modes
 
-Sofia is the practical wizard behind the skill set. She is the character and workflow model users meet first: she clarifies the goal, chooses the smallest useful specialist sequence, creates Goal Mode Briefs for durable `/goal` work, and keeps each specialist focused on its job.
+### 1. Make Plans
 
-```mermaid
-flowchart LR
-  A["User goal"] --> B["Sofia coordinator"]
-  B --> C{"Choose the smallest useful skill"}
-  C --> D["Plan audit"]
-  C --> E["Repo pattern search"]
-  C --> F["Diff review"]
-  C --> G["Communication review"]
-  C --> H["UI attention review"]
-  C --> I["Goal clarification"]
-  D --> J["Evidence-backed output"]
-  E --> J
-  F --> J
-  G --> J
-  H --> J
-  I --> J
-  J --> K{"Needs another pass?"}
-  K -->|Yes| B
-  K -->|No| L["Ready to act"]
+Use this mode when you have a problem, context, and description, but not yet a trusted implementation path.
+
+Call Sofia with the planning request:
+
+```text
+$sofia-coordinatior
+Problem: [What needs to change or be solved.]
+Context: [Project facts, constraints, links, files, or user goals.]
+Description: [What good should look like.]
 ```
 
-Use Sofia when the work spans more than one concern:
+Sofia first explores the request and available project evidence. If the intent is fuzzy, she uses Grill Me Aquinas to separate what you said from what you likely mean, name canonical terms, and preserve project essence instead of planning from accidental wording.
 
-- Creating a durable Codex goal before long-running work.
-- Planning a change before implementation.
-- Finding existing code patterns before adding new code.
-- Reviewing a real diff before merge.
-- Tightening a user-facing message.
-- Checking whether a rendered UI draws attention to the right thing.
-- Clarifying a vague goal before other skills act on it.
+Sofia then uses Audit Plan Descartes to separate facts, constraints, unresolved assumptions, verification requirements, and optional essence-fit risks. When the plan depends on existing code, Sofia routes to Pattern Code Wittgenstein before implementation so Codex can decide whether to reuse, extend, extract, copy carefully, or create new.
 
-## Skill map
+The result is a decision-ready plan with a clear specialist sequence, the evidence it depends on, and the assumptions that should not be treated as facts.
 
-| Skill | Use when | Inspects | Produces |
-| --- | --- | --- | --- |
-| [Sofia Coordinatior](skills/sofia-coordinatior) | Work spans multiple skills, a skill needs creation or update, or Codex needs a durable Goal Mode Brief. | User request, available skills, planning needs, goal-readiness evidence, and specialist handoffs. | Role routing, handoff order, Goal Mode Briefs, planning gates, and validation direction. |
-| [Audit Plan Descartes](skills/audit-plan-descartes) | A plan needs stronger assumptions, evidence, risk handling, or essence-fit checking. | User request, repo facts, constraints, unresolved assumptions, and optional Grill Me Aquinas essence context. | Foundation ledger, assumption audit, essence-fit check, final plan support. |
-| [Pattern Code Wittgenstein](skills/pattern-code-wittgenstein) | You need to know how this repo already solves something before coding. | Nearby files, naming, structure, helper APIs, bounded contexts. | Reuse decision: `reuse`, `extend`, `extract`, `copy carefully`, or `create new`. |
-| [Synthesis Code Hegel](skills/synthesis-code-hegel) | Code has changed and needs review before merge or cleanup. | Diffs, affected modules, duplicated behavior, context boundaries. | Review findings and synthesis recommendation: leave, rename, extract, merge, split, inline, deprecate, or delete. |
-| [Communication Review Ciceron](skills/communication-review-ciceron) | A message, comment, review, or proposal needs to land better. | Wording, implied intent, audience uptake, tone, clarity. | Direct communication feedback and smallest useful rewrite. |
-| [Grill Me Aquinas](skills/grill-me-aquinas) | A request is fuzzy, learning looks wrong, user/project truth needs rebuilding, or a plan needs essence context. | User wording, project docs, code evidence, prior decisions, case clusters, and memory conflicts. | Question ladder output, practical truth mode, potency-to-truth checks, relearning repairs, essence candidates, rules, exceptions, and Descartes-ready handoffs. |
-| [UI Attention Ciceron](skills/ui-attention-ciceron) | A UI change needs final attention and language validation. | Rendered UI, screenshots, DOM evidence, hierarchy, CTA copy. | Attention ranking, goal-fit review, severity, and smallest useful correction. |
+### 2. Pursue a Goal
 
-## Common workflows
+Use this mode when the work should continue as a durable Codex goal rather than a one-shot task. Sofia turns what is known about the project and the goal description into a Goal Mode Brief, then gives you concise `/goal` text that Codex can pursue.
 
-| Workflow | Practical sequence |
+Call Sofia with a durable objective:
+
+```text
+$sofia-coordinatior
+Create a goal for this project:
+[Describe the durable outcome, constraints, and what completion should prove.]
+```
+
+Sofia clarifies the durable outcome with Aquinas when terms, project essence, constraints, non-goals, or pause conditions are unclear. Descartes audits goal readiness before the brief is finalized. If the goal will lead to code, Sofia names later handoffs to Wittgenstein, Hegel, and the relevant Ciceron skill.
+
+Use this template when asking Sofia to build a goal:
+
+```text
+Goal Mode Brief
+
+Objective:
+[One durable project outcome.]
+
+Completion criteria:
+- [Observable success condition.]
+- [Verification command, artifact, or review evidence.]
+- [Behavior or boundary that must remain unchanged.]
+
+Scope boundaries:
+- In scope: [...]
+- Out of scope: [...]
+
+Skill routing:
+- Clarify with Aquinas when intent or project essence is unclear.
+- Audit with Descartes before finalizing the goal.
+- Use Wittgenstein before implementation pattern choices.
+- Use Hegel after real code changes exist.
+- Use UI Attention Ciceron for rendered UI completion evidence when the goal is UI-facing.
+- Use Communication Review Ciceron when the goal depends on wording, tone, or audience uptake.
+
+Pause conditions:
+- Ask before changing public behavior, deleting existing behavior, crossing project boundaries, or treating unresolved assumptions as facts.
+
+Ready-to-use `/goal` text:
+[Concise goal prompt Codex can pursue.]
+```
+
+Keep the ready-to-use `/goal` text short enough to paste into Goal Mode. Put supporting evidence, routing detail, and audit notes in the brief.
+
+### 3. Execute Plan
+
+Use this mode when the plan is accepted and Codex is ready to work on the deliverable.
+
+Sofia keeps execution grounded in the codebase instead of treating the plan as permission to invent new structure. For code work, she routes through Pattern Code Wittgenstein before important implementation choices so Codex can inspect nearby files, tests, helper APIs, naming, and bounded contexts.
+
+During implementation, Codex should keep edits scoped to the requested deliverable, preserve existing behavior unless the plan explicitly changes it, and validate with the local commands that match the touched area. Sofia's role is to keep the handoffs clean: Aquinas protects intended meaning, Descartes protects planning facts, Wittgenstein protects repository fit, and validation proves the deliverable works.
+
+After real code changes exist, Sofia routes review through Synthesis Code Hegel. Hegel inspects the actual diff and decides whether the change should be left as-is, renamed, extracted, merged, split, inlined, deprecated, or deleted. If the deliverable includes UI, UI Attention Ciceron can review the rendered result. If the deliverable includes user-facing language, Communication Review Ciceron can tighten the message.
+
+### 4. Review
+
+Use this mode when you have a diff, branch, PR, rendered screen, message, proposal, or completed goal that needs judgment before close.
+
+Each specialist has a different review job:
+
+| Specialist | Review role |
 | --- | --- |
-| Create a Codex goal | Sofia -> Grill Me Aquinas when intent or essence is unclear -> Audit Plan Descartes -> Goal Mode Brief -> `/goal`. |
-| Plan a feature | Sofia -> Audit Plan Descartes -> Pattern Code Wittgenstein -> implementation. |
-| Plan against project essence | Grill Me Aquinas -> Audit Plan Descartes -> Pattern Code Wittgenstein -> implementation. |
-| Add code safely | Pattern Code Wittgenstein -> implementation -> Synthesis Code Hegel -> tests. |
-| Review a PR | Synthesis Code Hegel -> targeted fixes -> validation. |
-| Improve a UI | Sofia -> implementation -> UI Attention Ciceron -> smallest useful correction. |
-| Clarify a messy request | Grill Me Aquinas -> Sofia route -> selected specialist skill. |
-| Repair bad learning | Grill Me Aquinas Relearning Mode -> review proposed memory revision -> Sofia route. |
-| Rewrite a sensitive message | Communication Review Ciceron -> revised message -> optional Sofia handoff. |
+| Synthesis Code Hegel | Reviews real diffs, staged work, branches, or PRs. It names the changed system, classifies tension or contradiction, and recommends the smallest safe synthesis action. |
+| UI Attention Ciceron | Reviews live pages, local browser targets, screenshots, or mockups. It produces `Attention Ranking`, `Likely User Attention Path`, goal-fit judgment, severity, and a `Sofia Handoff Packet` when attention misses the intended UI effect. |
+| Communication Review Ciceron | Reviews messages, proposals, comments, review feedback, or product copy. It separates observed wording from inferred intent, names likely audience uptake, and gives the smallest useful rewrite. |
+| Audit Plan Descartes | Reviews planning-sensitive claims. It checks whether conclusions rest on facts, constraints, or unresolved assumptions, and whether essence evidence has been overclaimed. |
+| Grill Me Aquinas | Reviews meaning and intent drift. It is useful when the diff or review appears to satisfy surface wording while missing the project's real purpose. |
+| Pattern Code Wittgenstein | Re-enters only when review exposes missing pattern evidence. It answers what existing code family the work should resemble before more code is written. |
+| Sofia Coordinatior | Chooses the sequence, keeps responsibilities separate, and routes missed goals back to the right specialist instead of flattening every review into one opinion. |
+
+For UI review, use the project language from UI Attention Ciceron. The skill does not claim eye-tracking certainty or produce a heat map. It ranks likely attention peaks from observable visual, textual, and DOM evidence.
+
+## Skill roles
+
+| Skill | Call when | Sofia uses it for | Produces |
+| --- | --- | --- | --- |
+| [Sofia Coordinatior](skills/sofia-coordinatior) | Work spans multiple skills, a skill workflow needs routing, or a durable Codex goal needs a Goal Mode Brief. | Coordination, role boundaries, planning gates, Goal Lifecycle Mode, and specialist handoffs. | Handoff order, plans, Goal Mode Briefs, validation direction, and review routing. |
+| [Audit Plan Descartes](skills/audit-plan-descartes) | A plan or goal needs evidence control, assumption handling, verification requirements, or essence-fit checking. | Plan trust and goal readiness before final planning output. | Foundation ledger, unresolved assumptions, assumption audit, essence-fit check, and final plan support. |
+| [Grill Me Aquinas](skills/grill-me-aquinas) | Intent is fuzzy, project truth needs rebuilding, canonical terms matter, or a durable goal needs clearer essence. | Meaning clarification before plans, goals, implementation handoffs, or review-sensitive judgments. | Said/meant/happened records, question ladder output, essence candidates, constraints, non-goals, pause conditions, and Descartes-ready handoffs. |
+| [Pattern Code Wittgenstein](skills/pattern-code-wittgenstein) | Codex should inspect existing repository patterns before implementing or choosing an abstraction. | Pre-implementation precedent discovery and bounded-context fit. | Evidence-backed recommendation to `reuse`, `extend`, `extract`, `copy carefully`, or `create new`. |
+| [Synthesis Code Hegel](skills/synthesis-code-hegel) | Code has already changed and needs review before merge, cleanup, or final acceptance. | Post-implementation synthesis and preservation of working behavior. | Diff review findings and recommendation to leave, rename, extract, merge, split, inline, deprecate, or delete. |
+| [Communication Review Ciceron](skills/communication-review-ciceron) | A message, proposal, PR comment, review, or product copy needs to land clearly with its audience. | Communication validation for user-facing or team-facing language. | Rhetorical-fit review, friction points, audience uptake, and a clearer rewrite. |
+| [UI Attention Ciceron](skills/ui-attention-ciceron) | A UI change, screenshot, local page, or mockup needs attention, hierarchy, CTA, or language-fit validation. | Rendered UI review before closing UI-facing work. | `Attention Ranking`, likely attention path, language fit, goal fit, severity, smallest useful correction, and Sofia handoff when needed. |
 
 ## Commands
 
@@ -128,9 +183,9 @@ The philosopher names are memory handles for practical engineering habits:
 
 | Name | Practical habit |
 | --- | --- |
+| Sofia | Coordinate the specialists so each skill keeps its own job and hands off cleanly. |
 | Descartes | Separate known facts, constraints, assumptions, and missing evidence before trusting a plan. |
+| Aquinas | Separate what defines the goal from what merely happened, then build practical truth from potency, evidence, and relearning. |
 | Wittgenstein | Understand meaning through actual repo use before inventing new code patterns. |
 | Hegel | Review changed code by preserving what works, transforming what no longer fits, and removing what is obsolete. |
 | Ciceron | Judge communication and UI language by how they direct attention and affect the audience. |
-| Aquinas | Separate what defines the goal from what merely happened, then build practical truth from potency, evidence, and relearning. |
-| Sofia | Coordinate the specialists so each skill keeps its own job and hands off cleanly. |
