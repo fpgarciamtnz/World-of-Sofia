@@ -1,6 +1,6 @@
 ---
 name: grill-me-aquinas
-description: "Passive learning and intent-clarification skill built from onmax/skills grill-with-docs. Use when Codex must grill fuzzy requests before implementation, infer stable user preferences, separate project essence from accidental style, update agent-owned `.agents/CONTEXT.md` or `.agents/adr/`, or hand clarified language and constraints to pattern-code-wittgenstein or other skills."
+description: "Passive learning and intent-clarification skill built from onmax/skills grill-with-docs. Use when Codex must grill fuzzy requests before implementation, infer stable user preferences, separate project essence from accidental style, draft goal-objective inputs for Sofia Goal Lifecycle Mode, update agent-owned `.agents/CONTEXT.md` or `.agents/adr/`, or hand clarified language, essence context, and constraints to Descartes, pattern-code-wittgenstein, or other skills."
 ---
 
 # Grill Me Aquinas
@@ -203,7 +203,26 @@ For `pattern-code-wittgenstein`, provide:
 - false-similarity risks caused by reused words;
 - concrete evidence paths.
 
-For planning skills, provide facts, constraints, unresolved assumptions, and any user-language mismatch.
+For `audit-plan-descartes` or other planning skills, provide:
+
+- facts and constraints that planning can treat as directly supported;
+- unresolved assumptions and the evidence needed to upgrade them;
+- canonical terms and avoided aliases;
+- essence candidates, project laws, and reviewed project learning that the plan should preserve;
+- accidents or local style that should not become planning constraints;
+- open potencies that may matter later but should not be treated as fact;
+- user-language mismatches where the literal wording and intended project essence diverge;
+- concrete evidence paths for each durable claim.
+
+The handoff should let Descartes ask two questions: "Can we trust this plan?" and "Does this plan still match what the project is really about?"
+
+For Sofia Goal Lifecycle Mode, include these optional fields only when the user is drafting or refining a durable Codex goal:
+
+- `goal_objective_candidates`: one to three durable outcome phrasings, ordered by fit.
+- `completion_criteria_candidates`: observable success conditions, test commands, artifacts, or review evidence.
+- `constraints`: scope boundaries, project laws, dependencies, or preserved behaviors.
+- `non_goals`: tempting work that should stay outside the current goal.
+- `pause_conditions`: cases where Codex should ask before continuing, such as public behavior changes, deletion, project-boundary crossing, or unresolved assumptions becoming blocking.
 
 For review skills, provide the `said / meant / happened` record and whether the diff preserved the intended essence or only matched surface wording.
 

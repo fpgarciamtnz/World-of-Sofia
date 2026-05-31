@@ -1,6 +1,8 @@
 # Synthesis Code Hegel
 
-Synthesis Code Hegel is a post-implementation review skill for checking whether real code changes should be synthesized, simplified, merged, split, or left alone. It is designed for edited worktrees, staged diffs, branches, pull requests, and review passes where concrete code already exists.
+Philosopher idea: Hegel's development through internal tension becomes a review habit: preserve what still works while changing what no longer fits.
+
+Practical use: Synthesis Code Hegel reviews concrete code changes after implementation and recommends whether the diff should be left alone, renamed, extracted, merged, split, inlined, deprecated, or deleted.
 
 ## What it does
 

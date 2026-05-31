@@ -8,11 +8,22 @@ Skills must remain isolated. Do not spread a single skill across multiple folder
 
 1. Run `npm run new:skill -- "Skill Title" "Philosopher Name"`.
 2. Fill in `skill.meta.json`, `README.md`, `SKILL.md`, and any files under `references/`.
-3. Run `npm run validate:skills` and `npm run check:isolation`.
-4. Run `npm run validate:skill-traces` if the skill uses `developerTrace` metadata.
-5. Run `npm run test`.
-6. Run `npm run install:skill -- <skill-slug>` to install the skill into Codex.
-7. Confirm the skill folder exists under `$CODEX_HOME/skills` when `CODEX_HOME` is set, otherwise under `~/.codex/skills`.
+3. Make the README start with `Philosopher idea:` and `Practical use:` before any longer sections.
+4. Run `npm run validate:skills` and `npm run check:isolation`.
+5. Run `npm run validate:skill-traces` if the skill uses `developerTrace` metadata.
+6. Run `npm run test`.
+7. Run `npm run install:skill -- <skill-slug>` to install the skill into Codex.
+8. Confirm the skill folder exists under `$CODEX_HOME/skills` when `CODEX_HOME` is set, otherwise under `~/.codex/skills`.
+
+## README Contract
+
+Every skill README must explain the philosopher-derived habit before the practical summary.
+
+- `Philosopher idea:` must be one concise sentence that names the borrowed idea or method. Do not use biography, decorative name-dropping, or vague "inspired by" phrasing unless the actual idea is stated.
+- `Practical use:` must say when to use the skill, what evidence or artifacts it inspects, and what output it produces.
+- Keep README copy scannable. Use short sections, plain verbs, and bullets only when they improve navigation.
+- The root repository README is the GitHub landing page and should stay practical-first for engineers. It may use tables, diagrams, and workflow-oriented copy instead of the per-skill two-part shape.
+- The root skill catalog must still describe each listed skill in comparable practical terms so readers can quickly decide what to install or invoke.
 
 ## Installing Project Skills Into Codex
 

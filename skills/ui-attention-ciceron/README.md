@@ -1,6 +1,8 @@
 # UI Attention Ciceron
 
-Attention is treated as a public argument made by the screen: what is largest, loudest, most isolated, most central, or most active claims the user's eye first.
+Philosopher idea: Cicero's public persuasion becomes a UI habit: hierarchy, contrast, position, motion, and wording argue for what matters first.
+
+Practical use: UI Attention Ciceron reviews rendered UI work, ranks likely attention peaks from observable visual and DOM evidence, checks language fit, and recommends the smallest useful correction when attention misses the screen's goal.
 
 ## What it does
 

@@ -11,6 +11,7 @@ describe("skill validation helpers", () => {
       "communication-review-ciceron",
       "grill-me-aquinas",
       "pattern-code-wittgenstein",
+      "sofia-coordinatior",
       "synthesis-code-hegel",
       "ui-attention-ciceron"
     ]);

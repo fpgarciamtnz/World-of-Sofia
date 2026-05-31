@@ -18,7 +18,7 @@ Practical use: Grill Me Aquinas inspects user wording, project documents, code e
 - Uses an Open Potency Gate to preserve plausible alternatives before fixing meaning, storing learning, or handing off implementation context.
 - Uses aggressive compaction so temporary case learning does not become permanent noise.
 - Updates `.agents/CONTEXT.md`, `.agents/adr/`, `.agents/aquinas/case-inbox.md`, or `.agents/aquinas/essence-ledger.md` only when the learning is worth keeping.
-- Produces compact handoffs for `sofia-coordinatior`, `descartes-skill`, `pattern-code-wittgenstein`, and review skills.
+- Produces compact handoffs for `sofia-coordinatior`, Goal Lifecycle Mode, `descartes-skill`, `audit-plan-descartes`, `pattern-code-wittgenstein`, and review skills.
 
 ## Runtime Workflow
 
@@ -33,7 +33,7 @@ Practical use: Grill Me Aquinas inspects user wording, project documents, code e
 9. Resolve conflicting learnings by scoping, superseding, downgrading, or asking one blocking question.
 10. Choose a memory action: update glossary, flag ambiguity, create ADR, record case cluster, promote project/user learning, revise learned truth, hand off only, defer as potency, record scoped conflict, or discard as accident.
 11. Enter Relearning Mode when behavior shows wrong, stale, overgeneralized, or mis-scoped learning.
-12. Hand clarified context to implementation, planning, or review skills using their native evidence format.
+12. Hand clarified context to implementation, planning, goal-lifecycle, or review skills using their native evidence format. For Descartes-style planning, include essence context so the plan can be checked for both trust and project fit.
 
 ## Practical Truth
 
@@ -110,6 +110,14 @@ skills/grill-me-aquinas/
 - `deep-research-report (5).md` justifies the model but is not part of the normal runtime path.
 - `skill.meta.json` registers `references/aquinas-essence-map.md` and `deep-research-report (5).md` as formal references.
 - The upstream source remains external: `https://github.com/onmax/skills/tree/main/skills/grill-with-docs`.
+
+## Relationship to Audit Plan Descartes
+
+Grill Me Aquinas supplies the meaning layer for essence-aware planning: canonical terms, project essence, project laws, accidents, open potencies, language mismatches, and evidence paths. Audit Plan Descartes uses that handoff to check whether a plan is not only evidence-backed, but also connected to what the project is really about.
+
+## Relationship to Sofia Goal Lifecycle Mode
+
+When Sofia drafts a durable Codex goal, Grill Me Aquinas can supply goal-objective candidates, completion-criteria candidates, constraints, non-goals, and pause conditions. These fields stay advisory until Descartes audits them as goal-readiness evidence.
 
 ## Distribution boundary
 

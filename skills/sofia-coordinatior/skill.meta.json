@@ -1,0 +1,19 @@
+{
+  "id": "world-of-sofia.sofia-coordinatior",
+  "slug": "sofia-coordinatior",
+  "title": "Sofia Coordinatior",
+  "philosopher": "Sofia",
+  "summary": "A coordinator skill that routes World-of-Sofia skills, Goal Lifecycle Mode, planning, implementation, review, and validation through bounded specialist roles.",
+  "tags": [
+    "coordination",
+    "goals",
+    "workflow"
+  ],
+  "status": "alpha",
+  "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/sofia-coordinatior",
+  "installCommand": "npm run install:skill -- sofia-coordinatior",
+  "references": [
+    "references/skill-registry.md"
+  ],
+  "version": "0.1.0"
+}

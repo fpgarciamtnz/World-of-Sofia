@@ -1,14 +1,14 @@
 # World of Sofia
 
-World of Sofia is a practical Codex skill collection for engineers who want better planning, codebase orientation, review, communication, and UI validation workflows.
+Sofia is the coordinator for a family of interconnected Codex skills. Bring her a messy request, a plan, a codebase question, a goal, a review, or a UI concern, and she routes the work to the right specialist instead of blending every responsibility into one prompt.
 
-Install the skills, ask for the kind of work you need, and let Sofia act as the coordinator behind the skills: a practical guide that routes the job to the right specialist instead of blending every responsibility into one prompt.
+World of Sofia is the skill collection behind that coordinator: practical tools for engineers who want clearer plans, safer codebase orientation, sharper reviews, better communication, durable Codex goals, and focused UI validation.
 
 ## What this is
 
 - A set of isolated, installable Codex skills under `skills/<slug>`.
 - A small toolkit for validating, testing, creating, and installing those skills.
-- A coordination model named Sofia that helps decide which skill should handle each part of the work.
+- A coordinator named Sofia that helps decide which skill should handle each part of the work.
 - A philosophy-inspired project, but the day-to-day value is practical: clearer plans, better reuse decisions, sharper reviews, cleaner communication, and focused UI checks.
 
 ## Install
@@ -31,7 +31,7 @@ Rerun the install command whenever skills change. Open a new Codex session if an
 
 ## Use Sofia to route work
 
-Sofia is the practical wizard behind the skill set. She is not a separate installable skill in this repo yet; she is the coordination character and workflow model that keeps each specialist focused on its job.
+Sofia is the practical wizard behind the skill set. She is the character and workflow model users meet first: she clarifies the goal, chooses the smallest useful specialist sequence, creates Goal Mode Briefs for durable `/goal` work, and keeps each specialist focused on its job.
 
 ```mermaid
 flowchart LR
@@ -56,6 +56,7 @@ flowchart LR
 
 Use Sofia when the work spans more than one concern:
 
+- Creating a durable Codex goal before long-running work.
 - Planning a change before implementation.
 - Finding existing code patterns before adding new code.
 - Reviewing a real diff before merge.
@@ -67,18 +68,21 @@ Use Sofia when the work spans more than one concern:
 
 | Skill | Use when | Inspects | Produces |
 | --- | --- | --- | --- |
-| [Audit Plan Descartes](skills/audit-plan-descartes) | A plan needs stronger assumptions, evidence, or risk handling. | User request, repo facts, constraints, unresolved assumptions. | Foundation ledger, assumption audit, final plan support. |
+| [Sofia Coordinatior](skills/sofia-coordinatior) | Work spans multiple skills, a skill needs creation or update, or Codex needs a durable Goal Mode Brief. | User request, available skills, planning needs, goal-readiness evidence, and specialist handoffs. | Role routing, handoff order, Goal Mode Briefs, planning gates, and validation direction. |
+| [Audit Plan Descartes](skills/audit-plan-descartes) | A plan needs stronger assumptions, evidence, risk handling, or essence-fit checking. | User request, repo facts, constraints, unresolved assumptions, and optional Grill Me Aquinas essence context. | Foundation ledger, assumption audit, essence-fit check, final plan support. |
 | [Pattern Code Wittgenstein](skills/pattern-code-wittgenstein) | You need to know how this repo already solves something before coding. | Nearby files, naming, structure, helper APIs, bounded contexts. | Reuse decision: `reuse`, `extend`, `extract`, `copy carefully`, or `create new`. |
 | [Synthesis Code Hegel](skills/synthesis-code-hegel) | Code has changed and needs review before merge or cleanup. | Diffs, affected modules, duplicated behavior, context boundaries. | Review findings and synthesis recommendation: leave, rename, extract, merge, split, inline, deprecate, or delete. |
 | [Communication Review Ciceron](skills/communication-review-ciceron) | A message, comment, review, or proposal needs to land better. | Wording, implied intent, audience uptake, tone, clarity. | Direct communication feedback and smallest useful rewrite. |
-| [Grill Me Aquinas](skills/grill-me-aquinas) | A request is fuzzy, learning looks wrong, or user/project truth needs rebuilding. | User wording, project docs, code evidence, prior decisions, case clusters, and memory conflicts. | Question ladder output, practical truth mode, potency-to-truth checks, relearning repairs, essence candidates, rules, exceptions, and handoffs. |
+| [Grill Me Aquinas](skills/grill-me-aquinas) | A request is fuzzy, learning looks wrong, user/project truth needs rebuilding, or a plan needs essence context. | User wording, project docs, code evidence, prior decisions, case clusters, and memory conflicts. | Question ladder output, practical truth mode, potency-to-truth checks, relearning repairs, essence candidates, rules, exceptions, and Descartes-ready handoffs. |
 | [UI Attention Ciceron](skills/ui-attention-ciceron) | A UI change needs final attention and language validation. | Rendered UI, screenshots, DOM evidence, hierarchy, CTA copy. | Attention ranking, goal-fit review, severity, and smallest useful correction. |
 
 ## Common workflows
 
 | Workflow | Practical sequence |
 | --- | --- |
+| Create a Codex goal | Sofia -> Grill Me Aquinas when intent or essence is unclear -> Audit Plan Descartes -> Goal Mode Brief -> `/goal`. |
 | Plan a feature | Sofia -> Audit Plan Descartes -> Pattern Code Wittgenstein -> implementation. |
+| Plan against project essence | Grill Me Aquinas -> Audit Plan Descartes -> Pattern Code Wittgenstein -> implementation. |
 | Add code safely | Pattern Code Wittgenstein -> implementation -> Synthesis Code Hegel -> tests. |
 | Review a PR | Synthesis Code Hegel -> targeted fixes -> validation. |
 | Improve a UI | Sofia -> implementation -> UI Attention Ciceron -> smallest useful correction. |

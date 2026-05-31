@@ -1,6 +1,8 @@
 # Communication Review Ciceron
 
-Communication Review Ciceron is a Cicero-inspired skill for reviewing messages as purposeful acts. It explains what a message says, what it is doing, what a receiver may understand, where it creates friction, and how to rewrite it with clearer intent.
+Philosopher idea: Cicero's rhetoric becomes a communication habit: judge a message by what it does to an audience, not only by what it says.
+
+Practical use: Communication Review Ciceron reviews messages as purposeful acts, separates observed wording from inferred intent, names likely audience uptake and friction, and rewrites the message with clearer rhetorical fit.
 
 ## What it does
 

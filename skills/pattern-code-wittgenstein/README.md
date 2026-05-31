@@ -1,6 +1,8 @@
 # Pattern Code Wittgenstein
 
-Pattern Code Wittgenstein is a repo-first planning skill for checking what already exists before adding new code. It looks for nearby precedent families, explains how strong the match really is, and recommends one of five actions: `reuse`, `extend`, `extract`, `copy carefully`, or `create new`.
+Philosopher idea: Wittgenstein's meaning-through-use becomes a repo habit: inspect how this codebase already names, structures, and solves things before adding more code.
+
+Practical use: Pattern Code Wittgenstein checks existing repository precedent before implementation, explains how strong the match is, and recommends one of five actions: `reuse`, `extend`, `extract`, `copy carefully`, or `create new`.
 
 ## What it does
 

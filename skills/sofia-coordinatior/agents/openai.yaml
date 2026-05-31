@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sofia Coordinatior"
+  short_description: "Route skill work and Codex goals"
+  default_prompt: "Use $sofia-coordinatior to route this skill, planning, review, or Goal Lifecycle workflow through the right specialists."
