@@ -2,15 +2,17 @@
 
 Philosopher idea: Aquinas' essence-versus-accident and act-versus-potency distinctions become a passive-learning habit: separate what defines the user's goal from what merely happened in one exchange.
 
-Practical use: Grill Me Aquinas inspects user wording, project documents, code evidence, and prior decisions to distinguish what was said, what was meant, and what actually happened. It stores learning conservatively through this ladder:
+Practical use: Grill Me Aquinas inspects user wording, project documents, code evidence, and prior decisions to distinguish what was said, what was meant, and what actually happened. It acts as a compact observer for direct grill-me sessions and Sofia planning, asking early when learning is thin and asking less when prior evidence already answers. It stores learning conservatively through this ladder:
 
 `case evidence -> clustered candidate -> reviewed project learning -> cross-project user learning`
 
 ## What it does
 
-- Adapts the `grill-with-docs` source approach from `https://github.com/onmax/skills/tree/main/skills/grill-with-docs`: walk the design tree, ask one decision question at a time, recommend an answer, inspect code/docs before asking, and capture resolved language under `.agents/`.
+- Adapts the `grill-with-docs` source approach from `https://github.com/onmax/skills/tree/main/skills/grill-with-docs`: walk the design tree, ask one decision question at a time, recommend an answer, inspect code/docs before asking, resume from the latest correction, and capture resolved language under `.agents/`.
+- Runs Active Observer Mode for direct grill-me sessions and Sofia planning.
 - Adds an Aquinas-based classification layer for essence, accident, act, potency, habit, law, and prudential exception.
 - Uses a Question Ladder so every question has a purpose and expected learning output.
+- Uses decision-led mode when the user rejects long question lists, answers several branches at once, or asks to stop choosing from lists.
 - Treats truth as practical: solid when used, flexible when questioned or rebuilt.
 - Uses potency as the bridge from possible learning to practical truth.
 - Builds passive user-understanding records from corrections, pivots, approvals, contradictions, and cross-project repetition.
@@ -18,22 +20,23 @@ Practical use: Grill Me Aquinas inspects user wording, project documents, code e
 - Uses an Open Potency Gate to preserve plausible alternatives before fixing meaning, storing learning, or handing off implementation context.
 - Uses aggressive compaction so temporary case learning does not become permanent noise.
 - Updates `.agents/CONTEXT.md`, `.agents/adr/`, `.agents/aquinas/case-inbox.md`, or `.agents/aquinas/essence-ledger.md` only when the learning is worth keeping.
-- Produces compact handoffs for `sofia-coordinatior`, Goal Lifecycle Mode, `descartes-skill`, `audit-plan-descartes`, `pattern-code-wittgenstein`, and review skills.
+- Produces compact handoffs for `sofia-coordinatior`, `descartes-skill`, `audit-plan-descartes`, `pattern-code-wittgenstein`, and review skills.
 
 ## Runtime Workflow
 
 1. Capture `said`, `meant`, and `happened` so user wording, inferred intent, and observed project reality stay separate.
 2. Inspect `.agents/CONTEXT.md`, `.agents/adr/`, code, tests, README files, templates, and changed files before asking questions.
 3. Run the Open Potency Gate: check whether plausible alternative meanings, paths, or assumptions should remain open.
-4. Apply the Practical Truth Rule: use accepted truth solidly in action, but reopen it in inquiry, relearning, audit, or conflict.
-5. Grill vague or conflicting terms through the Question Ladder, one question at a time with a recommended resolution.
-6. Classify each resolved point as essence, accident, form, matter, potency, act, habit, law, prudential exception, or common notion.
-7. Treat each new learning as case evidence first, then cluster, promote, downgrade, or discard it.
-8. Run the Potency-To-Truth Loop when a possible learning may become practical truth.
-9. Resolve conflicting learnings by scoping, superseding, downgrading, or asking one blocking question.
-10. Choose a memory action: update glossary, flag ambiguity, create ADR, record case cluster, promote project/user learning, revise learned truth, hand off only, defer as potency, record scoped conflict, or discard as accident.
-11. Enter Relearning Mode when behavior shows wrong, stale, overgeneralized, or mis-scoped learning.
-12. Hand clarified context to implementation, planning, goal-lifecycle, or review skills using their native evidence format. For Descartes-style planning, include essence context so the plan can be checked for both trust and project fit.
+4. Use Active Observer Mode for direct grill sessions and Sofia planning: ask more early, ask less once evidence resolves the branch, and ask only learning-bearing questions.
+5. Apply the Practical Truth Rule: use accepted truth solidly in action, but reopen it in inquiry, relearning, audit, or conflict.
+6. Grill vague or conflicting terms through the Question Ladder, one question at a time with a recommended resolution.
+7. Classify each resolved point as essence, accident, form, matter, potency, act, habit, law, prudential exception, or common notion.
+8. Treat each new learning as case evidence first, then cluster, promote, downgrade, or discard it.
+9. Run the Potency-To-Truth Loop when a possible learning may become practical truth.
+10. Resolve conflicting learnings by scoping, superseding, downgrading, or asking one blocking question.
+11. Choose a memory action: update glossary, flag ambiguity, create ADR, record case cluster, promote project/user learning, revise learned truth, hand off only, defer as potency, record scoped conflict, or discard as accident.
+12. Enter Relearning Mode when behavior shows wrong, stale, overgeneralized, or mis-scoped learning.
+13. Hand clarified context to implementation, planning, or review skills using their native evidence format. For Descartes-style planning, include essence context so the plan can be checked for both trust and project fit.
 
 ## Practical Truth
 
@@ -46,9 +49,15 @@ The skill should not doubt constantly during execution, but it must be able to r
 
 ## Question Ladder
 
-The skill asks only learning-bearing questions. Question types are meaning, term boundary, scope, evidence, potency/gap, open potency, scenario, conflict, decision/ADR, and handoff.
+The skill asks only learning-bearing questions. Question types are meaning, term boundary, scope, evidence, potency/gap, open potency, scenario, conflict, decision/ADR, handoff, and direction validation.
 
 Each answer should produce a memory action: glossary, ambiguity, case cluster, potency, conflict, ADR, handoff only, discard, project learning, user learning, or revised learned truth.
+
+## Active Observer Mode
+
+Active Observer Mode is the default when the user starts a grill-me session or Sofia makes or finalizes a plan. The skill inspects evidence first, resolves what it can, then asks one recommended question only when the answer would materially change the plan, memory, or handoff.
+
+At the beginning of a project or relationship, Aquinas should be willing to ask more questions so it can learn essence and boundaries. As `.agents/` context, ADRs, repository evidence, and accepted corrections accumulate, it should infer more answers and interrupt less.
 
 ## Open Potency Gate
 
@@ -113,11 +122,7 @@ skills/grill-me-aquinas/
 
 ## Relationship to Audit Plan Descartes
 
-Grill Me Aquinas supplies the meaning layer for essence-aware planning: canonical terms, project essence, project laws, accidents, open potencies, language mismatches, and evidence paths. Audit Plan Descartes uses that handoff to check whether a plan is not only evidence-backed, but also connected to what the project is really about.
-
-## Relationship to Sofia Goal Lifecycle Mode
-
-When Sofia drafts a durable Codex goal, Grill Me Aquinas can supply goal-objective candidates, completion-criteria candidates, constraints, non-goals, and pause conditions. These fields stay advisory until Descartes audits them as goal-readiness evidence.
+Grill Me Aquinas supplies the meaning layer for essence-aware planning: canonical terms, project essence, project laws, accidents, open potencies, language mismatches, constraints, non-goals, pause conditions, and evidence paths. Audit Plan Descartes uses that handoff to check whether a plan is not only evidence-backed, but also connected to what the project is really about. Aquinas does not decide plan trust; Descartes owns facts, constraints, assumptions, verification requirements, and audit judgment.
 
 ## Distribution boundary
 

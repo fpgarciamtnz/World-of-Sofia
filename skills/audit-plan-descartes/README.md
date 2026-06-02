@@ -2,23 +2,18 @@
 
 Philosopher idea: Descartes' methodic doubt becomes a planning habit: separate what is known, required, assumed, and missing before accepting a plan.
 
-Practical use: Audit Plan Descartes builds a foundation ledger before final planning, keeps unsupported assumptions out of the fact base, offers an assumption-audit pass when missing evidence could change the result, checks essence fit when Grill Me Aquinas or project context supplies essence evidence, and audits Sofia Goal Mode Briefs for readiness.
+Practical use: Audit Plan Descartes builds a foundation ledger before final planning, keeps unsupported assumptions out of the fact base, offers an assumption-audit pass when missing evidence could change the result, and checks essence fit when Grill Me Aquinas or project context supplies essence evidence.
 
 ## What it does
 
 - Builds a foundation ledger before planning.
 - Forces unsupported assumptions into a separate section.
 - Checks whether a plan still matches project essence when reliable essence context exists.
-- Audits Goal Mode Briefs for readiness, unresolved assumptions, verification requirements, and final audit result.
 - Adds an optional assumption-audit pass before the plan is finalized.
 
 ## Relationship to Grill Me Aquinas
 
 Grill Me Aquinas provides the meaning layer: canonical terms, project essence, project laws, accidents, open potencies, and language mismatches. Audit Plan Descartes uses that evidence to ask whether a plan is both trustworthy and connected to what the project is really trying to be.
-
-## Relationship to Sofia Goal Lifecycle Mode
-
-When Sofia drafts a Codex `/goal`, Audit Plan Descartes checks whether the objective is clear, completion criteria are observable, verification evidence is named, unresolved assumptions are separated, and pause conditions are explicit enough for long-running work.
 
 ## Distribution boundary
 

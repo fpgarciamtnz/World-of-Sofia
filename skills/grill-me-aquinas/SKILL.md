@@ -1,13 +1,34 @@
 ---
 name: grill-me-aquinas
-description: "Passive learning and intent-clarification skill built from onmax/skills grill-with-docs. Use when Codex must grill fuzzy requests before implementation, infer stable user preferences, separate project essence from accidental style, draft goal-objective inputs for Sofia Goal Lifecycle Mode, update agent-owned `.agents/CONTEXT.md` or `.agents/adr/`, or hand clarified language, essence context, and constraints to Descartes, pattern-code-wittgenstein, or other skills."
+description: "Active observer, passive learning, and intent-clarification skill built from onmax/skills grill-with-docs. Use for direct grill-me sessions, Sofia planning, fuzzy requests before implementation, stable user preference inference, project essence versus accidental style, agent-owned `.agents/CONTEXT.md` or `.agents/adr/` updates, or handoffs of clarified language, essence context, constraints, non-goals, and pause conditions to Descartes, pattern-code-wittgenstein, or other skills."
 ---
 
 # Grill Me Aquinas
 
-Use this skill to align before building, then classify what was learned. It is derived from `grill-with-docs` at `https://github.com/onmax/skills/tree/main/skills/grill-with-docs`: grill the plan, check code and agent-owned docs before asking questions, sharpen terminology, and update `.agents/` documentation only when decisions crystallize.
+Use this skill to align before building, then classify what was learned. It is derived from `grill-with-docs` at `https://github.com/onmax/skills/tree/main/skills/grill-with-docs`: grill the plan, check code and agent-owned docs before asking questions, sharpen terminology, walk the design tree one decision at a time, and update `.agents/` documentation only when decisions crystallize.
 
 Use Aquinas as the compact memory layer: separate essence from accident, potency from act, habit from law, and rule from prudential exception. Load [aquinas-essence-map.md](references/aquinas-essence-map.md) for classification rules, conflict handling, and handoffs. Load `deep-research-report (5).md` only when deeper source rationale is needed.
+
+## Active Observer Mode
+
+Use Active Observer Mode when the user starts a direct "grill me" session or asks Sofia to make or finalize a plan.
+
+1. Observe first: read the user's wording, `.agents/` context, ADRs, relevant docs, code, tests, templates, and current diffs before asking.
+2. Ask more early when the project or user essence is thinly evidenced; ask less later when prior learning, project law, or repository evidence already answers the branch.
+3. Walk the design tree in dependency order. Resolve the branch whose answer changes later branches first: purpose, audience, canonical terms, domain boundary, lifecycle, behavior, persistence, deletion/archive, documentation, implementation gate, or handoff.
+4. Ask only learning-bearing questions. Each question must clarify essence, scope, constraints, non-goals, pause conditions, user habit, project law, or a handoff risk.
+5. Ask one question at a time and include the recommended answer. If evidence already answers it, state the inferred answer with the evidence instead of asking.
+6. Challenge vague, overloaded, or conflicting terms immediately. Prefer canonical `.agents/CONTEXT.md` language when it exists.
+7. Stress-test important relationships with one concrete scenario when a boundary is unclear.
+8. Cross-check user claims against code or docs when they can answer. Surface contradictions plainly.
+9. Resume from the newest correction after an interruption. Do not restart the interview from the top; restate only durable decisions that still matter.
+10. If the user rejects long question lists, answers several branches at once, or asks to stop making them choose from lists, switch to decision-led mode:
+    - state the current recommended direction in one or two sentences;
+    - name the single decision that would most change that direction;
+    - ask one focused question only if evidence cannot answer it;
+    - capture hard constraints before moving to the next branch.
+11. Before handing context to a planning skill, validate the emerging direction: check whether it preserves essence, respects laws, avoids promoting accidents, and keeps unresolved potencies out of facts.
+12. Keep the role boundary clear: Aquinas supplies meaning and essence evidence; Descartes decides plan trust.
 
 ## Workflow
 
@@ -23,14 +44,15 @@ Use Aquinas as the compact memory layer: separate essence from accident, potency
    - nearby code, tests, README files, templates, prompts, and current diffs when relevant.
 3. Run the Open Potency Gate before fixing meaning, storing learning, or handing off implementation context.
 4. Apply the Practical Truth Rule: use accepted truth solidly in action; reopen it only in inquiry, relearning, audit, or real conflict.
-5. Walk the Question Ladder one unresolved decision at a time. Start with the branch whose answer affects later branches: terminology, domain boundary, relationship, lifecycle, behavior, persistence, deletion/archive, documentation, or implementation gate.
-6. Ask one question at a time only when evidence cannot answer it. Include a recommended answer with the question.
-7. Challenge vague, overloaded, or conflicting terms immediately. Prefer canonical `.agents/CONTEXT.md` language when it exists.
-8. Cross-check user claims against code when code can answer. Surface contradictions plainly.
-9. During grilling, write only `.agents/` context or ADR files. Do not edit source, tests, config, package files, or other project docs.
-10. After each resolved point, classify it with the Aquinas layer and choose a memory action.
-11. Treat new learnings as case evidence first. Promote only through the passive learning lifecycle.
-12. Enter Relearning Mode when the user says the skill learned wrong, is stuck in old behavior, ignores new corrections, or is not acting as intended.
+5. Use Active Observer Mode for direct grill sessions and Sofia planning.
+6. Walk the Question Ladder one unresolved decision at a time. Start with the branch whose answer affects later branches.
+7. Ask one question at a time only when evidence cannot answer it. Include a recommended answer with the question.
+8. Challenge vague, overloaded, or conflicting terms immediately. Prefer canonical `.agents/CONTEXT.md` language when it exists.
+9. Cross-check user claims against code when code can answer. Surface contradictions plainly.
+10. During grilling, write only `.agents/` context or ADR files. Do not edit source, tests, config, package files, or other project docs.
+11. After each resolved point, classify it with the Aquinas layer and choose a memory action.
+12. Treat new learnings as case evidence first. Promote only through the passive learning lifecycle.
+13. Enter Relearning Mode when the user says the skill learned wrong, is stuck in old behavior, ignores new corrections, or is not acting as intended.
 
 ## Practical Truth Rule
 
@@ -66,6 +88,7 @@ Use the question ladder as the "grill me" asking layer. Ask one question at a ti
 - `conflict`: resolve old vs new learning, law vs habit, or project vs user scope.
 - `decision/ADR`: decide whether a learning is durable, surprising, hard to reverse, and trade-off based.
 - `handoff`: identify what other skills must preserve, avoid, or treat as unresolved.
+- `direction validation`: before final recommendation or planning handoff, check whether the emerging direction preserves essence, respects laws, ignores accidents, and keeps potencies unresolved.
 
 Map each answer to one memory action: glossary, ambiguity, case cluster, potency, conflict, ADR, handoff only, discard, project learning, or user learning.
 
@@ -215,14 +238,6 @@ For `audit-plan-descartes` or other planning skills, provide:
 - concrete evidence paths for each durable claim.
 
 The handoff should let Descartes ask two questions: "Can we trust this plan?" and "Does this plan still match what the project is really about?"
-
-For Sofia Goal Lifecycle Mode, include these optional fields only when the user is drafting or refining a durable Codex goal:
-
-- `goal_objective_candidates`: one to three durable outcome phrasings, ordered by fit.
-- `completion_criteria_candidates`: observable success conditions, test commands, artifacts, or review evidence.
-- `constraints`: scope boundaries, project laws, dependencies, or preserved behaviors.
-- `non_goals`: tempting work that should stay outside the current goal.
-- `pause_conditions`: cases where Codex should ask before continuing, such as public behavior changes, deletion, project-boundary crossing, or unresolved assumptions becoming blocking.
 
 For review skills, provide the `said / meant / happened` record and whether the diff preserved the intended essence or only matched surface wording.
 

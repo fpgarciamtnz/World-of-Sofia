@@ -2,19 +2,20 @@
 
 Philosopher idea: Sofia's practical wisdom becomes a coordination habit: choose the right specialist for each phase instead of blending responsibilities.
 
-Practical use: Sofia Coordinatior routes World-of-Sofia skill work, Goal Lifecycle Mode, planning, implementation, review, and validation through the smallest useful specialist sequence, then produces handoffs, plans, Goal Mode Briefs, or validation outcomes.
+Practical use: Sofia Coordinatior routes World-of-Sofia skill work, planning, implementation, review, and validation through the smallest useful specialist sequence, then produces posture handoffs, plans, reviews, or validation outcomes.
 
 ## What it does
 
 - Routes skill creation, skill updates, planning, implementation guidance, post-diff review, UI validation, and communication review.
-- Creates Goal Mode Briefs for durable Codex `/goal` work without claiming a skill can start Goal mode by itself.
 - Keeps Aquinas, Descartes, Wittgenstein, Hegel, and Ciceron responsibilities separate.
-- Enforces the planning audit gate before final plans, planning-sensitive reviews, and Goal Mode Briefs.
+- Passes `exploratory` or `bold-by-default` posture handoffs when users ask to explore AI limits, challenge over-safe defaults, or work toward a final-shape design.
+- Runs Aquinas as a compact observer before planning when meaning, essence, or scope could change the plan, then routes plan trust to Descartes.
+- Enforces the planning audit gate before final plans and planning-sensitive reviews.
 - Uses the skill registry when the workflow needs more than the core role matrix.
 
-## Goal lifecycle
+## Planning coordination
 
-Use Sofia to draft a Codex goal when the user asks for goal mode, a durable objective, long-running work, or a project goal template. Sofia clarifies intent with Aquinas when needed, audits readiness with Descartes, routes implementation pattern choices to Wittgenstein, reviews completed diffs with Hegel, and validates UI or communication goals with the relevant Ciceron skill.
+Use Sofia to coordinate plans when work spans multiple specialists or needs evidence discipline before implementation. Sofia runs Aquinas as a compact observer when meaning could change the plan, audits plan trust with Descartes, routes implementation pattern choices to Wittgenstein, reviews completed diffs with Hegel, and validates UI or communication work with the relevant Ciceron skill.
 
 ## Distribution boundary
 

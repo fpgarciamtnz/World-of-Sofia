@@ -3,7 +3,7 @@
   "slug": "grill-me-aquinas",
   "title": "Grill Me Aquinas",
   "philosopher": "Thomas Aquinas",
-  "summary": "An Aquinas-derived passive learning skill built from https://github.com/onmax/skills/tree/main/skills/grill-with-docs for clarifying what the user said, meant, and actually changed.",
+  "summary": "An Aquinas-derived active observer and passive learning skill built from https://github.com/onmax/skills/tree/main/skills/grill-with-docs for grill-me sessions, Sofia planning, and essence-aware handoffs.",
   "tags": [
     "aquinas",
     "passive-learning",

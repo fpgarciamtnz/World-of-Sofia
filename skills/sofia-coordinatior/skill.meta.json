@@ -3,10 +3,10 @@
   "slug": "sofia-coordinatior",
   "title": "Sofia Coordinatior",
   "philosopher": "Sofia",
-  "summary": "A coordinator skill that routes World-of-Sofia skills, Goal Lifecycle Mode, planning, implementation, review, and validation through bounded specialist roles.",
+  "summary": "A coordinator skill that routes World-of-Sofia skills, planning, implementation, review, boldness handoffs, and validation through bounded specialist roles.",
   "tags": [
     "coordination",
-    "goals",
+    "planning",
     "workflow"
   ],
   "status": "alpha",
