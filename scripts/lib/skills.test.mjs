@@ -10,6 +10,7 @@ describe("skill validation helpers", () => {
       "audit-plan-descartes",
       "check-with-maxi",
       "communication-review-ciceron",
+      "earned-presence-kondo",
       "grill-me-aquinas",
       "pattern-code-wittgenstein",
       "sofia-coordinatior",

@@ -1,0 +1,21 @@
+{
+  "id": "world-of-sofia.earned-presence-kondo",
+  "slug": "earned-presence-kondo",
+  "title": "Earned Presence Kondo",
+  "philosopher": "Marie Kondo",
+  "summary": "A subtractive and radical rebuild review skill that asks whether UI, code, docs, workflows, features, options, copy, and rules earn the cost of existing.",
+  "tags": [
+    "subtraction",
+    "review",
+    "simplicity",
+    "rebuild",
+    "coordination"
+  ],
+  "status": "draft",
+  "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/earned-presence-kondo",
+  "installCommand": "npm run install:skill -- earned-presence-kondo",
+  "references": [
+    "references/earned-presence-foundation.md"
+  ],
+  "version": "0.1.0"
+}

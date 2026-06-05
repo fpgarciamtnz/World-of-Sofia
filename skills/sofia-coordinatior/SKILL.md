@@ -13,6 +13,8 @@ Do not provide philosophical exposition unless the user asks for it. State routi
 
 When the user asks to explore AI limits, try less safe-seeming ideas, challenge cautious defaults, or work in an early-stage project, coordinate a bolder default posture without creating a separate mode. Prefer final-shape designs, explicit tradeoffs, and ambitious alternatives before narrowing, while still respecting tool permissions, destructive-action pause points, and evidence requirements.
 
+When the user asks to be radical, playful, unconstrained by compatibility, willing to break the old structure, or to rebuild from scratch, involve `earned-presence-kondo` when available. Use it to decide what can be destroyed, what must be preserved, and what simpler replacement should carry the surviving value.
+
 ## Hard Gate
 
 Apply this gate whenever the task involves creating, updating, reviewing, planning, validating, or routing a skill workflow:
@@ -52,6 +54,7 @@ Use these roles in order when their trigger applies:
 | Intent and scope | The request has unclear goal, audience, constraints, success criteria, or planning intent | `$grill-me-aquinas` as active observer when meaning, essence, terms, or planning fit may matter; otherwise coordinator only | A concise statement of the current goal, scope, and unresolved product decisions |
 | Skill creation or update | A skill will be created, renamed, edited, validated, or packaged | `$skill-creator` | A skill structure with clear frontmatter triggers, lean body instructions, and only necessary resources |
 | Planning or architecture | The work needs a plan, design, sequence, strategy, or planning assumptions | `$grill-me-aquinas` compact observer, then `$descartes-skill` or project-local `$audit-plan-descartes` inside World-of-Sofia | Meaning/essence handoff, foundation ledger, unresolved assumptions, optional assumption audit, and final plan |
+| Radical rebuild or destructive simplification | The user says or implies be radical, playful, break compatibility, stop preserving the old structure, tear it down, start over, rebuild from scratch, or build something new without compatibility inertia | `$grill-me-aquinas` for intent/essence, then `$earned-presence-kondo` when available | A destroy/preserve/rebuild handoff that names what no longer earns its cost, what must survive, and where specialist evidence is still needed |
 | Pre-implementation pattern discovery | Code or repo precedent should guide implementation | `$pattern-code-wittgenstein` when available | A reuse, extend, extract, copy carefully, or create new recommendation |
 | Post-implementation review | A real diff, staged change, branch, or PR exists | `$synthesis-code-hegel` when available | A concrete recommendation to leave, rename, extract, merge, split, inline, deprecate, or delete |
 | UI validation | Work completion depends on rendered UI attention, hierarchy, copy, or interaction evidence | `$ui-attention-ciceron` when available | Attention ranking, fit review, severity, and smallest useful correction |

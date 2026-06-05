@@ -1,6 +1,6 @@
 ---
 name: grill-me-aquinas
-description: "Active observer, passive learning, and intent-clarification skill built from onmax/skills grill-with-docs. Use for direct grill-me sessions, Sofia planning, fuzzy requests before implementation, stable user preference inference, project essence versus accidental style, agent-owned `.agents/CONTEXT.md` or `.agents/adr/` updates, or handoffs of clarified language, essence context, constraints, non-goals, and pause conditions to Descartes, pattern-code-wittgenstein, or other skills."
+description: "Active observer, passive learning, and intent-clarification skill built from onmax/skills grill-with-docs. Use for direct grill-me sessions, Sofia planning, fuzzy requests before implementation, stable user preference inference, project essence versus accidental style, agent-owned `.agents/CONTEXT.md` or `.agents/adr/` updates, detecting radical/playful/breaking rebuild subtext, or handoffs of clarified language, essence context, constraints, non-goals, and pause conditions to Descartes, earned-presence-kondo, pattern-code-wittgenstein, or other skills."
 ---
 
 # Grill Me Aquinas
@@ -27,8 +27,9 @@ Use Active Observer Mode when the user starts a direct "grill me" session or ask
     - name the single decision that would most change that direction;
     - ask one focused question only if evidence cannot answer it;
     - capture hard constraints before moving to the next branch.
-11. Before handing context to a planning skill, validate the emerging direction: check whether it preserves essence, respects laws, avoids promoting accidents, and keeps unresolved potencies out of facts.
-12. Keep the role boundary clear: Aquinas supplies meaning and essence evidence; Descartes decides plan trust.
+11. If the user's literal wording is mild but the subtext is "be radical", "play", "break compatibility", "tear down the old shape", "start over", or "build something new", include an `earned-presence-kondo` handoff that separates what may be destroyed from what essence or value must survive.
+12. Before handing context to a planning skill, validate the emerging direction: check whether it preserves essence, respects laws, avoids promoting accidents, and keeps unresolved potencies out of facts.
+13. Keep the role boundary clear: Aquinas supplies meaning and essence evidence; Descartes decides plan trust.
 
 ## Workflow
 
@@ -238,6 +239,15 @@ For `audit-plan-descartes` or other planning skills, provide:
 - concrete evidence paths for each durable claim.
 
 The handoff should let Descartes ask two questions: "Can we trust this plan?" and "Does this plan still match what the project is really about?"
+
+For `earned-presence-kondo`, provide:
+
+- literal radical or rebuild language, plus inferred subtext;
+- essence candidates and value that should survive the destruction;
+- accidents, obsolete forms, or compatibility inertia that should not receive default protection;
+- candidate structures, rules, branches, workflows, UI elements, or abstractions that may be destroyed;
+- safety constraints, pause conditions, and evidence paths;
+- whether the user is asking for playful exploration, bold-by-default rebuild, or actual destructive implementation.
 
 For review skills, provide the `said / meant / happened` record and whether the diff preserved the intended essence or only matched surface wording.
 

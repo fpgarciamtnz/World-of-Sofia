@@ -55,6 +55,19 @@ Default interference level is `Advisory`: report small issues as optional polish
 10. Classify severity and decide whether to report, hand off, or trigger improvement.
 11. Recommend the smallest useful changes that would better align attention with intent.
 
+## Earned Presence Kondo Bridge
+
+When attention problems may be solved by reducing competing elements, route through `earned-presence-kondo` before recommending additive emphasis.
+
+Use this bridge when:
+
+- a competing CTA, banner, badge, image, widget, tooltip, modal, animation, section, or copy block draws attention away from the intended UI effect;
+- the likely fix is to demote, group, delay, progressively disclose, simplify, or remove something rather than make the primary element louder;
+- explanatory copy exists mainly because the underlying UI is too complex;
+- a new section or control is proposed before an existing element has justified its attention cost.
+
+Do not use the bridge to remove accessibility affordances, important warnings, legal or compliance content, trust-building information for risky actions, or recovery paths users need. If evidence is weak, ask Sofia for `earned-presence-kondo` review instead of recommending deletion directly.
+
 ## Evidence Signals
 
 Use these signals as practical v1 heuristics. Do not treat them as a precise formula.
@@ -149,6 +162,7 @@ Use these routing defaults:
 
 - If the code location or project pattern is unclear: `UI Ciceron -> Sofia -> pattern-code-wittgenstein -> implementation -> UI Ciceron re-review -> synthesis-code-hegel -> validation`.
 - If the fix is obvious and local: `UI Ciceron -> Sofia -> direct implementation -> UI Ciceron re-review -> synthesis-code-hegel -> validation`.
+- If the fix may require removing, demoting, grouping, delaying, or simplifying competing elements: `UI Ciceron -> Sofia -> earned-presence-kondo -> implementation -> UI Ciceron re-review -> synthesis-code-hegel -> validation`.
 - If only polish exists: report it without forcing implementation unless the user selected `Strict`.
 
 ## Required Output

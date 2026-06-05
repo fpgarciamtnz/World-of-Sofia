@@ -37,6 +37,20 @@ Use this skill only when code has already changed. Start from the actual diff, n
 - If the change touches public APIs, persistence, security, concurrency, or high fan-in modules, raise the bar for deletion or architectural movement.
 - If evidence is insufficient, recommend `leave as-is` or `investigate further`, not a speculative cleanup.
 
+## Earned Presence Kondo Bridge
+
+When a real diff makes deletion, deprecation, inlining, replacement, or rebuilding simpler plausible, route through `earned-presence-kondo` before making a subtractive recommendation.
+
+Use this bridge when:
+
+- harmful duplication may need one branch deleted or merged;
+- a wrong abstraction may be better split, inlined, deprecated, or removed;
+- a narrow abstraction may not earn its maintenance cost;
+- boundary drift suggests an old boundary should be moved, deprecated, preserved, or replaced;
+- a compatibility path, flag, adapter, wrapper, helper, config, generated path, or legacy branch appears stale.
+
+Keep Hegel's safety model in force after the bridge: preserve behavior first, raise the bar for public APIs and high-risk modules, prefer `deprecate` before `delete` when callers may exist, and require tests or migration evidence before removal.
+
 ## Real Contradiction Test
 
 Treat a contradiction as real only when the same responsibility is now governed by incompatible behavior, invariants, dependency direction, or domain meaning in the same relevant context.

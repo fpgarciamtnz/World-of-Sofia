@@ -14,6 +14,7 @@ Do not treat this file as a replacement for the skill bodies. When a skill is se
 - `check-with-maxi` owns local Maxi handoff lookup. It reads Maxi context as evidence and hands relevant findings back to Sofia or the selected specialist without treating Maxi notes as automatic authority.
 - `pattern-code-wittgenstein` owns pre-implementation repository precedent discovery.
 - `synthesis-code-hegel` owns post-implementation synthesis and review after a real diff exists.
+- `earned-presence-kondo` owns subtractive and radical rebuild review. It asks whether UI, code, docs, workflows, features, options, copy, or rules earn the cost of existing before Sofia adds more structure, and it decides what to destroy, preserve, and rebuild when the user wants to break the old shape.
 - `ui-attention-ciceron` owns rendered UI attention and language-fit validation.
 - `communication-review-ciceron` owns rhetorical fitness for messages, proposals, and user-facing communication.
 - Project-local World-of-Sofia skills override global skills with the same responsibility only for work inside the World-of-Sofia repository or while showcasing those project-local skills.
@@ -42,6 +43,7 @@ Use these while working inside `World-of-Sofia`, evaluating that repository, or 
 | `audit-plan-descartes` | project-local | Project-local planning audit demonstrations, final plans, or essence-fit checks. | Load `skills/audit-plan-descartes/SKILL.md` before finalizing a plan. | Plan-trust owner. Produces unresolved assumptions, verification requirements, and audit result. |
 | `pattern-code-wittgenstein` | project-local | World-of-Sofia precedent discovery, pattern scout work, or evaluation of that project skill. | Load `skills/pattern-code-wittgenstein/SKILL.md` before implementation pattern choices. | Pre-implementation precedent owner. If code already changed, hand off to Hegel instead. |
 | `synthesis-code-hegel` | project-local | Review a real diff, staged worktree, branch, PR, or completed implementation. | Load `skills/synthesis-code-hegel/SKILL.md` after concrete changes exist. | Post-diff review owner. Checks whether changed code should be left, renamed, extracted, merged, split, inlined, deprecated, or deleted. |
+| `earned-presence-kondo` | project-local | Sofia or the user asks to simplify, declutter, reduce complexity, remove old structure, challenge additive fixes, or decide whether an element, option, abstraction, feature, copy block, workflow step, or rule deserves to stay. Also use when wording or subtext says be radical, playful, break compatibility, stop preserving the old structure, tear it down, start over, rebuild from scratch, or build something new without compatibility inertia. | Load `skills/earned-presence-kondo/SKILL.md`; run the Earned Presence Test; for radical rebuilds, ask what to destroy, what to preserve, and what simpler replacement should carry the surviving value. Use Ciceron or Hegel only when rendered UI evidence or real diff evidence is required. | Subtractive and rebuild review owner. Recommends keep, preserve, demote, group, delay, simplify, deprecate, delete, replace, rebuild simpler, leave as-is, or investigate further with evidence, risks, confidence, and re-checks. |
 | `ui-attention-ciceron` | project-local | UI completion depends on rendered attention, visual hierarchy, CTA copy, or emotional language fit. | Load `skills/ui-attention-ciceron/SKILL.md` after rendered evidence exists. | UI validation owner. Routes missed UI outcomes back through Sofia. |
 | `communication-review-ciceron` | project-local | Work includes messages, proposals, PR comments, reviews, or user-facing communication. | Load `skills/communication-review-ciceron/SKILL.md` when communication quality is a completion criterion. | Communication validation owner. Produces rhetorical-fit review and smallest useful rewrite. |
 
@@ -54,9 +56,11 @@ Use the shortest sequence that covers the task:
 - New skill implementation: `sofia-coordinatior` -> `skill-creator` -> edit/validate -> optional forward-test.
 - Bold skill update: `sofia-coordinatior` posture handoff -> `skill-creator` with degree-of-freedom requirement -> validation -> optional over-safe-assumption probe.
 - Repo implementation plan: `sofia-coordinatior` -> `grill-me-aquinas` compact observer -> `audit-plan-descartes` -> `pattern-code-wittgenstein` when precedent matters -> final plan.
-- UI implementation: plan -> implementation -> rendered evidence -> `ui-attention-ciceron` -> fixes if needed.
+- UI implementation: plan -> implementation -> rendered evidence -> `ui-attention-ciceron` -> `earned-presence-kondo` if competing elements may need demotion/removal -> fixes if needed.
 - Communication work: draft/rewrite -> `communication-review-ciceron` -> revised message.
-- Implemented change review: `sofia-coordinatior` -> inspect real diff -> `synthesis-code-hegel` -> Descartes only if final recommendation depends on planning assumptions.
+- Subtractive review: `sofia-coordinatior` -> `earned-presence-kondo` -> specialist handoff only if rendered UI evidence, real diff evidence, or pattern discovery is needed.
+- Radical rebuild: `sofia-coordinatior` -> `grill-me-aquinas` for said/meant/happened and essence -> `earned-presence-kondo` for destroy/preserve/rebuild -> `pattern-code-wittgenstein` or implementation when code patterns matter.
+- Implemented change review: `sofia-coordinatior` -> inspect real diff -> `synthesis-code-hegel` -> `earned-presence-kondo` if deletion/deprecation/inlining/rebuild is plausible -> Descartes only if final recommendation depends on planning assumptions.
 
 ## Refresh Protocol
 

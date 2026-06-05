@@ -2,7 +2,7 @@
 
 Sofia is the coordinator for a family of specialist Codex skills. Bring her a messy request, a planning problem, a code change, a review, or a UI concern, and she routes the work to the smallest useful set of specialists.
 
-World of Sofia is the skill collection behind that coordinator. It helps Codex make clearer plans, orient inside a codebase before editing, review real diffs, improve communication, and validate whether a rendered UI points attention at the right thing.
+World of Sofia is the skill collection behind that coordinator. It helps Codex make clearer plans, orient inside a codebase before editing, review real diffs, simplify artifacts before adding more structure, improve communication, and validate whether a rendered UI points attention at the right thing.
 
 ## How to call Sofia
 
@@ -14,7 +14,7 @@ $sofia-coordinatior
 
 Use Sofia when the work spans more than one concern, when you are unsure which skill should act, or when you want a workflow that can move from planning to execution to review without blending every responsibility into one prompt.
 
-Sofia routes the work; she does not replace the specialists. Descartes audits plans, Aquinas clarifies intent and project essence, Wittgenstein finds existing code patterns, Hegel reviews real code changes, and the Ciceron skills review communication or rendered UI attention. When the user asks to explore AI limits, challenge over-safe defaults, or work in an early-stage design space, Sofia passes a bolder posture to the selected specialists instead of creating a separate mode.
+Sofia routes the work; she does not replace the specialists. Descartes audits plans, Aquinas clarifies intent and project essence, Wittgenstein finds existing code patterns, Hegel reviews real code changes, Earned Presence Kondo asks whether things earn the cost of existing, and the Ciceron skills review communication or rendered UI attention. When the user asks to explore AI limits, challenge over-safe defaults, or work in an early-stage design space, Sofia passes a bolder posture to the selected specialists instead of creating a separate mode.
 
 When you say to check with Maxi, use the Check With Maxi skill. It reads `C:\Users\garqu\OneDrive\COdex\Maxi-context\SOFIA-HANDOFF.md` first, explores `C:\Users\garqu\OneDrive\COdex\Maxi-context`, and passes relevant Maxi evidence back into the Sofia workflow.
 
@@ -78,6 +78,7 @@ Each specialist has a different review job:
 | Specialist | Review role |
 | --- | --- |
 | Synthesis Code Hegel | Reviews real diffs, staged work, branches, or PRs. It names the changed system, classifies tension or contradiction, and recommends the smallest safe synthesis action. |
+| Earned Presence Kondo | Reviews UI, code, docs, workflows, features, options, copy, and rules to decide whether each candidate earns the cost of existing. |
 | UI Attention Ciceron | Reviews live pages, local browser targets, screenshots, or mockups. It produces `Attention Ranking`, `Likely User Attention Path`, intent-fit judgment, severity, and a `Sofia Handoff Packet` when attention misses the intended UI effect. |
 | Communication Review Ciceron | Reviews messages, proposals, comments, review feedback, or product copy. It separates observed wording from inferred intent, names likely audience uptake, and gives the smallest useful rewrite. |
 | Audit Plan Descartes | Reviews planning-sensitive claims. It checks whether conclusions rest on facts, constraints, or unresolved assumptions, and whether essence evidence has been overclaimed. |
@@ -97,6 +98,7 @@ For UI review, use the project language from UI Attention Ciceron. The skill doe
 | [Grill Me Aquinas](skills/grill-me-aquinas) | Direct grill-me sessions, Sofia planning, project truth rebuilding, canonical terms, or unclear scope that needs clearer essence. | Active observer questioning and meaning clarification before plans, implementation handoffs, or review-sensitive judgments. | Said/meant/happened records, question ladder output, essence candidates, constraints, non-goals, pause conditions, and Descartes-ready handoffs. |
 | [Pattern Code Wittgenstein](skills/pattern-code-wittgenstein) | Codex should inspect existing repository patterns before implementing or choosing an abstraction. | Pre-implementation precedent discovery and bounded-context fit. | Evidence-backed recommendation to `reuse`, `extend`, `extract`, `copy carefully`, or `create new`. |
 | [Synthesis Code Hegel](skills/synthesis-code-hegel) | Code has already changed and needs review before merge, cleanup, or final acceptance. | Post-implementation synthesis and preservation of working behavior. | Diff review findings and recommendation to leave, rename, extract, merge, split, inline, deprecate, or delete. |
+| [Earned Presence Kondo](skills/earned-presence-kondo) | Sofia or the user asks to simplify, declutter, reduce complexity, remove old structure, challenge additive fixes, be radical, break compatibility, start over, or rebuild from scratch. | Subtractive and radical rebuild review before adding more UI, code, workflow, feature, option, copy, or rule structure. | Earned presence analysis with destroy/preserve/rebuild judgment, concrete action verbs, risks, confidence, re-checks, and specialist handoffs. |
 | [Communication Review Ciceron](skills/communication-review-ciceron) | A message, proposal, PR comment, review, or product copy needs to land clearly with its audience. | Communication validation for user-facing or team-facing language. | Rhetorical-fit review, friction points, audience uptake, and a clearer rewrite. |
 | [UI Attention Ciceron](skills/ui-attention-ciceron) | A UI change, screenshot, local page, or mockup needs attention, hierarchy, CTA, or language-fit validation. | Rendered UI review before closing UI-facing work. | `Attention Ranking`, likely attention path, language fit, intent fit, severity, smallest useful correction, and Sofia handoff when needed. |
 
@@ -145,4 +147,5 @@ The philosopher names are memory handles for practical engineering habits:
 | Aquinas | Separate what defines the goal from what merely happened, then build practical truth from potency, evidence, and relearning. |
 | Wittgenstein | Understand meaning through actual repo use before inventing new code patterns. |
 | Hegel | Review changed code by preserving what works, transforming what no longer fits, and removing what is obsolete. |
+| Kondo | Ask whether each surviving thing earns the cost of existing before adding more structure. |
 | Ciceron | Judge communication and UI language by how they direct attention and affect the audience. |
