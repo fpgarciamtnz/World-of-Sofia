@@ -3,7 +3,7 @@
   "slug": "ui-attention-ciceron",
   "title": "UI Attention Ciceron",
   "philosopher": "Marcus Tullius Cicero",
-  "summary": "A workflow-aware UI review skill that audits final rendered changes, ranks visual attention peaks, checks emotional language fit, and routes missed goals back through Sofia.",
+  "summary": "An automatic UI-change review skill that uses a Kahneman-inspired attention read, evidence matrix, language-fit check, and Sofia routing for missed goals.",
   "tags": [
     "ui",
     "attention",

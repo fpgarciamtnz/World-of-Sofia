@@ -67,7 +67,7 @@ Sofia keeps execution grounded in the codebase instead of treating the plan as p
 
 During implementation, Codex should keep edits scoped to the requested deliverable, preserve existing behavior unless the plan explicitly changes it, and validate with the local commands that match the touched area. Sofia's role is to keep the handoffs clean: Aquinas protects intended meaning, Descartes protects planning facts, Wittgenstein protects repository fit, and validation proves the deliverable works.
 
-After real code changes exist, Sofia routes review through Synthesis Code Hegel. Hegel inspects the actual diff and decides whether the change should be left as-is, renamed, extracted, merged, split, inlined, deprecated, or deleted. If the deliverable includes UI, UI Attention Ciceron can review the rendered result. If the deliverable includes user-facing language, Communication Review Ciceron can tighten the message.
+After real code changes exist, Sofia routes review through Synthesis Code Hegel. Hegel inspects the actual diff and decides whether the change should be left as-is, renamed, extracted, merged, split, inlined, deprecated, or deleted. If the deliverable includes UI, UI Attention Ciceron automatically reviews the rendered result. If the deliverable includes user-facing language, Communication Review Ciceron can tighten the message.
 
 ### 3. Review
 
@@ -79,7 +79,7 @@ Each specialist has a different review job:
 | --- | --- |
 | Synthesis Code Hegel | Reviews real diffs, staged work, branches, or PRs. It names the changed system, classifies tension or contradiction, and recommends the smallest safe synthesis action. |
 | Earned Presence Kondo | Reviews UI, code, docs, workflows, features, options, copy, and rules to decide whether each candidate earns the cost of existing. |
-| UI Attention Ciceron | Reviews live pages, local browser targets, screenshots, or mockups. It produces `Attention Ranking`, `Likely User Attention Path`, intent-fit judgment, severity, and a `Sofia Handoff Packet` when attention misses the intended UI effect. |
+| UI Attention Ciceron | Automatically reviews UI-changing work, plus live pages, local browser targets, screenshots, or mockups. It produces `Attention Ranking`, `Likely User Attention Path`, intent-fit judgment, severity, and a `Sofia Handoff Packet` when attention misses the intended UI effect. |
 | Communication Review Ciceron | Reviews messages, proposals, comments, review feedback, or product copy. It separates observed wording from inferred intent, names likely audience uptake, and gives the smallest useful rewrite. |
 | Audit Plan Descartes | Reviews planning-sensitive claims. It checks whether conclusions rest on facts, constraints, or unresolved assumptions, and whether essence evidence has been overclaimed. |
 | Grill Me Aquinas | Reviews meaning and intent drift. It is useful when the diff or review appears to satisfy surface wording while missing the project's real purpose. |
@@ -100,7 +100,7 @@ For UI review, use the project language from UI Attention Ciceron. The skill doe
 | [Synthesis Code Hegel](skills/synthesis-code-hegel) | Code has already changed and needs review before merge, cleanup, or final acceptance. | Post-implementation synthesis and preservation of working behavior. | Diff review findings and recommendation to leave, rename, extract, merge, split, inline, deprecate, or delete. |
 | [Earned Presence Kondo](skills/earned-presence-kondo) | Sofia or the user asks to simplify, declutter, reduce complexity, remove old structure, challenge additive fixes, be radical, break compatibility, start over, or rebuild from scratch. | Subtractive and radical rebuild review before adding more UI, code, workflow, feature, option, copy, or rule structure. | Earned presence analysis with destroy/preserve/rebuild judgment, concrete action verbs, risks, confidence, re-checks, and specialist handoffs. |
 | [Communication Review Ciceron](skills/communication-review-ciceron) | A message, proposal, PR comment, review, or product copy needs to land clearly with its audience. | Communication validation for user-facing or team-facing language. | Rhetorical-fit review, friction points, audience uptake, and a clearer rewrite. |
-| [UI Attention Ciceron](skills/ui-attention-ciceron) | A UI change, screenshot, local page, or mockup needs attention, hierarchy, CTA, or language-fit validation. | Rendered UI review before closing UI-facing work. | `Attention Ranking`, likely attention path, language fit, intent fit, severity, smallest useful correction, and Sofia handoff when needed. |
+| [UI Attention Ciceron](skills/ui-attention-ciceron) | Any UI change occurs, or a screenshot, local page, or mockup needs attention, hierarchy, CTA, or language-fit validation. | Automatic rendered UI review before closing UI-facing work. | `Attention Ranking`, likely attention path, language fit, intent fit, severity, smallest useful correction, and Sofia handoff when needed. |
 
 ## Commands
 

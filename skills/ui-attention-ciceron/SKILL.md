@@ -1,33 +1,35 @@
 ---
 name: ui-attention-ciceron
-description: "Review UI-changing work for visual attention, emotional language fit, hierarchy, and goal fit before final completion. Use when Codex or Sofia coordinates planned, implemented, reviewed, or validated UI changes; when a final rendered product needs attention and phrasing audit before close; or when Codex should inspect a live page, local browser target, screenshot, or UI mockup and rank likely attention peaks from observable visual, textual, and DOM evidence without claiming eye-tracking certainty."
+description: "Automatically review every UI-changing task for visual attention, emotional language fit, hierarchy, and goal fit before completion. Use whenever Codex or Sofia plans, implements, reviews, validates, or closes UI changes; when a final rendered product needs attention and phrasing audit before close; or when Codex should inspect a live page, local browser target, screenshot, or UI mockup and rank likely attention peaks from observable visual, textual, and DOM evidence without claiming eye-tracking certainty."
 ---
 
 # UI Attention Ciceron
 
-Use this skill to review where a UI is likely to pull attention and whether that attention supports the intended user action or understanding. Treat the main trigger as UI-changing work reaching final product validation. Direct page, screenshot, and mockup reviews are still supported, but they are secondary.
+Use this skill to review where a UI is likely to pull attention and whether that attention supports the intended user action or understanding. Treat any UI-changing work as an automatic trigger, with the strongest requirement at final rendered-product validation. Direct page, screenshot, and mockup reviews are still supported, but they are secondary.
 
 Treat attention as an evidence-backed inference, not a fact. Separate what is visible, what can be measured, what is inferred, and how confident the inference is.
 
-## Sofia Coordination Trigger
+## Automatic UI Change Trigger
 
-When Sofia coordinates UI-changing work, this skill should be offered before the final audit, final validation, or completion message.
+When Sofia or Codex coordinates UI-changing work, run this skill automatically before the final audit, final validation, or completion message.
 
-Sofia asks:
+Do not ask whether to run the audit. Ask only for missing review inputs, such as the intended UI effect or a usable rendered artifact.
 
-`Do you want UI Attention Ciceron to review the final product before we close this UI change?`
+Automatic trigger examples:
 
-If the user says yes:
+- creating, editing, or reviewing components, pages, layouts, dashboards, forms, modals, nav, landing pages, games, or visual app states;
+- changing visible copy, CTA labels, hierarchy, styling, animation, imagery, spacing, or responsive behavior;
+- validating a rendered product that includes user-facing UI.
 
-1. Run this skill after implementation against the rendered final product.
+When triggered:
+
+1. Run this skill after implementation against the rendered final product when a rendered product is available.
 2. Use browser inspection when a live page is available.
 3. Ask or confirm the intended UI effect if it is unclear.
 4. Classify findings by severity.
 5. Route goal misses back through Sofia's improve process.
 
-If the user says no, Sofia continues normal validation without this skill.
-
-Default interference level is `Advisory`: report small issues as optional polish, but escalate missed primary goals.
+Default interference level is `Advisory`: the audit runs automatically, reports small issues as optional polish, and escalates missed primary goals.
 
 ## Core Workflow
 
@@ -49,11 +51,46 @@ Default interference level is `Advisory`: report small issues as optional polish
    - Capture or examine the viewport.
    - Inspect DOM and computed styles when browser tooling makes that available.
    - Use screenshot evidence when DOM inspection is unavailable.
-7. Rank the strongest attention peaks from observable signals.
-8. Infer the likely attention path with confidence.
-9. Compare the inferred attention path against the intended UI effect.
-10. Classify severity and decide whether to report, hand off, or trigger improvement.
-11. Recommend the smallest useful changes that would better align attention with intent.
+7. Run `System 1 Attention Read`: list the first 3 likely attention peaks from immediate salience.
+8. Run `System 2 Evidence Check`: verify those peaks using observable visual, textual, and DOM evidence.
+9. Use the `Attention Evidence Matrix` when attention competition or trust is unclear.
+10. Run the `Bias Guard`.
+11. Infer the likely attention path with confidence.
+12. Compare the inferred attention path against the intended UI effect.
+13. Classify severity and decide whether to report, hand off, or trigger improvement.
+14. Recommend the smallest useful changes that would better align attention with intent.
+
+## Kahneman-Inspired Attention Process
+
+Use Kahneman's System 1/System 2 distinction as a practical review model, not as a deep psychology claim.
+
+`System 1 Attention Read`: Before deep reasoning, identify the first 3 likely attention peaks from immediate visual salience. This is the fast read: what pops out due to scale, contrast, position, motion, isolation, imagery, novelty, or emotionally loaded wording.
+
+`System 2 Evidence Check`: After the first-glance read, verify each attention claim against observable visual, textual, and DOM evidence. Check whether the first impression is supported, competing, misleading, or uncertain.
+
+`Bias Guard`: Check whether the review is anchoring on the first thing noticed, overvaluing visual polish, confirming the design intent too easily, or recommending louder emphasis when reducing a competing element would be better.
+
+`Trust Rule`: Make a high-confidence attention claim only when multiple signals converge and the intended UI effect is known or clearly labeled as inferred.
+
+## Attention Evidence Matrix
+
+Use the matrix as a compact way to show why an element is likely to attract attention. It is not a strict formula, not eye-tracking, and not a substitute for judgment.
+
+| Element   | System 1 salience   | Task relevance      | Semantic force      | Competition risk    | Evidence             | Confidence          |
+| --------- | ------------------- | ------------------- | ------------------- | ------------------- | -------------------- | ------------------- |
+| [element] | Low / Medium / High | Low / Medium / High | Low / Medium / High | Low / Medium / High | [observable signals] | Low / Medium / High |
+
+Columns:
+
+- `Element`: the UI object being reviewed, such as CTA, hero headline, modal, banner, image, badge, price, warning, nav item, or form field.
+- `System 1 salience`: how strongly the element is likely to pop out at first glance.
+- `Task relevance`: whether the element supports the intended user action or understanding.
+- `Semantic force`: how much meaning or urgency the wording carries, even if the element is not visually large.
+- `Competition risk`: whether this element steals attention from the intended primary focus.
+- `Evidence`: observable visual, textual, or DOM signals.
+- `Confidence`: low, medium, or high based on evidence quality and signal convergence.
+
+Use the matrix to explain the review when there is a concern, goal miss, or competing attention peak. For simple polish findings, the full matrix is optional.
 
 ## Earned Presence Kondo Bridge
 
@@ -100,7 +137,7 @@ Prefer browser/DOM evidence for measurable claims:
 
 Use this chain for every important claim:
 
-`observable visual, textual, or DOM evidence -> ranked attention and language signals -> labeled inference -> confidence -> comparison to intended UI effect`
+`System 1 first-glance read -> observable visual/textual/DOM evidence -> Attention Evidence Matrix when useful -> System 2 bias check -> labeled inference -> confidence -> comparison to intended UI effect`
 
 Avoid absolute claims such as "users will look here." Prefer:
 
@@ -171,15 +208,18 @@ Use this structure unless the user requests a shorter format:
 
 1. `What I See` - literal visual read of the rendered screen.
 2. `Intended UI Effect` - confirmed, stated, or clearly labeled inferred attention and outcome target.
-3. `Attention Ranking` - top visual peaks with evidence and confidence.
-4. `Likely User Attention Path` - inferred sequence of attention, not a certainty claim.
-5. `Language Fit` - whether visible phrasing and emotional tone support the objective.
-6. `Goal Fit` - whether the inferred attention path and language support the intended UI effect.
-7. `Severity` - polish, concern, or goal miss, with the selected interference level.
-8. `Friction Points` - distractions, hierarchy conflicts, misleading emphasis, attention leaks, or tone mismatch.
-9. `Straight Feedback` - the direct UI or wording problem to fix.
-10. `Smallest Useful Changes` - minimal changes that would improve attention and language alignment.
-11. `Sofia Handoff Packet` - include only when escalation, implementation, or coordination is needed.
+3. `System 1 Attention Read` - first 3 likely attention peaks from immediate salience.
+4. `Attention Ranking` - top visual peaks with evidence and confidence.
+5. `Attention Evidence Matrix` - include when there are competing peaks, unclear trust, a concern, or a goal miss.
+6. `Likely User Attention Path` - inferred sequence of attention, not a certainty claim.
+7. `Language Fit` - whether visible phrasing and emotional tone support the objective.
+8. `Goal Fit` - whether the inferred attention path and language support the intended UI effect.
+9. `Kahneman Bias Check` - brief note explaining whether the first-glance read survived slower evidence review, and whether any reviewer bias risk was detected.
+10. `Severity` - polish, concern, or goal miss, with the selected interference level.
+11. `Friction Points` - distractions, hierarchy conflicts, misleading emphasis, attention leaks, or tone mismatch.
+12. `Straight Feedback` - the direct UI or wording problem to fix.
+13. `Smallest Useful Changes` - minimal changes that would improve attention and language alignment.
+14. `Sofia Handoff Packet` - include only when escalation, implementation, or coordination is needed.
 
 ## Review Rules
 
@@ -191,4 +231,10 @@ Use this structure unless the user requests a shorter format:
 - Do not make broad redesigns when a smaller hierarchy fix would address the attention problem.
 - Preserve the user's intended effect unless the visual evidence shows the page is performing a different one.
 - Keep feedback direct. Name the visual attention problem before suggesting changes.
+- Do not use the matrix to create false precision.
+- Do not sum matrix values into a final numeric score.
+- Do not claim the matrix proves where users will look.
+- Use the matrix to make reasoning visible, especially when the recommendation depends on attention competition.
+- If the first-glance read and evidence check disagree, lower confidence and explain the disagreement.
+- If the primary target is visually quiet but semantically important, mention that distinction.
 - Do not implement fixes yourself unless the user has explicitly moved from review/coordination into implementation. Route through Sofia when coordination is requested.
