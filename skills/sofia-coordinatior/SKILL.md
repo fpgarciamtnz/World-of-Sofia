@@ -55,9 +55,9 @@ Use these roles in order when their trigger applies:
 | Skill creation or update | A skill will be created, renamed, edited, validated, or packaged | `$skill-creator` | A skill structure with clear frontmatter triggers, lean body instructions, and only necessary resources |
 | Planning or architecture | The work needs a plan, design, sequence, strategy, or planning assumptions | `$grill-me-aquinas` compact observer, then `$descartes-skill` or project-local `$audit-plan-descartes` inside World-of-Sofia | Meaning/essence handoff, foundation ledger, unresolved assumptions, optional assumption audit, and final plan |
 | Radical rebuild or destructive simplification | The user says or implies be radical, playful, break compatibility, stop preserving the old structure, tear it down, start over, rebuild from scratch, or build something new without compatibility inertia | `$grill-me-aquinas` for intent/essence, then `$earned-presence-kondo` when available | A destroy/preserve/rebuild handoff that names what no longer earns its cost, what must survive, and where specialist evidence is still needed |
-| Pre-implementation pattern discovery | Code or repo precedent should guide implementation | `$pattern-code-wittgenstein` when available | A reuse, extend, extract, copy carefully, or create new recommendation |
+| Pre-implementation pattern discovery | Code, repo, or Maxi-context precedent should guide implementation before new code is created | `$pattern-code-wittgenstein` when available | A reuse, extend, extract, copy carefully, or create new recommendation with current-repo and relevant Maxi evidence separated |
 | Post-implementation review | A real diff, staged change, branch, or PR exists | `$synthesis-code-hegel` when available | A concrete recommendation to leave, rename, extract, merge, split, inline, deprecate, or delete |
-| UI validation | Any UI-changing work reaches rendered validation, final review, or completion | `$ui-attention-ciceron` when available | Attention ranking, fit review, severity, and smallest useful correction |
+| UI validation | Any UI-changing work reaches rendered validation, final review, or completion | `$ui-attention-kahneman` when available | Attention ranking, fit review, severity, and smallest useful correction |
 | Communication validation | Work completion depends on message, proposal, review, or user-facing language | `$communication-review-ciceron` when available | Rhetorical-fit review and smallest useful rewrite |
 | Validation | The work created or changed a skill, repo artifact, or generated output | Relevant local validation commands | Validation result and any remaining risks |
 
@@ -108,6 +108,16 @@ When a final plan is required:
 8. If the structured question UI is unavailable, explicitly state that the gate degraded and treat that as a fallback condition.
 
 Keep Aquinas and Descartes separate: Aquinas owns meaning and essence evidence; Descartes owns plan trust, facts, constraints, assumptions, verification requirements, and final audit judgment.
+
+## Developer Trace Mode
+
+Activate developer trace mode only when the user asks for `developer mode`, `trace mode`, `impact evidence`, `show traces`, `skill trace`, `Sofia trace`, `skill contributions`, or equivalent visibility into Sofia's effect.
+
+When active after a Sofia-led final plan or revised plan, keep the normal required output intact and append one `Skill Impact Trace` section after it. Use the field contract in [references/developer-trace-contract.md](references/developer-trace-contract.md).
+
+The trace is Sofia-owned. Summarize which specialist skills were actually selected, invoked, or intentionally skipped, and highlight each material contribution to the plan. Include role-selection evidence, planning-gate evidence, specialist handoffs, repository evidence, tool evidence, and validation implications when they shaped the result.
+
+Do not claim a skill contributed merely because it exists in the registry or role matrix. A contribution requires evidence that the skill's instructions, references, tools, output, or handoff changed the answer. Do not force every specialist to append its own trace block, and do not claim trace mode proves automatic runtime hooks fired. Treat it as response-level evidence for this invocation.
 
 ## Review Protocol
 

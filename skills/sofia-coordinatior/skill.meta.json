@@ -13,7 +13,25 @@
   "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/sofia-coordinatior",
   "installCommand": "npm run install:skill -- sofia-coordinatior",
   "references": [
-    "references/skill-registry.md"
+    "references/skill-registry.md",
+    "references/developer-trace-contract.md"
   ],
-  "version": "0.1.0"
+  "version": "0.1.0",
+  "developerTrace": {
+    "status": "pilot",
+    "mode": "opt-in",
+    "surfaces": [
+      "response"
+    ],
+    "triggers": [
+      "developer mode",
+      "trace mode",
+      "impact evidence",
+      "show traces",
+      "skill trace",
+      "Sofia trace",
+      "skill contributions"
+    ],
+    "contract": "references/developer-trace-contract.md"
+  }
 }

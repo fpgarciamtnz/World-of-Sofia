@@ -15,7 +15,7 @@ describe("skill validation helpers", () => {
       "pattern-code-wittgenstein",
       "sofia-coordinatior",
       "synthesis-code-hegel",
-      "ui-attention-ciceron"
+      "ui-attention-kahneman"
     ]);
   });
 
@@ -26,13 +26,46 @@ describe("skill validation helpers", () => {
   });
 
   it("preserves opt-in developer trace metadata", async () => {
-    const skill = await loadSkillRecord("pattern-code-wittgenstein");
+    const sofia = await loadSkillRecord("sofia-coordinatior");
+    const wittgenstein = await loadSkillRecord("pattern-code-wittgenstein");
+    const hegel = await loadSkillRecord("synthesis-code-hegel");
 
-    expect(skill.developerTrace).toEqual({
+    expect(sofia.developerTrace).toEqual({
+      status: "pilot",
+      mode: "opt-in",
+      surfaces: ["response"],
+      triggers: [
+        "developer mode",
+        "trace mode",
+        "impact evidence",
+        "show traces",
+        "skill trace",
+        "Sofia trace",
+        "skill contributions"
+      ],
+      contract: "references/developer-trace-contract.md"
+    });
+
+    expect(wittgenstein.developerTrace).toEqual({
       status: "pilot",
       mode: "opt-in",
       surfaces: ["response"],
       triggers: ["developer mode", "trace mode", "impact evidence", "show traces"],
+      contract: "references/developer-trace-contract.md"
+    });
+
+    expect(hegel.developerTrace).toEqual({
+      status: "pilot",
+      mode: "opt-in",
+      surfaces: ["response"],
+      triggers: [
+        "developer mode",
+        "trace mode",
+        "impact evidence",
+        "show traces",
+        "skill trace",
+        "Hegel tracer"
+      ],
       contract: "references/developer-trace-contract.md"
     });
   });
