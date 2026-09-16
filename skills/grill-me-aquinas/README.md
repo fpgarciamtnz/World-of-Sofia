@@ -20,7 +20,7 @@ Practical use: Grill Me Aquinas inspects user wording, project documents, code e
 - Uses an Open Potency Gate to preserve plausible alternatives before fixing meaning, storing learning, or handing off implementation context.
 - Uses aggressive compaction so temporary case learning does not become permanent noise.
 - Updates `.agents/CONTEXT.md`, `.agents/adr/`, `.agents/aquinas/case-inbox.md`, or `.agents/aquinas/essence-ledger.md` only when the learning is worth keeping.
-- Produces compact handoffs for `sofia-coordinatior`, `descartes-skill`, `audit-plan-descartes`, `pattern-code-wittgenstein`, and review skills.
+- Produces compact handoffs for `sofia-coordinatior`, `audit-plan-descartes` or a host-equivalent planning auditor, `pattern-code-wittgenstein`, and review skills.
 
 ## Runtime Workflow
 

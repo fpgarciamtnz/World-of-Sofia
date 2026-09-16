@@ -1,6 +1,6 @@
 ---
 name: grill-me-aquinas
-description: "Active observer, passive learning, and intent-clarification skill built from onmax/skills grill-with-docs. Use for direct grill-me sessions, Sofia planning, fuzzy requests before implementation, stable user preference inference, project essence versus accidental style, agent-owned `.agents/CONTEXT.md` or `.agents/adr/` updates, detecting radical/playful/breaking rebuild subtext, or handoffs of clarified language, essence context, constraints, non-goals, and pause conditions to Descartes, earned-presence-kondo, pattern-code-wittgenstein, or other skills."
+description: "Clarify intent, scope, terminology, and project essence before planning or implementation. Use for fuzzy requests, preference discovery, radical redesign signals, or an explicit grill-me session."
 ---
 
 # Grill Me Aquinas

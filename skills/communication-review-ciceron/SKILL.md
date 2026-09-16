@@ -1,6 +1,6 @@
 ---
 name: communication-review-ciceron
-description: "Review communication for rhetorical intent, implied meaning, audience uptake, tone, emotional impact, clarity, and reformulation. Use when Codex should analyze what a user message says, what it is doing, what might be understood by the receiver, where it creates friction or misreadings, and how to rewrite it with direct feedback."
+description: "Review a message for intent, audience uptake, tone, emotional impact, clarity, and rewrite options. Use when communication may be misread or needs direct feedback."
 ---
 
 # Communication Review Ciceron

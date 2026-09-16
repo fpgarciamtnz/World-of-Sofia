@@ -1,6 +1,6 @@
 ---
 name: pattern-code-wittgenstein
-description: "Inspect existing repository patterns before implementing new code or choosing an implementation path. Use when Codex should find nearby precedents, avoid duplication or contradictions before coding, check whether an abstraction already exists, or decide whether to reuse, extend, extract, copy carefully, or create a new pattern family."
+description: "Inspect nearby repository patterns before implementing code or choosing an abstraction. Use when precedent should decide whether to reuse, extend, extract, copy, or create."
 ---
 
 # Pattern Code Wittgenstein

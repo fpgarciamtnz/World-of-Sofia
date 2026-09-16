@@ -15,7 +15,7 @@ describe("skill validation helpers", () => {
       "pattern-code-wittgenstein",
       "sofia-coordinatior",
       "synthesis-code-hegel",
-      "ui-attention-kahneman"
+      "ui-attention-ciceron"
     ]);
   });
 

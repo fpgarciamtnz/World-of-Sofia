@@ -1,6 +1,6 @@
 ---
 name: sofia-coordinatior
-description: "Coordinate Sofia skill creation, skill updates, multi-skill workflows, planning reviews, implementation reviews, role distribution, boldness handoffs, and audit gates. Use when the user invokes $sofia-coordinatior, asks to call the Sofia coordinator, route work through other skills, create or update any skill, review skill work, plan a skill change, audit a review, explore AI limits, challenge over-safe defaults, enforce Descartes before final planning output, or decide which skills should participate."
+description: "Route multi-skill Sofia work and skill changes to the smallest set of specialist workflows. Use when coordinating planning, implementation, review, or skill authoring."
 ---
 
 # Sofia Coordinatior
@@ -53,15 +53,15 @@ Use these roles in order when their trigger applies:
 |---|---|---|---|
 | Intent and scope | The request has unclear goal, audience, constraints, success criteria, or planning intent | `$grill-me-aquinas` as active observer when meaning, essence, terms, or planning fit may matter; otherwise coordinator only | A concise statement of the current goal, scope, and unresolved product decisions |
 | Skill creation or update | A skill will be created, renamed, edited, validated, or packaged | `$skill-creator` | A skill structure with clear frontmatter triggers, lean body instructions, and only necessary resources |
-| Planning or architecture | The work needs a plan, design, sequence, strategy, or planning assumptions | `$grill-me-aquinas` compact observer, then `$descartes-skill` or project-local `$audit-plan-descartes` inside World-of-Sofia | Meaning/essence handoff, foundation ledger, unresolved assumptions, optional assumption audit, and final plan |
+| Planning or architecture | The work needs a plan, design, sequence, strategy, or planning assumptions | `$grill-me-aquinas` compact observer, then `audit-plan-descartes` (or an equivalent host-provided planning auditor) inside World-of-Sofia | Meaning/essence handoff, foundation ledger, unresolved assumptions, optional assumption audit, and final plan |
 | Radical rebuild or destructive simplification | The user says or implies be radical, playful, break compatibility, stop preserving the old structure, tear it down, start over, rebuild from scratch, or build something new without compatibility inertia | `$grill-me-aquinas` for intent/essence, then `$earned-presence-kondo` when available | A destroy/preserve/rebuild handoff that names what no longer earns its cost, what must survive, and where specialist evidence is still needed |
 | Pre-implementation pattern discovery | Code, repo, or Maxi-context precedent should guide implementation before new code is created | `$pattern-code-wittgenstein` when available | A reuse, extend, extract, copy carefully, or create new recommendation with current-repo and relevant Maxi evidence separated |
 | Post-implementation review | A real diff, staged change, branch, or PR exists | `$synthesis-code-hegel` when available | A concrete recommendation to leave, rename, extract, merge, split, inline, deprecate, or delete |
-| UI validation | Any UI-changing work reaches rendered validation, final review, or completion | `$ui-attention-kahneman` when available | Attention ranking, fit review, severity, and smallest useful correction |
+| UI validation | Any UI-changing work reaches rendered validation, final review, or completion | `ui-attention-ciceron` when available | Attention ranking, fit review, severity, and smallest useful correction |
 | Communication validation | Work completion depends on message, proposal, review, or user-facing language | `$communication-review-ciceron` when available | Rhetorical-fit review and smallest useful rewrite |
 | Validation | The work created or changed a skill, repo artifact, or generated output | Relevant local validation commands | Validation result and any remaining risks |
 
-Role skill names are examples, not hard dependencies. Prefer the exact available skill with the matching responsibility in the current environment.
+Role names are routing labels, not guaranteed runtime commands. Resolve them against the host's installed skill registry; if the host does not support `$skill-name` invocation, load the matching skill instructions through its native mechanism.
 
 ## Skill Registry
 
@@ -75,7 +75,7 @@ When a global skill and a World-of-Sofia project-local skill have the same respo
 
 When creating or updating a skill:
 
-1. Invoke `$skill-creator` and follow its workflow.
+1. Invoke the host's `skill-creator` capability and follow its workflow when available; otherwise apply the repository's skill metadata and validation rules directly.
 2. Treat `$skill-creator` as the upstream general authoring guide. Do not edit the bundled system skill to encode World-of-Sofia policy; wrap it with this project-local protocol.
 3. Define the skill's degree of freedom in its body as `conservative`, `exploratory`, or `bold-by-default`, with one sentence saying what that permits and what still requires a pause.
 4. Make the `description` frontmatter carry the trigger rules. Do not hide "when to use this skill" only in the body.
@@ -96,8 +96,8 @@ When creating or updating a skill:
 
 When a final plan is required:
 
-1. Run `$grill-me-aquinas` as a compact active observer before Descartes when meaning, essence, canonical terms, or scope could change the plan. It should supply `said / meant / happened`, canonical terms, essence candidates, accidents to ignore, open potencies, constraints, non-goals, pause conditions, and evidence paths when available.
-2. Invoke `$descartes-skill` or the project-local `$audit-plan-descartes` when the local skill is the subject.
+1. Run `grill-me-aquinas` as a compact active observer before the planning auditor when meaning, essence, canonical terms, or scope could change the plan. It should supply `said / meant / happened`, canonical terms, essence candidates, accidents to ignore, open potencies, constraints, non-goals, pause conditions, and evidence paths when available.
+2. Invoke `audit-plan-descartes` (or the host's equivalent planning auditor) when the local skill is the subject.
 3. Gather repository or system evidence before asking the user questions that inspection can answer.
 4. Separate `Foundation-Fact`, `Foundation-Constraint`, and non-foundational assumptions.
 5. Before final plan output, use the Descartes structured planning gate with exactly these option labels:

@@ -1,9 +1,11 @@
 ---
 name: synthesis-code-hegel
-description: "Review real code changes before merge to decide whether they should be synthesized, simplified, merged, split, or left alone. Use for PR review, staged diff review, edited worktrees, branch review, post-implementation cleanup, or requests like 'should we refactor this change before main?'"
+description: "Review a real code diff before merge and decide whether to leave, simplify, merge, split, or refactor it. Use for PRs, branches, staged changes, or cleanup reviews."
 ---
 
 # Synthesis Code Hegel
+
+When the user requests `developer mode`, `trace mode`, `impact evidence`, `show traces`, `skill trace`, or `Hegel tracer`, append a `Skill Impact Trace` after the required output. Include trigger evidence, instructions applied, resources/tools used, observed evidence gathered, decision impact, skipped steps, and confidence gaps.
 
 Use this skill only when code has already changed. Start from the actual diff, not from abstract design talk.
 

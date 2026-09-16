@@ -1,6 +1,6 @@
 ---
 name: ui-attention-ciceron
-description: "Automatically review every UI-changing task for visual attention, emotional language fit, hierarchy, and goal fit before completion. Use whenever Codex or Sofia plans, implements, reviews, validates, or closes UI changes; when a final rendered product needs attention and phrasing audit before close; or when Codex should inspect a live page, local browser target, screenshot, or UI mockup and rank likely attention peaks from observable visual, textual, and DOM evidence without claiming eye-tracking certainty."
+description: "Review rendered UI for attention hierarchy, emotional language, and goal fit. Use during final UI validation or when inspecting a page, screenshot, or mockup."
 ---
 
 # UI Attention Ciceron

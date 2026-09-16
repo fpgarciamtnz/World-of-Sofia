@@ -1,13 +1,16 @@
 ---
 name: audit-plan-descartes
-description: "Separate verified facts, constraints, unresolved assumptions, optional essence-fit risks, and verification evidence before final planning. Use when a plan needs evidence handling, assumption audit, verification requirements, or a check that it still matches project essence supplied by Grill Me Aquinas or similar context."
+description: "Audit a plan by separating facts, constraints, assumptions, risks, and verification evidence. Use when planning needs an evidence or assumption check."
 ---
 
 # Audit Plan Descartes
 
 Use this skill when planning work that would benefit from explicit evidence handling.
 
-Keep the skill focused on plan trust. Do not infer project essence yourself when another skill has not supplied it. When Grill Me Aquinas, project context, ADRs, or an essence ledger provide essence evidence, include an essence-fit check as part of the planning audit.
+
+Use this skill when multiple sources of truth or verification of previus code, work needs to be done.
+
+The skill focus is on asume what are the evidences adn proof that material we are working on is relevant, matter or is completed. Final goal avoid hallutinations and have solid foundation before iniciating the work.
 
 ## Workflow
 

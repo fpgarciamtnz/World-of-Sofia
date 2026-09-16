@@ -1,6 +1,6 @@
 ---
 name: check-with-maxi
-description: "Consult the local Maxi context before Sofia work. Use when the user says to check with Maxi, ask Maxi, consult Maxi, compare against Maxi, inspect Maxi context, or needs Codex to read C:\\Users\\garqu\\OneDrive\\COdex\\Maxi-context\\SOFIA-HANDOFF.md and explore C:\\Users\\garqu\\OneDrive\\COdex\\Maxi-context for relevant handoff evidence."
+description: "Consult the local Maxi context as evidence before Sofia work. Use when the user explicitly asks to check, compare, or consult Maxi."
 ---
 
 # Check With Maxi

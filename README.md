@@ -1,8 +1,8 @@
 # World of Sofia
 
-Sofia is the coordinator for a family of specialist Codex skills. Bring her a messy request, a planning problem, a code change, a review, or a UI concern, and she routes the work to the smallest useful set of specialists.
+Sofia is the coordinator for a family of specialist agent skills. Bring her a messy request, a planning problem, a code change, a review, or a UI concern, and she routes the work to the smallest useful set of specialists.
 
-World of Sofia is the skill collection behind that coordinator. It helps Codex make clearer plans, orient inside a codebase before editing, review real diffs, simplify artifacts before adding more structure, improve communication, and validate whether a rendered UI points attention at the right thing.
+World of Sofia is the skill collection behind that coordinator. It helps an agent make clearer plans, orient inside a codebase before editing, review real diffs, simplify artifacts before adding more structure, improve communication, and validate whether a rendered UI points attention at the right thing.
 
 ## Skill relationship map
 
@@ -18,7 +18,9 @@ $sofia-coordinatior
 
 Use Sofia when the work spans more than one concern, when you are unsure which skill should act, or when you want a workflow that can move from planning to execution to review without blending every responsibility into one prompt.
 
-Sofia routes the work; she does not replace the specialists. Descartes audits plans, Aquinas clarifies intent and project essence, Wittgenstein finds existing code patterns, Hegel reviews real code changes, Earned Presence Kondo asks whether things earn the cost of existing, UI Attention Kahneman reviews rendered UI attention, and Communication Review Ciceron reviews communication. When the user asks to explore AI limits, challenge over-safe defaults, or work in an early-stage design space, Sofia passes a bolder posture to the selected specialists instead of creating a separate mode.
+Skill descriptions and workflow guidance are maintained for GPT-6 Astra's context and routing behavior. See [`docs/gpt-6-astra-skill-guidelines.md`](docs/gpt-6-astra-skill-guidelines.md) when adding or revising a skill.
+
+Sofia routes the work; she does not replace the specialists. Descartes audits plans, Aquinas clarifies intent and project essence, Wittgenstein finds existing code patterns, Hegel reviews real code changes, Earned Presence Kondo asks whether things earn the cost of existing, UI Attention Ciceron reviews rendered UI attention, and Communication Review Ciceron reviews communication. When the user asks to explore AI limits, challenge over-safe defaults, or work in an early-stage design space, Sofia passes a bolder posture to the selected specialists instead of creating a separate mode.
 
 When you say to check with Maxi, use the Check With Maxi skill. It reads `C:\Users\garqu\OneDrive\COdex\Maxi-context\SOFIA-HANDOFF.md` first, explores `C:\Users\garqu\OneDrive\COdex\Maxi-context`, and passes relevant Maxi evidence back into the Sofia workflow.
 
@@ -39,6 +41,10 @@ npm run install:skill -- audit-plan-descartes
 ```
 
 Rerun the install command whenever skills change. Open a new Codex session if an installed or updated skill does not appear immediately.
+
+### T3 compatibility
+
+The installer above targets the Codex skills directory. It does not configure T3. Before using this collection in T3, verify which provider loads the skills, its discovery directory, and how it loads referenced skills. The presence of `SKILL.md`, `$skill-name` examples, or `agents/openai.yaml` does not establish that T3 will discover or invoke a skill. The coordinator can use matching host capabilities when Codex system skills are unavailable.
 
 ## Sofia workflow modes
 
@@ -73,7 +79,7 @@ Sofia keeps execution grounded in the codebase instead of treating the plan as p
 
 During implementation, Codex should keep edits scoped to the requested deliverable, preserve existing behavior unless the plan explicitly changes it, and validate with the local commands that match the touched area. Sofia's role is to keep the handoffs clean: Aquinas protects intended meaning, Descartes protects planning facts, Wittgenstein protects repository fit, and validation proves the deliverable works.
 
-After real code changes exist, Sofia routes review through Synthesis Code Hegel. Hegel inspects the actual diff and decides whether the change should be left as-is, renamed, extracted, merged, split, inlined, deprecated, or deleted. If the deliverable includes UI, UI Attention Kahneman automatically reviews the rendered result. If the deliverable includes user-facing language, Communication Review Ciceron can tighten the message.
+After real code changes exist, Sofia routes review through Synthesis Code Hegel. Hegel inspects the actual diff and decides whether the change should be left as-is, renamed, extracted, merged, split, inlined, deprecated, or deleted. If the deliverable includes UI, UI Attention Ciceron automatically reviews the rendered result. If the deliverable includes user-facing language, Communication Review Ciceron can tighten the message.
 
 ### 3. Review
 
@@ -85,14 +91,14 @@ Each specialist has a different review job:
 | --- | --- |
 | Synthesis Code Hegel | Reviews real diffs, staged work, branches, or PRs. It names the changed system, classifies tension or contradiction, and recommends the smallest safe synthesis action. |
 | Earned Presence Kondo | Reviews UI, code, docs, workflows, features, options, copy, and rules to decide whether each candidate earns the cost of existing. |
-| UI Attention Kahneman | Automatically reviews UI-changing work, plus live pages, local browser targets, screenshots, or mockups. It produces `Attention Ranking`, `Likely User Attention Path`, intent-fit judgment, severity, and a `Sofia Handoff Packet` when attention misses the intended UI effect. |
+| UI Attention Ciceron | Automatically reviews UI-changing work, plus live pages, local browser targets, screenshots, or mockups. It produces `Attention Ranking`, `Likely User Attention Path`, intent-fit judgment, severity, and a `Sofia Handoff Packet` when attention misses the intended UI effect. |
 | Communication Review Ciceron | Reviews messages, proposals, comments, review feedback, or product copy. It separates observed wording from inferred intent, names likely audience uptake, and gives the smallest useful rewrite. |
 | Audit Plan Descartes | Reviews planning-sensitive claims. It checks whether conclusions rest on facts, constraints, or unresolved assumptions, and whether essence evidence has been overclaimed. |
 | Grill Me Aquinas | Reviews meaning and intent drift. It is useful when the diff or review appears to satisfy surface wording while missing the project's real purpose. |
 | Pattern Code Wittgenstein | Re-enters only when review exposes missing pattern evidence. It answers what existing code family the work should resemble before more code is written. |
 | Sofia Coordinatior | Chooses the sequence, keeps responsibilities separate, and routes missed outcomes back to the right specialist instead of flattening every review into one opinion. |
 
-For UI review, use the project language from UI Attention Kahneman. The skill does not claim eye-tracking certainty or produce a heat map. It ranks likely attention peaks from observable visual, textual, and DOM evidence.
+For UI review, use the project language from UI Attention Ciceron. The skill does not claim eye-tracking certainty or produce a heat map. It ranks likely attention peaks from observable visual, textual, and DOM evidence.
 
 ## Skill roles
 
@@ -106,7 +112,7 @@ For UI review, use the project language from UI Attention Kahneman. The skill do
 | [Synthesis Code Hegel](skills/synthesis-code-hegel) | Code has already changed and needs review before merge, cleanup, or final acceptance. | Post-implementation synthesis and preservation of working behavior. | Diff review findings and recommendation to leave, rename, extract, merge, split, inline, deprecate, or delete. |
 | [Earned Presence Kondo](skills/earned-presence-kondo) | Sofia or the user asks to simplify, declutter, reduce complexity, remove old structure, challenge additive fixes, be radical, break compatibility, start over, or rebuild from scratch. | Subtractive and radical rebuild review before adding more UI, code, workflow, feature, option, copy, or rule structure. | Earned presence analysis with destroy/preserve/rebuild judgment, concrete action verbs, risks, confidence, re-checks, and specialist handoffs. |
 | [Communication Review Ciceron](skills/communication-review-ciceron) | A message, proposal, PR comment, review, or product copy needs to land clearly with its audience. | Communication validation for user-facing or team-facing language. | Rhetorical-fit review, friction points, audience uptake, and a clearer rewrite. |
-| [UI Attention Kahneman](skills/ui-attention-kahneman) | Any UI change occurs, or a screenshot, local page, or mockup needs attention, hierarchy, CTA, or language-fit validation. | Automatic rendered UI review before closing UI-facing work. | `Attention Ranking`, likely attention path, language fit, intent fit, severity, smallest useful correction, and Sofia handoff when needed. |
+| [UI Attention Ciceron](skills/ui-attention-ciceron) | Any UI change occurs, or a screenshot, local page, or mockup needs attention, hierarchy, CTA, or language-fit validation. | Automatic rendered UI review before closing UI-facing work. | `Attention Ranking`, likely attention path, language fit, intent fit, severity, smallest useful correction, and Sofia handoff when needed. |
 
 ## Commands
 
