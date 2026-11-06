@@ -32,7 +32,7 @@ The table records the 2026-09-14 inventory. The 2026-11-06 migration in the log 
 | Date | Reviewer | Scope | Result |
 |---|---|---|---|
 | 2026-09-14 | Codex | All Markdown files under `skills/` | Inventory and structural review completed; follow-ups recorded above. |
-| 2026-11-06 | Claude | All nine skill packages, tooling, and docs | Migrated to Claude Code as the runtime; see `docs/adr/0003-claude-code-runtime.md`. |
+| 2026-11-06 | Claude | All nine skill packages, tooling, and docs | Migrated to Claude Code as the runtime; see `docs/adr/0003-claude-code-runtime.md`. Added `auditar-pec` and removed `check-with-maxi`. |
 
 ## Next review checklist
 

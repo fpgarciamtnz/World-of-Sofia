@@ -25,7 +25,6 @@ describe("skill validation helpers", () => {
     expect(skillsData.skills.map((skill) => skill.slug).sort()).toEqual([
       "audit-plan-descartes",
       "auditar-pec",
-      "check-with-maxi",
       "communication-review-ciceron",
       "earned-presence-kondo",
       "grill-me-aquinas",
@@ -125,14 +124,10 @@ describe("skill lint rules", () => {
     ]);
   });
 
-  it("allows the literal Maxi folder path, whose casing differs from the product name", () => {
-    const issues = lintSkill({
-      slug: "demo-skill",
-      skillMarkdown: validSkill,
-      documents: [{ path: "README.md", content: "C:\\Users\\garqu\\OneDrive\\COdex\\Maxi-context" }]
-    });
+  it("rejects a mention of a retired skill", () => {
+    const known = new Set(["sofia-coordinatior"]);
 
-    expect(issues).toEqual([]);
+    expect(findUnknownSiblingSkills("Run `check-with-maxi` first.", known)).toEqual(["check-with-maxi"]);
   });
 
   it("rejects a folded description, whose length the parser cannot see", () => {

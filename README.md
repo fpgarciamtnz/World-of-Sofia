@@ -30,7 +30,7 @@ Rerun the install command whenever skills change, since the installed skills are
 
 Use Sofia when the work spans more than one concern, when you are unsure which skill should act, or when you want a workflow that moves from planning through execution to review. Any specialist can also be called directly, such as `/synthesis-code-hegel`, and Claude loads a skill on its own when its description matches the request.
 
-When you ask to explore limits, challenge over-safe defaults, or work in an early-stage design space, Sofia passes a bolder posture to the specialists instead of creating a separate mode. When you ask to check with Maxi, the Check With Maxi skill reads the Maxi handoff as evidence for the work.
+When you ask to explore limits, challenge over-safe defaults, or work in an early-stage design space, Sofia passes a bolder posture to the specialists instead of creating a separate mode.
 
 ## Workflows
 
@@ -62,7 +62,6 @@ She gathers evidence first, runs Aquinas when meaning could change the plan, and
 | [Earned Presence Kondo](skills/earned-presence-kondo) | Something may not earn its cost, or you want a radical rebuild. | A keep-or-remove judgment, or destroy, preserve, and rebuild, with evidence and re-checks. |
 | [UI Attention Ciceron](skills/ui-attention-ciceron) | UI work reaches final validation, or a screen needs review. | An attention ranking, language and goal fit, severity, and the smallest correction. |
 | [Communication Review Ciceron](skills/communication-review-ciceron) | A message, proposal, or product copy must land with its audience. | Likely uptake, friction points, and a better version. |
-| [Check With Maxi](skills/check-with-maxi) | You ask to check, compare, or consult Maxi. | Files inspected, relevant evidence, its impact, and open gaps. |
 
 Each specialist answers a different question, which is why they stay separate. `code-review` from Claude Code looks for bugs in a diff, while Hegel asks whether the change has the right shape; UI Attention Ciceron makes no eye-tracking claim, and ranks likely attention from observable evidence.
 

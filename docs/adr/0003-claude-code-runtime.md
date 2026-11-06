@@ -24,5 +24,6 @@ Move the three long research reports out of the skill folders into `docs/researc
 
 - `npm run check` no longer needs a native dependency and passes on this machine again.
 - The scout remains available in git history (`fd6cc04`) if a structural analyzer is ever worth reviving; a revival must work from an installed copy.
+- `check-with-maxi` is removed, because the Maxi context belonged to a retired project.
 - `~/.codex/skills` keeps its existing copies, which no longer receive updates from this repository.
 - The validator now rejects the failures this migration found by hand: dead sibling-skill names, Codex vocabulary, and oversized descriptions.

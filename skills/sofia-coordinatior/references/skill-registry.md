@@ -15,7 +15,6 @@ A skill absent from this file can still be used. Read its description and place 
 
 ## Boundaries
 
-- `check-with-maxi` supplies evidence to the other roles and never overrides them.
 - `grill-me-aquinas` owns meaning and essence evidence; `audit-plan-descartes` owns whether a plan can be trusted.
 - `auditar-pec` applies the discipline of `audit-plan-descartes` to academic submissions and is read-only; `audit-plan-descartes` stays the choice for plans and software work.
 - `pattern-code-wittgenstein` runs before code exists; `synthesis-code-hegel` runs after.
@@ -26,7 +25,6 @@ A skill absent from this file can still be used. Read its description and place 
 
 Use the shortest sequence that covers the task.
 
-- Check with Maxi: `check-with-maxi`, then a specialist only if the evidence affects planning, implementation, or review.
 - Skill change: `sofia-coordinatior`, `skill-creator`, edit, `npm run check`, optional forward test. For a plan, add `audit-plan-descartes` before the edit.
 - Bold skill change: the same, with the posture handoff and a degree-of-freedom requirement, plus a probe that challenges an over-safe assumption.
 - Repository plan: `grill-me-aquinas`, `audit-plan-descartes`, `pattern-code-wittgenstein` when precedent matters, then the final plan.

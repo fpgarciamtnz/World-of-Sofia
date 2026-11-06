@@ -23,7 +23,6 @@ Call a specialist with the Skill tool, using the name as the session lists it, w
 | Something may not earn its cost, or the user wants a radical rebuild | `earned-presence-kondo` | Keep, demote, delete, or destroy/preserve/rebuild judgment |
 | UI work reaches final validation, or a screen needs review | `ui-attention-ciceron` | Attention ranking, severity, smallest correction |
 | A message, proposal, or user-facing copy must land | `communication-review-ciceron` | Likely uptake, friction, better version |
-| The user mentions Maxi | `check-with-maxi` | Maxi evidence, separated from repository evidence |
 | A skill is created or changed | `skill-creator`, then the protocol below | A lean skill that validates |
 
 Read [references/skill-registry.md](references/skill-registry.md) when choosing an order for a multi-step workflow, or when Claude Code's built-in skills might overlap a specialist.

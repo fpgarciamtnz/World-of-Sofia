@@ -13,8 +13,6 @@ This skill finds precedent. Once code has been written, staged, or prepared for 
 
 Restate the task in the repository's own language and name its bounded context: endpoint, parser, workflow, test helper, UI component, migration, background job, or domain service. Then search with Grep and Glob for identifiers, filenames, and adjacent modules, and read the closest candidates in full, along with their call sites and tests. Use `git log` when it matters how a pattern came to exist or whether it is being retired.
 
-When Maxi context is in scope, run `check-with-maxi` and keep its evidence separate from current-repository evidence, since an external snapshot informs a decision without binding this repository.
-
 ## Judging Resemblance
 
 Classify each match as structural, behavioral, semantic, naming, domain, or historical. Keep these in mind:

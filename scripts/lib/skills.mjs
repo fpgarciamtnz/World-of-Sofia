@@ -38,13 +38,13 @@ export const MAX_DESCRIPTION_CHARS = 400;
 export const MAX_SKILL_LINES = 500;
 
 const STALE_VOCABULARY = [
-  { pattern: /\bcodex\b|\bCodex\b/, label: "a Codex reference" },
+  { pattern: /\bcodex\b/i, label: "a Codex reference" },
   { pattern: /\$[a-z]+(?:-[a-z]+)+/, label: "a $skill-name invocation (use /skill-name or the Skill tool)" },
   { pattern: /openai\.yaml|AGENTS\.md|descartes-skill/, label: "a retired file or skill name" }
 ];
 
 // Endings of names that once existed or are easy to misspell, on top of those derived from real slugs.
-const RETIRED_SKILL_ENDINGS = ["coordinator", "kahneman"];
+const RETIRED_SKILL_ENDINGS = ["coordinator", "kahneman", "maxi"];
 
 const README_OPENINGS = [
   { pattern: /^(?:# [^\r\n]+\r?\n\s*)?Philosopher idea:[ \t]*\S/, label: "Philosopher idea:" },
