@@ -18,6 +18,7 @@ Call a specialist with the Skill tool, using the name as the session lists it, w
 | The goal, terms, or scope could change the outcome | `grill-me-aquinas` | Said, meant, and happened; essence, constraints, non-goals |
 | A plan must be trusted, sources of truth disagree, or prior work needs verifying | `audit-plan-descartes` | Foundation ledger, unresolved assumptions, final plan |
 | Code is about to be written and precedent matters | `pattern-code-wittgenstein` | Reuse, extend, extract, copy carefully, or create new |
+| An academic submission or bibliography must be checked against its brief | `auditar-pec` | Requirement status, reference and citation checks, whether sources support the claims |
 | A real diff, branch, or PR exists | `synthesis-code-hegel` | Leave, rename, extract, merge, split, inline, deprecate, or delete |
 | Something may not earn its cost, or the user wants a radical rebuild | `earned-presence-kondo` | Keep, demote, delete, or destroy/preserve/rebuild judgment |
 | UI work reaches final validation, or a screen needs review | `ui-attention-ciceron` | Attention ranking, severity, smallest correction |

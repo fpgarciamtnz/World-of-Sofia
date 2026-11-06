@@ -1,0 +1,19 @@
+{
+  "id": "world-of-sofia.auditar-pec",
+  "slug": "auditar-pec",
+  "title": "Auditar PEC",
+  "philosopher": "Rene Descartes",
+  "summary": "Audita una entrega académica frente a su enunciado separando hechos, exigencias, supuestos y lagunas, y valorando si cada fuente sostiene lo que se le atribuye.",
+  "tags": [
+    "research",
+    "verification",
+    "academic-writing"
+  ],
+  "status": "alpha",
+  "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/auditar-pec",
+  "installCommand": "npm run install:skill -- auditar-pec",
+  "references": [
+    "references/libro-de-evidencias.md"
+  ],
+  "version": "0.1.0"
+}

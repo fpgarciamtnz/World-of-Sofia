@@ -17,6 +17,7 @@ A skill absent from this file can still be used. Read its description and place 
 
 - `check-with-maxi` supplies evidence to the other roles and never overrides them.
 - `grill-me-aquinas` owns meaning and essence evidence; `audit-plan-descartes` owns whether a plan can be trusted.
+- `auditar-pec` applies the discipline of `audit-plan-descartes` to academic submissions and is read-only; `audit-plan-descartes` stays the choice for plans and software work.
 - `pattern-code-wittgenstein` runs before code exists; `synthesis-code-hegel` runs after.
 - `earned-presence-kondo` is independent, and also serves as a bridge from `ui-attention-ciceron` and `synthesis-code-hegel` when the likely fix is to remove something.
 - `ui-attention-ciceron` judges a rendered screen; `communication-review-ciceron` judges a message.
@@ -30,6 +31,7 @@ Use the shortest sequence that covers the task.
 - Bold skill change: the same, with the posture handoff and a degree-of-freedom requirement, plus a probe that challenges an over-safe assumption.
 - Repository plan: `grill-me-aquinas`, `audit-plan-descartes`, `pattern-code-wittgenstein` when precedent matters, then the final plan.
 - UI implementation: plan, implement, rendered evidence, `ui-attention-ciceron`, `earned-presence-kondo` if competing elements may need demotion or removal, then fixes.
+- Academic submission: `auditar-pec`, then `communication-review-ciceron` only if a message to teaching staff is needed.
 - Communication: draft or rewrite, `communication-review-ciceron`, revised message.
 - Subtractive review: `earned-presence-kondo`, then a specialist only if rendered UI evidence, real diff evidence, or pattern discovery is needed.
 - Radical rebuild: `grill-me-aquinas` for what must survive, `earned-presence-kondo` for destroy/preserve/rebuild, then `pattern-code-wittgenstein` or implementation.

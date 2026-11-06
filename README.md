@@ -56,6 +56,7 @@ She gathers evidence first, runs Aquinas when meaning could change the plan, and
 | [Sofia Coordinatior](skills/sofia-coordinatior) | Work spans several skills, or it is unclear which should act. | Routing, posture handoffs, and the requested plan or review. |
 | [Grill Me Aquinas](skills/grill-me-aquinas) | The goal, terms, or scope are unclear, or you want a grill-me session. | A said, meant, and happened record, focused questions, essence candidates, and handoffs. |
 | [Audit Plan Descartes](skills/audit-plan-descartes) | A plan needs an evidence check, sources disagree, or prior work needs verifying. | A foundation ledger, open assumptions, and a final plan or verdict. |
+| [Auditar PEC](skills/auditar-pec) | A PEC, theoretical framework, or bibliography must be checked against its brief before delivery. | Requirement status, reference and citation checks, an evidence ledger, and whether sources support the claims. |
 | [Pattern Code Wittgenstein](skills/pattern-code-wittgenstein) | Existing code should guide what you are about to write. | A recommendation to `reuse`, `extend`, `extract`, `copy carefully`, or `create new`. |
 | [Synthesis Code Hegel](skills/synthesis-code-hegel) | Code has changed and needs judgment before merge. | A recommendation to leave, rename, extract, merge, split, inline, deprecate, or delete. |
 | [Earned Presence Kondo](skills/earned-presence-kondo) | Something may not earn its cost, or you want a radical rebuild. | A keep-or-remove judgment, or destroy, preserve, and rebuild, with evidence and re-checks. |
