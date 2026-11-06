@@ -1,23 +1,24 @@
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { loadSkillRecord, loadSkillsData } from "./lib/skills.mjs";
+import { loadSkillRecord, loadSkillsData, skillsRoot as sourceRoot } from "./lib/skills.mjs";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const projectRoot = path.resolve(__dirname, "..");
-const sourceRoot = path.join(projectRoot, "skills");
-const ignoredNames = new Set([".cache", ".git", "dist", "node_modules"]);
+// Development-only folders that an installed skill never needs at runtime.
+const ignoredNames = new Set([".cache", ".git", "dist", "node_modules", "tests"]);
+
+// `synced` holds skills managed by the Claude app; dot folders hold its own state.
+const reservedSlugs = new Set(["synced"]);
 
 function usage() {
   return [
     "Usage:",
-    "  node ./scripts/sync-codex-skills.mjs [--dry-run] [--skill <slug>] [--no-backup]",
+    "  node ./scripts/install-skills.mjs [--dry-run] [--skill <slug>] [--no-backup]",
+    "",
+    "Installs into $CLAUDE_CONFIG_DIR/skills, or ~/.claude/skills when it is not set.",
     "",
     "Options:",
     "  --dry-run     Print planned actions without writing files.",
-    "  --skill       Sync only one skill slug from skills/<slug>.",
+    "  --skill       Install only one skill slug from skills/<slug>.",
     "  --no-backup   Remove an existing target instead of backing it up."
   ].join("\n");
 }
@@ -63,11 +64,8 @@ function parseArgs(argv) {
   return options;
 }
 
-function codexSkillsRoot() {
-  const codexHome = process.env.CODEX_HOME;
-  return codexHome
-    ? path.resolve(codexHome, "skills")
-    : path.join(os.homedir(), ".codex", "skills");
+function claudeConfigDir() {
+  return path.resolve(process.env.CLAUDE_CONFIG_DIR ?? path.join(os.homedir(), ".claude"));
 }
 
 function timestamp() {
@@ -86,21 +84,15 @@ async function pathExists(filePath) {
   }
 }
 
-async function assertSkillDirectory(skillDir, slug) {
-  if (slug === ".system" || slug.startsWith(".")) {
-    throw new Error(`Refusing to sync reserved skill directory: ${slug}`);
-  }
-
-  const skillPath = path.join(skillDir, "SKILL.md");
-  if (!(await pathExists(skillPath))) {
-    throw new Error(`Missing SKILL.md for skill: ${slug}`);
+function assertInstallableSlug(slug) {
+  if (slug.startsWith(".") || reservedSlugs.has(slug)) {
+    throw new Error(`Refusing to install over a reserved skill directory: ${slug}`);
   }
 }
 
 async function listProjectSkills(options) {
   if (options.skill) {
-    const skillDir = path.join(sourceRoot, options.skill);
-    if (!(await pathExists(skillDir))) {
+    if (!(await pathExists(path.join(sourceRoot, options.skill)))) {
       throw new Error(`Project skill not found: ${options.skill}`);
     }
 
@@ -113,13 +105,7 @@ async function listProjectSkills(options) {
   }
 
   const skillsData = await loadSkillsData();
-  const skills = skillsData.skills.map((skill) => skill.slug).sort();
-
-  for (const slug of skills) {
-    await assertSkillDirectory(path.join(sourceRoot, slug), slug);
-  }
-
-  return skills;
+  return skillsData.skills.map((skill) => skill.slug).sort();
 }
 
 function isInside(parentDir, childPath) {
@@ -139,19 +125,17 @@ async function nextBackupPath(backupRoot, slug, runTimestamp) {
   return candidate;
 }
 
-async function syncSkill(slug, options, targetRoot, runTimestamp) {
+async function installSkill(slug, options, targetRoot, backupRoot, runTimestamp) {
+  assertInstallableSlug(slug);
+
   const sourceDir = path.resolve(sourceRoot, slug);
   const targetDir = path.resolve(targetRoot, slug);
-  const backupRoot = path.resolve(targetRoot, ".backups", "world-of-sofia");
 
   if (!isInside(sourceRoot, sourceDir)) {
     throw new Error(`Resolved source is outside skills root: ${sourceDir}`);
   }
   if (!isInside(targetRoot, targetDir)) {
-    throw new Error(`Resolved target is outside Codex skills root: ${targetDir}`);
-  }
-  if (path.basename(targetDir) === ".system") {
-    throw new Error("Refusing to touch Codex .system skills.");
+    throw new Error(`Resolved target is outside Claude skills root: ${targetDir}`);
   }
 
   const targetExists = await pathExists(targetDir);
@@ -186,12 +170,15 @@ async function syncSkill(slug, options, targetRoot, runTimestamp) {
 
 async function main() {
   const options = parseArgs(process.argv.slice(2));
-  const targetRoot = path.resolve(codexSkillsRoot());
+  const configDir = claudeConfigDir();
+  const targetRoot = path.join(configDir, "skills");
+  // Backups stay outside the skills folder so Claude Code never discovers an old copy.
+  const backupRoot = path.join(configDir, ".backups", "world-of-sofia");
   const skills = await listProjectSkills(options);
   const runTimestamp = timestamp();
 
   if (skills.length === 0) {
-    throw new Error("No project skills found to sync.");
+    throw new Error("No project skills found to install.");
   }
 
   console.log(`Source: ${sourceRoot}`);
@@ -203,7 +190,7 @@ async function main() {
   }
 
   for (const slug of skills) {
-    await syncSkill(slug, options, targetRoot, runTimestamp);
+    await installSkill(slug, options, targetRoot, backupRoot, runTimestamp);
   }
 }
 

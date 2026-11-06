@@ -1,4 +1,0 @@
-interface:
-  display_name: "Sofia Coordinatior"
-  short_description: "Route skill work and reviews"
-  default_prompt: "Use $sofia-coordinatior to route this skill, planning, review, or validation workflow through the right specialists."

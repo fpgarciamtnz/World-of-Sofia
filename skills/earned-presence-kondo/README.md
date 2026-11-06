@@ -19,6 +19,6 @@ Practical use: Earned Presence Kondo reviews UI, code, docs, workflows, features
 
 This folder must stay self-contained. Do not reference private files in another skill directory.
 
-## Global use
+## Installation
 
-This catalog skill can later be copied or installed into `C:\Users\garqu\.codex\skills\earned-presence-kondo` because the instructions are contained inside this folder.
+Install it into `~/.claude/skills/earned-presence-kondo` with `npm run install:skill -- earned-presence-kondo`; the instructions are contained inside this folder.

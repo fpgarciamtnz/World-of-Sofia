@@ -3,7 +3,7 @@
   "slug": "ui-attention-ciceron",
   "title": "UI Attention Ciceron",
   "philosopher": "Marcus Tullius Cicero",
-  "summary": "An automatic UI-change review skill that uses a Kahneman-inspired attention read, evidence matrix, language-fit check, and Sofia routing for missed goals.",
+  "summary": "A rendered-UI review skill that uses a Kahneman-inspired attention read, evidence matrix, language-fit check, and Sofia routing for missed goals.",
   "tags": [
     "ui",
     "attention",
@@ -13,7 +13,7 @@
   ],
   "status": "alpha",
   "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/ui-attention-ciceron",
-  "installCommand": "npx skills add fpgarciamtnz/World-of-Sofia --skill ui-attention-ciceron",
+  "installCommand": "npm run install:skill -- ui-attention-ciceron",
   "references": [],
-  "version": "0.1.0"
+  "version": "0.2.0"
 }

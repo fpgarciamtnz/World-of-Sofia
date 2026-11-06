@@ -43,7 +43,7 @@ Use this when the user asks for speed, blunt feedback, or a short review:
 
 ## Plan Mode Evidence Gate
 
-Use this only when the active collaboration mode is Plan Mode. The purpose is to confirm the intended meaning before drafting or rewriting.
+Use this only in plan mode. The purpose is to confirm the intended meaning before drafting or rewriting.
 
 ```markdown
 ## Evidence Ledger

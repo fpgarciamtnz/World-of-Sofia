@@ -2,17 +2,17 @@
 
 Use this contract only when `sofia-coordinatior` is running in opt-in developer trace mode after a Sofia-led plan or revised plan.
 
-Append a `Skill Impact Trace` section after the normal Sofia output. Keep it concise and evidence-linked. The trace is useful only if it shows which specialist skills actually shaped the current answer and how their contributions affected the plan.
+Append a `Skill Impact Trace` section after the normal output. It is useful only if it shows which specialist skills actually shaped the current answer, so report sources and outcomes, and leave internal reasoning out of it.
 
 ## Required fields
 
-- `trigger evidence`: quote or paraphrase the user phrase that activated trace mode, such as `developer mode`, `trace mode`, `impact evidence`, `show traces`, `skill trace`, `Sofia trace`, or `skill contributions`.
-- `instructions applied`: list the specific Sofia `SKILL.md` routing, planning gate, role-boundary, handoff, or output-discipline instructions that shaped the response.
-- `resources/tools used`: name the specialist skills, references, repository searches, commands, tools, or evidence sources used because of Sofia's coordination.
-- `observed evidence gathered`: summarize concrete evidence found in files, tests, commands, repository structure, specialist outputs, or handoffs.
-- `decision impact`: state which role selection, specialist contribution, warning, plan step, assumption, verification requirement, or skipped-role call changed because Sofia coordinated the answer.
-- `skipped steps`: name plausible specialist roles, workflow steps, scripts, references, or handoffs intentionally skipped and why.
-- `confidence gaps`: state what evidence is still missing and whether confidence is low, medium, or high.
+- `trigger evidence`: the user phrase that activated trace mode.
+- `instructions applied`: the Sofia routing, planning, role-boundary, or handoff instructions that shaped the response.
+- `resources/tools used`: the specialist skills, references, searches, commands, or tools used because of Sofia's coordination.
+- `observed evidence gathered`: concrete evidence found in files, tests, commands, repository structure, specialist outputs, or handoffs.
+- `decision impact`: which role selection, warning, plan step, assumption, verification requirement, or skipped-role call changed because Sofia coordinated the answer.
+- `skipped steps`: plausible specialist roles, workflow steps, references, or handoffs intentionally skipped, and why.
+- `confidence gaps`: what evidence is still missing, and whether confidence is low, medium, or high.
 
 ## Output shape
 
@@ -30,10 +30,6 @@ Append a `Skill Impact Trace` section after the normal Sofia output. Keep it con
 
 ## Constraints
 
-- Keep the regular Sofia sections and final or revised plan unchanged.
-- Use one Sofia-owned summary trace rather than forcing every participating skill to append its own trace block.
-- Prefer skill names, file paths, command names, evidence paths, and concrete handoff labels over generic claims.
-- Do not claim a skill contributed unless its instructions, references, tools, evidence, or handoff materially shaped the answer.
-- Do not invent evidence to fill a field. Write `none found` or `not checked` when appropriate.
-- Do not use the trace as a substitute for the actual plan, role selection, or validation result.
-- Do not claim trace mode proves automatic runtime hooks fired. It is response-level evidence for this invocation.
+- Keep the regular output and plan unchanged, and use one Sofia-owned trace rather than one per participating skill.
+- Prefer skill names, file paths, command names, and concrete handoff labels over generic claims.
+- Write `none found` or `not checked` when a field has no evidence.

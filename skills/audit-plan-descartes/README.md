@@ -2,14 +2,14 @@
 
 Philosopher idea: Descartes' methodic doubt becomes a planning habit: separate what is known, required, assumed, and missing before accepting a plan.
 
-Practical use: Audit Plan Descartes builds a foundation ledger before final planning, keeps unsupported assumptions out of the fact base, offers an assumption-audit pass when missing evidence could change the result, and checks essence fit when Grill Me Aquinas or project context supplies essence evidence.
+Practical use: Use when a plan needs an evidence check, when sources of truth disagree, or when prior work must be verified. It inspects files, command output, and any essence context, then produces a foundation ledger, the evidence needed to upgrade each assumption, and a final plan or verification verdict.
 
 ## What it does
 
 - Builds a foundation ledger before planning.
-- Forces unsupported assumptions into a separate section.
+- Keeps unsupported assumptions in a separate section.
 - Checks whether a plan still matches project essence when reliable essence context exists.
-- Adds an optional assumption-audit pass before the plan is finalized.
+- Offers an assumption audit when an unresolved assumption could change the plan.
 
 ## Relationship to Grill Me Aquinas
 

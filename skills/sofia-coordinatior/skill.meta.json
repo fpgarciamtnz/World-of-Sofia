@@ -16,7 +16,7 @@
     "references/skill-registry.md",
     "references/developer-trace-contract.md"
   ],
-  "version": "0.1.0",
+  "version": "0.2.0",
   "developerTrace": {
     "status": "pilot",
     "mode": "opt-in",

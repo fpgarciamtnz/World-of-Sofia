@@ -20,18 +20,19 @@ All nine skill packages were inventoried. Their `SKILL.md` files, package `READM
 | `synthesis-code-hegel` | Reviewed | Reviewed | Reviewed | Complete | Workflow and foundation reference are present. Foundation contains prototype `TODO` notes. |
 | `ui-attention-ciceron` | Reviewed | Reviewed | N/A | Complete | UI trigger, evidence model, severity, handoff, and output contract are present. |
 
+The table records the 2026-09-14 inventory. The 2026-11-06 migration in the log below rewrote these packages for Claude Code, and moved or removed some of the resources it lists.
+
 ## Findings to follow up
 
-- `skills/synthesis-code-hegel/references/hegel-review-foundation.md` contains prototype `TODO` comments for parser integration, retrieval, graph analysis, and coverage/ADR collection. These appear to describe future implementation work, not broken runtime instructions.
-- `skills/grill-me-aquinas/deep-research-report (5).md`, `skills/communication-review-ciceron/deep-research-report (4).md`, and `skills/synthesis-code-hegel/references/hegel-review-foundation.md` are substantially larger than the operational skill files. Review them deeply only when updating the underlying doctrine or research, rather than on every routine skill change.
+- `docs/research/` holds the three long research reports, moved out of the skill packages. `hegel-dialectical-reviewer.md` still contains prototype `TODO` comments for parser integration, retrieval, graph analysis, and coverage/ADR collection, which describe future work rather than runtime instructions. Review these reports only when updating the underlying doctrine.
 - The package name `sofia-coordinatior` is consistently spelled this way in the repository. Consider a coordinated rename only if the spelling is intended to change; otherwise preserve it to avoid breaking references.
-- The working tree already had unrelated modifications before this tracker was created. They were left untouched.
 
 ## Review log
 
 | Date | Reviewer | Scope | Result |
 |---|---|---|---|
 | 2026-09-14 | Codex | All Markdown files under `skills/` | Inventory and structural review completed; follow-ups recorded above. |
+| 2026-11-06 | Claude | All nine skill packages, tooling, and docs | Migrated to Claude Code as the runtime; see `docs/adr/0003-claude-code-runtime.md`. |
 
 ## Next review checklist
 

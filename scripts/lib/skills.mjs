@@ -32,6 +32,97 @@ export const skillManifestSchema = z.object({
   developerTrace: developerTraceSchema.optional()
 });
 
+// The skill listing always costs context, so descriptions stay short; Claude Code
+// itself truncates a description at 1,536 characters and advises under 500 lines.
+export const MAX_DESCRIPTION_CHARS = 400;
+export const MAX_SKILL_LINES = 500;
+
+const STALE_VOCABULARY = [
+  { pattern: /\bcodex\b|\bCodex\b/, label: "a Codex reference" },
+  { pattern: /\$[a-z]+(?:-[a-z]+)+/, label: "a $skill-name invocation (use /skill-name or the Skill tool)" },
+  { pattern: /openai\.yaml|AGENTS\.md|descartes-skill/, label: "a retired file or skill name" }
+];
+
+// Endings of names that once existed or are easy to misspell, on top of those derived from real slugs.
+const RETIRED_SKILL_ENDINGS = ["coordinator", "kahneman"];
+
+const README_OPENINGS = [
+  { pattern: /^(?:# [^\r\n]+\r?\n\s*)?Philosopher idea:[ \t]*\S/, label: "Philosopher idea:" },
+  { pattern: /^Practical use:[ \t]*\S/m, label: "Practical use:" }
+];
+
+export function parseFrontmatter(markdown) {
+  const block = markdown.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  if (!block) {
+    return null;
+  }
+
+  const fields = {};
+  for (const line of block[1].split(/\r?\n/)) {
+    const field = line.match(/^([a-z-]+):\s*(.*)$/);
+    if (field) {
+      fields[field[1]] = field[2].replace(/^"(.*)"$/, "$1");
+    }
+  }
+
+  return fields;
+}
+
+export function lintSkill({ slug, skillMarkdown, documents = [] }) {
+  const issues = [];
+  const frontmatter = parseFrontmatter(skillMarkdown);
+
+  if (!frontmatter) {
+    return ["SKILL.md has no frontmatter block."];
+  }
+
+  if (frontmatter.name !== slug) {
+    issues.push(`SKILL.md name "${frontmatter.name}" must match the folder "${slug}".`);
+  }
+
+  if (!frontmatter.description) {
+    issues.push("SKILL.md needs a description.");
+  } else if (/^[>|]/.test(frontmatter.description)) {
+    issues.push("SKILL.md description must be one line, so its length can be checked.");
+  } else if (frontmatter.description.length > MAX_DESCRIPTION_CHARS) {
+    issues.push(
+      `SKILL.md description has ${frontmatter.description.length} characters; the limit is ${MAX_DESCRIPTION_CHARS}.`
+    );
+  }
+
+  const lineCount = skillMarkdown.split(/\r?\n/).length;
+  if (lineCount > MAX_SKILL_LINES) {
+    issues.push(`SKILL.md has ${lineCount} lines; the limit is ${MAX_SKILL_LINES}.`);
+  }
+
+  for (const document of [{ path: "SKILL.md", content: skillMarkdown }, ...documents]) {
+    for (const { pattern, label } of STALE_VOCABULARY) {
+      if (pattern.test(document.content)) {
+        issues.push(`${document.path} contains ${label}.`);
+      }
+    }
+  }
+
+  return issues;
+}
+
+export function lintReadme(readme) {
+  return README_OPENINGS.filter(({ pattern }) => !pattern.test(readme)).map(
+    ({ label }) => `README.md must state "${label}" as described in CONTRIBUTING.md.`
+  );
+}
+
+export function findUnknownSiblingSkills(content, knownSlugs) {
+  const endings = new Set(RETIRED_SKILL_ENDINGS);
+  for (const slug of knownSlugs) {
+    endings.add(slug.split("-").at(-1));
+  }
+
+  const siblingName = new RegExp(`\\b[a-z]+(?:-[a-z]+)*-(?:${[...endings].join("|")})\\b`, "g");
+  const mentioned = new Set(content.match(siblingName) ?? []);
+  return [...mentioned].filter((name) => !knownSlugs.has(name));
+}
+
 function slugify(input) {
   return input
     .toLowerCase()
@@ -179,6 +270,22 @@ export async function loadSkillRecord(skillSlug) {
     }
   }
 
+  const issues = [
+    ...lintSkill({
+      slug: skillSlug,
+      skillMarkdown,
+      documents: [
+        { path: "README.md", content: readme },
+        ...referencesContent.map((reference) => ({ path: reference.path, content: reference.content }))
+      ]
+    }),
+    ...lintReadme(readme)
+  ];
+
+  if (issues.length > 0) {
+    throw new Error(`Skill "${skillSlug}" failed validation:\n- ${issues.join("\n- ")}`);
+  }
+
   return {
     ...manifest,
     philosopherSlug: slugify(manifest.philosopher),
@@ -207,6 +314,19 @@ export async function loadSkillsData() {
     seenIds.add(skill.id);
     seenSlugs.add(skill.slug);
     skills.push(skill);
+  }
+
+  // A handoff to a skill that does not exist fails silently at runtime, so catch it here.
+  for (const skill of skills) {
+    const texts = [
+      skill.skillMarkdown,
+      skill.readme,
+      ...skill.referencesContent.map((reference) => reference.content)
+    ];
+    const unknown = findUnknownSiblingSkills(texts.join("\n"), seenSlugs);
+    if (unknown.length > 0) {
+      throw new Error(`Skill "${skill.slug}" mentions skills that do not exist: ${unknown.join(", ")}`);
+    }
   }
 
   return {

@@ -5,9 +5,9 @@ description: "__SUMMARY__"
 
 # __TITLE__
 
-Describe when this skill should be invoked and the outcome it should produce.
+Replace the description above with one short sentence on what this skill does and one on when to use it. It is always loaded, so name the trigger precisely and keep procedures out of it.
 
-Keep this description short and trigger-specific. Put detailed procedures, examples, and optional references in supporting files so they are loaded only when needed.
+State the goal, the constraints that matter, and why they matter. Leave out what Claude would do anyway, and put detail that only some runs need in `references/`, saying when to read each file.
 
 ## Degree Of Freedom
 

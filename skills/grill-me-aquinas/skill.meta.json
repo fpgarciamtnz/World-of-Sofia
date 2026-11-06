@@ -3,18 +3,17 @@
   "slug": "grill-me-aquinas",
   "title": "Grill Me Aquinas",
   "philosopher": "Thomas Aquinas",
-  "summary": "An Aquinas-derived active observer and passive learning skill built from https://github.com/onmax/skills/tree/main/skills/grill-with-docs for grill-me sessions, Sofia planning, and essence-aware handoffs.",
+  "summary": "An Aquinas-derived intent-clarification and learning skill built from https://github.com/onmax/skills/tree/main/skills/grill-with-docs for grill-me sessions, Sofia planning, and essence-aware handoffs.",
   "tags": [
     "aquinas",
-    "passive-learning",
+    "intent",
     "context"
   ],
   "status": "draft",
   "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/grill-me-aquinas",
   "installCommand": "npm run install:skill -- grill-me-aquinas",
   "references": [
-    "references/aquinas-essence-map.md",
-    "deep-research-report (5).md"
+    "references/aquinas-essence-map.md"
   ],
-  "version": "0.1.0"
+  "version": "0.2.0"
 }

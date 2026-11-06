@@ -13,16 +13,11 @@
   "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/pattern-code-wittgenstein",
   "installCommand": "npm run install:skill -- pattern-code-wittgenstein",
   "references": [
-    "references/foundation.md",
     "references/decision-rules.md",
     "references/output-format.md",
-    "references/evidence-schema.md",
-    "references/scoring-policy.md",
-    "references/bounded-contexts.md",
-    "references/tooling-notes.md",
     "references/developer-trace-contract.md"
   ],
-  "version": "0.1.0",
+  "version": "0.2.0",
   "developerTrace": {
     "status": "pilot",
     "mode": "opt-in",

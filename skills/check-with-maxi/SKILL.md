@@ -1,28 +1,29 @@
 ---
 name: check-with-maxi
-description: "Consult the local Maxi context as evidence before Sofia work. Use when the user explicitly asks to check, compare, or consult Maxi."
+description: "Consult the local Maxi context as evidence before Sofia work. Use when the user explicitly asks to check, compare, or consult Maxi, or to inspect Maxi context."
 ---
 
 # Check With Maxi
 
-Consult Maxi as a local context source before acting on Sofia work. Treat Maxi as evidence to inspect, not as an authority that overrides the user, repository facts, or higher-priority instructions.
+Consult Maxi as a context source. Treat it as evidence to inspect, not as an authority that overrides the user, repository facts, or higher-priority instructions.
 
 ## Degree Of Freedom
 
-`exploratory`: inspect the Maxi context folder broadly enough to find relevant evidence, then narrow to the files that matter for the current request. Do not write to the Maxi context, change Sofia files, or treat Maxi notes as binding project policy unless the user explicitly asks for that action and the evidence supports it.
+`exploratory`: inspect the Maxi context broadly enough to find relevant evidence, then narrow to what matters for the current request. Do not write to the Maxi context, change Sofia files, or treat Maxi notes as binding project policy unless the user explicitly asks and the evidence supports it.
 
 ## Workflow
 
-1. Verify that `C:\Users\garqu\OneDrive\COdex\Maxi-context` exists. If it is missing, say so and continue without Maxi evidence.
-2. Read `C:\Users\garqu\OneDrive\COdex\Maxi-context\SOFIA-HANDOFF.md` first. Treat it as the entry point and orientation file.
-3. Explore `C:\Users\garqu\OneDrive\COdex\Maxi-context` with file listing and targeted search before reading deeply. Prefer `rg --files` and `rg` terms from the user request.
-4. Prioritize likely context folders in this order when relevant: `indexes`, `registry`, `notes`, `repositories`, then `scripts`.
-5. Read only the files needed to answer the current request. Avoid bulk-loading large notes or repositories when targeted search is enough.
-6. Separate:
-   - `Maxi evidence`: what the Maxi context actually says or implies from files.
-   - `Sofia/repo evidence`: what the current World-of-Sofia repository shows.
-   - `Inference`: any bridge you are making between Maxi and Sofia.
-7. If Maxi context affects a plan, implementation, review, or skill update, hand the evidence to the relevant Sofia role skill instead of merging responsibilities.
+The Maxi context is expected at `C:\Users\garqu\OneDrive\COdex\Maxi-context`, with `SOFIA-HANDOFF.md` as its entry point. If that folder is missing, search OneDrive through the Executor MCP for `SOFIA-HANDOFF` when Executor is connected. If it cannot be found, say so in one line and continue without Maxi evidence.
+
+Read `SOFIA-HANDOFF.md` first, for orientation. Then use Glob and Grep with terms from the request before reading deeply, favoring `indexes`, `registry`, `notes`, `repositories`, and `scripts`, in that order, and read only the files the request needs, since those folders can be large.
+
+Keep three things separate, so a bridge you built is not mistaken for something Maxi says:
+
+- `Maxi evidence`: what the files actually say or imply.
+- `Sofia/repo evidence`: what the current repository shows.
+- `Inference`: any bridge you are making between them.
+
+If the evidence affects a plan, implementation, review, or skill update, give it to the relevant Sofia specialist rather than merging their responsibilities.
 
 ## Output
 
@@ -44,4 +45,4 @@ Open gaps:
 - [Only if important.]
 ```
 
-For implementation tasks, include the Maxi check briefly in the working context and continue with the requested work.
+For implementation tasks, include the check briefly in the working context and continue with the requested work.

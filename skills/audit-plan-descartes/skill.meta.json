@@ -3,7 +3,7 @@
   "slug": "audit-plan-descartes",
   "title": "Audit Plan Descartes",
   "philosopher": "Rene Descartes",
-  "summary": "A planning skill that separates verified facts, explicit constraints, and unresolved assumptions before committing to a plan.",
+  "summary": "A planning skill that separates verified facts, explicit constraints, and unresolved assumptions before committing to a plan or building on prior work.",
   "tags": [
     "planning",
     "verification",
@@ -15,5 +15,5 @@
   "references": [
     "references/foundation-ledger.md"
   ],
-  "version": "0.1.0"
+  "version": "0.2.0"
 }

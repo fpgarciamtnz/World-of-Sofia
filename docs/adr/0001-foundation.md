@@ -13,7 +13,7 @@ Use a root-script Node toolkit with:
 - `templates/skill` for new skill scaffolding
 - `docs` for architecture notes and evaluation cases
 
-Keep skill content in-repo and install skills into Codex through explicit sync commands.
+Keep skill content in-repo and install skills through explicit commands. The runtime is recorded in ADR 0003.
 
 ## Rationale
 

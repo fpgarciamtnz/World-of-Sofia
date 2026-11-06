@@ -25,20 +25,11 @@ Load [references/output-format.md](references/output-format.md) when you need th
 
 ## Plan Mode Behavior
 
-When this skill is invoked while the active collaboration mode is Plan Mode, switch from immediate review-and-rewrite to an evidence-first confirmation gate.
+When this skill runs in plan mode, confirm the intended meaning before drafting, because a rewrite built on the wrong intent wastes the review. Outside plan mode, review and rewrite directly.
 
-In Plan Mode:
+In plan mode, build a fuller evidence ledger first, tying each important inference to exact wording and separating `observed wording`, `inference`, `confidence`, and `why it matters`. State the meaning you believe the user wants to communicate, or list the plausible readings with confidence if there are several, and ask them to confirm or correct it. Hold the `Better version` until they have.
 
-1. Keep normal-mode behavior unchanged for every non-Plan Mode invocation.
-2. Produce a more thorough evidence ledger before interpreting the user's intended meaning.
-3. Tie each important inference to exact wording from the user's message, such as a phrase, sentence, or stated context cue.
-4. Separate `observed wording`, `inference`, `confidence`, and `why it matters`.
-5. State the intended meaning you believe the user wants to communicate.
-6. Ask the user to confirm, reject, or correct that intended meaning before drafting a better version.
-7. Do not include `Better version` yet unless the user has already confirmed or corrected the intended meaning in the same interaction.
-8. If there are multiple plausible intent chains, list them with confidence and ask the user which one is right before rewriting.
-
-Use this confirmation question shape in Plan Mode:
+Use this confirmation question shape in plan mode:
 
 `I understand you want to mean: "<concise intended meaning>". Is that right, or should I change the intent before drafting?`
 

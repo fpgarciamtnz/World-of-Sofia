@@ -3,7 +3,7 @@
   "slug": "check-with-maxi",
   "title": "Check With Maxi",
   "philosopher": "Maxi",
-  "summary": "Consults the local Maxi handoff and context folder before Sofia work.",
+  "summary": "Consults the Maxi handoff and context folder as evidence before Sofia work.",
   "tags": [
     "context",
     "handoff",
@@ -12,8 +12,6 @@
   "status": "alpha",
   "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/check-with-maxi",
   "installCommand": "npm run install:skill -- check-with-maxi",
-  "references": [
-    "references/notes.md"
-  ],
-  "version": "0.1.0"
+  "references": [],
+  "version": "0.2.0"
 }

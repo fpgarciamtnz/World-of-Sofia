@@ -1,133 +1,36 @@
 ---
 name: pattern-code-wittgenstein
-description: "Inspect nearby repository patterns before implementing code or choosing an abstraction. Use when precedent should decide whether to reuse, extend, extract, copy, or create."
+description: "Inspect nearby repository patterns before implementing code or choosing an abstraction. Use when precedent should decide whether to reuse, extend, extract, copy, or create, especially before adding a helper, module, or shared abstraction that may already exist."
 ---
 
 # Pattern Code Wittgenstein
 
-Use this skill before writing code when the real question is "what already exists here, and how close is it to the new work?"
+Use this before writing code, when the real question is "what already exists here, and how close is it to the new work?" The goal is an evidence-backed reuse decision that leaves the codebase simpler and less contradictory.
 
-Keep the skill practical. The goal is not philosophical commentary. The goal is an evidence-backed reuse decision that makes the resulting codebase simpler, cleaner, and less contradictory.
+This skill finds precedent. Once code has been written, staged, or prepared for PR review, use `synthesis-code-hegel` on the real diff. Wittgenstein asks what existing family the work should resemble; Hegel asks, now that the code changed, whether to synthesize, simplify, or leave it alone. If this search finds a likely duplicate or a wrong abstraction, say that Hegel should review the result before merge.
 
-Use this skill for precedent discovery and pattern-fit decisions, not for final review of an existing diff. Once code has been written, staged, or prepared for PR review, hand off to `synthesis-code-hegel`.
+## Finding Candidates
 
-This v2 prototype now has a real scout pipeline. It still uses conservative heuristics, but it no longer depends only on prose discipline.
+Restate the task in the repository's own language and name its bounded context: endpoint, parser, workflow, test helper, UI component, migration, background job, or domain service. Then search with Grep and Glob for identifiers, filenames, and adjacent modules, and read the closest candidates in full, along with their call sites and tests. Use `git log` when it matters how a pattern came to exist or whether it is being retired.
 
-## Workflow
+When Maxi context is in scope, run `check-with-maxi` and keep its evidence separate from current-repository evidence, since an external snapshot informs a decision without binding this repository.
 
-1. Restate the task in repository-native language.
-2. Identify the bounded context and the code "language-game":
-   - endpoint
-   - parser
-   - workflow
-   - test helper
-   - UI component
-   - migration
-   - background job
-   - domain service
-3. Search for candidate precedents in code, tests, naming, and nearby collaborators.
-4. Classify resemblance:
-   - structural
-   - behavioral
-   - semantic
-   - naming
-   - domain
-   - historical
-5. Build an evidence ledger.
-6. Choose one recommendation only:
-   - `reuse`
-   - `extend`
-   - `extract`
-   - `copy carefully`
-   - `create new`
-7. Return the result in the output format from [references/output-format.md](references/output-format.md).
+## Judging Resemblance
 
-## Handoff to Hegel
+Classify each match as structural, behavioral, semantic, naming, domain, or historical. Keep these in mind:
 
-- If real code changes already exist, switch from this skill to `synthesis-code-hegel`.
-- If the scout finds likely duplication, wrong abstraction, or contradiction risk, tell Codex to run `synthesis-code-hegel` on the actual diff before merge.
-- Keep the roles distinct:
-  - `pattern-code-wittgenstein` answers "what existing code family should this work resemble?"
-  - `synthesis-code-hegel` answers "now that the code changed, should it be synthesized, simplified, merged, split, or left alone?"
-
-## Prototype pipeline
-
-Use the staged scout when you need stronger evidence than plain search:
-
-1. Stage 1 lexical retrieval via [scripts/collect-repo-evidence.mjs](scripts/collect-repo-evidence.mjs)
-2. Stage 2 structural verification via [scripts/run-pattern-scout.mjs](scripts/run-pattern-scout.mjs)
-3. Stage 3 bounded-context filtering using [references/bounded-contexts.md](references/bounded-contexts.md)
-4. Stage 4 recommendation scoring using [references/scoring-policy.md](references/scoring-policy.md)
-5. Stage 5 audited report generation in the standard output format
-
-Load [references/evidence-schema.md](references/evidence-schema.md) when you need the exact candidate, evidence, and decision records behind the report.
-
-## Search Discipline
-
-- Start with repo-native search: identifiers, filenames, tests, and adjacent modules.
-- Search tests alongside production code. A pattern without tests is weaker than it looks.
-- Prefer public evidence over intuition: interfaces, call sites, fixtures, schemas, assertions, and repeated collaborator shapes.
-- Treat naming-only similarity as weak until behavior or domain evidence confirms it.
-- Penalize cross-context matches that reuse the same word with different invariants.
-
-Use [scripts/collect-repo-evidence.mjs](scripts/collect-repo-evidence.mjs) when you want a fast sweep over likely files and matching lines for one or more search terms.
-
-Use [scripts/run-pattern-scout.mjs](scripts/run-pattern-scout.mjs) when you want the prototype to emit structured candidates, evidence, recommendation, risks, and confidence.
-
-Use [scripts/seed-evidence-ledger.mjs](scripts/seed-evidence-ledger.mjs) only when you want a ready-to-fill markdown skeleton without the full prototype analysis.
-
-Prototype limits:
-
-- Structural evidence is strongest for TypeScript and JavaScript modules.
-- Domain evidence may still be inferred from repository paths and context maps.
-- Historical evidence exists in the schema, but is not populated yet.
-
-## Decision Rules
-
-Load [references/decision-rules.md](references/decision-rules.md) whenever the correct action is unclear.
-Load [references/scoring-policy.md](references/scoring-policy.md) when you need to understand how the prototype weighs signals.
-
-Default posture:
-
-- Prefer `reuse` only when context, behavior, and tests converge.
-- Prefer `extend` when the family is stable and the new work is a variant.
-- Prefer `extract` only after repeated concrete precedents reveal a stable interface worth hiding behind a deeper module.
-- Prefer `copy carefully` when the precedent is useful but the abstraction is not yet stable.
-- Prefer `create new` when the old family would force a wrong abstraction or mix bounded contexts.
-
-## Wittgensteinian Guardrails
-
-Load [references/foundation.md](references/foundation.md) if you need to explain why resemblance is only a starting point.
-
-Apply these guardrails:
-
-- Family resemblance is for candidate generation, not proof.
-- Meaning comes from use, not from token overlap.
-- Public criteria matter more than private hunches.
-- A shared word does not guarantee a shared concept.
+- Family resemblance generates candidates; it does not prove the code should be shared.
+- Meaning comes from use, so call sites, tests, schemas, and observable effects outweigh shared words.
+- A shared word does not guarantee a shared concept, and a match across bounded contexts is suspect even when the code looks alike.
+- A pattern without tests is weaker than it looks.
 - Duplication can be cheaper than the wrong abstraction.
 
-Use [references/tooling-notes.md](references/tooling-notes.md) for the current analyzer choice and what the prototype still does not attempt.
+Choose one recommendation: `reuse`, `extend`, `extract`, `copy carefully`, or `create new`. Prefer `reuse` only when context, behavior, and tests converge, and `extract` only after repeated concrete precedents reveal a stable interface. Read [references/decision-rules.md](references/decision-rules.md) when the choice is close.
+
+## Output
+
+Use the structure in [references/output-format.md](references/output-format.md), since Sofia and Hegel consume it as a handoff. If confidence is low, say what evidence would upgrade the decision. The skill is finished at the recommendation, with implementation guidance and the tests to mirror; continue into implementation only if the user asked for it.
 
 ## Developer Trace Mode
 
-Activate developer trace mode only when the user asks for `developer mode`, `trace mode`, `impact evidence`, `show traces`, or equivalent visibility into this skill's effect.
-
-When active, keep the normal required output intact and append a `Skill Impact Trace` section after it. Use the field contract in [references/developer-trace-contract.md](references/developer-trace-contract.md). The trace must show what this skill actually changed in the answer: which instructions shaped the result, which resources or tools were used, what observed evidence was gathered, and what decision would be weaker without the skill.
-
-Do not claim the trace proves runtime effectiveness. Treat it as response-level evidence for this invocation.
-
-## Required Output
-
-Always return these sections:
-
-1. Task summary
-2. Candidate code families
-3. Evidence of resemblance
-4. False-similarity risks
-5. Recommendation
-6. Implementation guidance
-7. Tests to mirror or add
-8. Confidence and missing evidence
-
-If confidence is low, say what evidence would upgrade the decision.
+Activate this only when the user asks for `developer mode`, `trace mode`, `impact evidence`, `show traces`, or equivalent visibility into this skill's effect. Keep the normal output and append a `Skill Impact Trace`, using [references/developer-trace-contract.md](references/developer-trace-contract.md). It is response-level evidence for this invocation, not proof of runtime effectiveness.

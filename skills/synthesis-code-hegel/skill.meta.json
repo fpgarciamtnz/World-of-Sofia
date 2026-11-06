@@ -4,17 +4,32 @@
   "title": "Synthesis Code Hegel",
   "philosopher": "Georg Wilhelm Friedrich Hegel",
   "summary": "A post-implementation review skill that decides whether a real code change should be left alone, simplified, merged, split, or refactored.",
-  "tags": ["review", "refactoring", "synthesis"],
+  "tags": [
+    "review",
+    "refactoring",
+    "synthesis"
+  ],
   "status": "alpha",
   "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/synthesis-code-hegel",
   "installCommand": "npm run install:skill -- synthesis-code-hegel",
-  "references": ["references/hegel-review-foundation.md", "references/developer-trace-contract.md"],
-  "version": "0.1.0",
+  "references": [
+    "references/developer-trace-contract.md"
+  ],
+  "version": "0.2.0",
   "developerTrace": {
     "status": "pilot",
     "mode": "opt-in",
-    "surfaces": ["response"],
-    "triggers": ["developer mode", "trace mode", "impact evidence", "show traces", "skill trace", "Hegel tracer"],
+    "surfaces": [
+      "response"
+    ],
+    "triggers": [
+      "developer mode",
+      "trace mode",
+      "impact evidence",
+      "show traces",
+      "skill trace",
+      "Hegel tracer"
+    ],
     "contract": "references/developer-trace-contract.md"
   }
 }

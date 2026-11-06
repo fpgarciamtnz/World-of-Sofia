@@ -8,17 +8,15 @@ description: "Simplify or rebuild when added structure may not earn its cost. Us
 Use this skill to run a subtractive review before adding more structure. Translate the Marie Kondo-inspired habit into a practical engineering test: every surviving thing must earn its presence.
 
 Do not treat "spark joy" literally. Treat it as `earned presence`: a thing stays when its value to the user, system, workflow, codebase, project, or intended effect justifies its attention, cognitive, maintenance, coordination, emotional, trust, testing, migration, opportunity, or future-change cost.
-Measuring this mean being able to evaluate the role of the item and compare with the workflown, attention spam structure of the desing.
+Measuring this means being able to evaluate the role of the item and compare it with the workflow and attention-span structure of the design.
 
 ## Degree Of Freedom
 
 This skill is `exploratory`: surface viable subtractive options before narrowing, challenge accidental clutter, and test deletion risks. Still pause before destructive edits, public API removal, broad rewrites, data loss, or changes that need usage, legal, accessibility, compliance, migration, security, or operational evidence. This skill is meant to change and review UI/UX elements.
 
-
 ## Core Principle
 
-The goal when called should be to chanllenge all items on display and find arguments to avoid deleting them. Conclusion of the Earned Presence Test, must be used to determinate if must be  removed, demoted, grouped, delayed, progressively disclosed, simplified, deprecated, or replaced
-
+The goal when called is to challenge all items on display and find arguments to avoid deleting them. The conclusion of the Earned Presence Test determines whether each one is removed, demoted, grouped, delayed, progressively disclosed, simplified, deprecated, or replaced.
 
 Load [references/earned-presence-foundation.md](references/earned-presence-foundation.md) when deeper doctrine, danger checks, bridge rules, or examples are needed.
 
@@ -32,21 +30,21 @@ For every candidate element, section, feature, code path, abstraction, copy bloc
 4. When is it needed?
 5. What value does it create?
 6. What cost does it create?
-7. How this affect the User workflow, attention process?
-7. What would break, weaken, or become unclear if it disappeared?
-8. Is the value still necessary now?
-9. Can the same value be preserved more cheaply?
-10. Should the action be `keep`, `preserve`, `demote`, `group`, `delay`, `progressively disclose`, `simplify`, `rename`, `move`, `split`, `merge`, `inline`, `deprecate`, `delete`, `replace`, `rebuild simpler`, `leave as-is`, or `investigate further`?
-11. What evidence supports that action?
-12. What confidence level applies?
-13. What re-check confirms the decision was safe?
+7. How does this affect the user's workflow and attention process?
+8. What would break, weaken, or become unclear if it disappeared?
+9. Is the value still necessary now?
+10. Can the same value be preserved more cheaply?
+11. Should the action be `keep`, `preserve`, `demote`, `group`, `delay`, `progressively disclose`, `simplify`, `rename`, `move`, `split`, `merge`, `inline`, `deprecate`, `delete`, `replace`, `rebuild simpler`, `leave as-is`, or `investigate further`?
+12. What evidence supports that action?
+13. What confidence level applies?
+14. What re-check confirms the decision was safe?
 
 ## Workflow
 
 1. Identify the artifact and intended purpose.
 2. List only candidate items whose presence, weight, location, or complexity is plausibly questionable.
 3. Separate value from cost for each candidate.
-4. Asses that the place and display matches the role.
+4. Assess whether the place and display match the role.
 5. Prefer reversible actions when confidence is incomplete: demote, group, delay, progressively disclose, deprecate, or investigate further.
 6. Recommend `delete` only when evidence is strong and the re-check is clear.
 7. Recommend `rebuild simpler` only when patching the old structure creates more risk than a bounded replacement.

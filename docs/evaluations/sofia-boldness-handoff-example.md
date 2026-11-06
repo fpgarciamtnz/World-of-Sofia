@@ -5,7 +5,7 @@
 User request:
 
 ```text
-$sofia-coordinatior
+/sofia-coordinatior
 This skill feels too safe. I want to explore the limits of AI and prefer the final design, even if it breaks old assumptions.
 ```
 
