@@ -7,6 +7,14 @@ The skills help Claude make clearer plans, orient inside a codebase before editi
 ## Install
 
 ```bash
+npx skills add fpgarciamtnz/World-of-Sofia --skill '*' -a claude-code -g
+```
+
+This uses the [skills CLI](https://github.com/vercel-labs/skills) to install every skill into `~/.claude/skills`, so Sofia can reach all of her specialists. Leave out the flags to choose the skills, agents, and scope yourself, and run `npx skills update -g` to pick up new versions.
+
+To install from a clone instead, for example while editing the skills:
+
+```bash
 npm install
 npm run check
 npm run install:skills
