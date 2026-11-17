@@ -20,12 +20,12 @@ All nine skill packages were inventoried. Their `SKILL.md` files, package `READM
 | `synthesis-code-hegel` | Reviewed | Reviewed | Reviewed | Complete | Workflow and foundation reference are present. Foundation contains prototype `TODO` notes. |
 | `ui-attention-ciceron` | Reviewed | Reviewed | N/A | Complete | UI trigger, evidence model, severity, handoff, and output contract are present. |
 
-The table records the 2026-09-14 inventory. The 2026-11-06 migration in the log below rewrote these packages for Claude Code, and moved or removed some of the resources it lists.
+The table records the 2026-09-14 inventory. The 2026-11-06 migration in the log below rewrote these packages for Claude Code, and moved or removed some of the resources it lists. The 2026-11-17 restructure removed `sofia-coordinatior` and merged `pattern-code-wittgenstein` and `ui-attention-ciceron` into other skills.
 
 ## Findings to follow up
 
 - `docs/research/` holds the three long research reports, moved out of the skill packages. `hegel-dialectical-reviewer.md` still contains prototype `TODO` comments for parser integration, retrieval, graph analysis, and coverage/ADR collection, which describe future work rather than runtime instructions. Review these reports only when updating the underlying doctrine.
-- The package name `sofia-coordinatior` is consistently spelled this way in the repository. Consider a coordinated rename only if the spelling is intended to change; otherwise preserve it to avoid breaking references.
+- `docs/evaluations/magallanes-descartes-pairing-example.md` has not been run yet. Run it in a fresh session with both skills installed, and record the result here.
 
 ## Review log
 
@@ -33,6 +33,8 @@ The table records the 2026-09-14 inventory. The 2026-11-06 migration in the log 
 |---|---|---|---|
 | 2026-09-14 | Codex | All Markdown files under `skills/` | Inventory and structural review completed; follow-ups recorded above. |
 | 2026-11-06 | Claude | All nine skill packages, tooling, and docs | Migrated to Claude Code as the runtime; see `docs/adr/0003-claude-code-runtime.md`. Added `auditar-pec` and removed `check-with-maxi`. |
+| 2026-11-17 | Claude | All skill packages, tooling, and docs | Removed the router and all routing sections; merged Wittgenstein into Hegel and UI Attention into Communication Ciceron; added `boil-the-ocean-magallanes`, a destination-first skill that keeps its limits, paired with Descartes. Seven skills remain; see `docs/adr/0004-few-coordinated-skills.md`. |
+| 2026-11-17 | Claude | `audit-plan-descartes` | Added a use: right after a drop is created on Drop, read it back and verify it against the rules of the skill that made it, since Drop's skills each set their own. The method is in `references/drop-verification.md`. |
 
 ## Next review checklist
 

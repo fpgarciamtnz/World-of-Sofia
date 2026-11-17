@@ -1,12 +1,10 @@
 # Earned Presence Foundation
 
-Use this reference when a subtractive review needs deeper rationale, bridge rules, or danger checks.
+Use this reference when a subtractive review needs deeper rationale, UI or code specifics, or danger checks.
 
 ## Summary Judgment
 
-The skill should be independent and self-contained, with lightweight bridge hooks from Sofia, UI Attention Ciceron, and Synthesis Code Hegel.
-
-The independent skill keeps subtractive judgment reusable across UI, code, docs, prompts, workflows, features, meetings, dashboards, onboarding, architecture, and settings. The bridge hooks let existing specialists ask the subtractive question without absorbing a separate responsibility.
+The skill is independent and self-contained. Subtractive judgment applies across UI, code, docs, prompts, workflows, features, meetings, dashboards, onboarding, architecture, and settings, so it lives in one skill instead of being repeated inside each kind of review.
 
 ## Problem
 
@@ -187,13 +185,11 @@ Recommend `rebuild simpler` only when most of these are true:
 
 Never recommend rebuilding merely because the current artifact is ugly, unfashionable, or emotionally unsatisfying.
 
-## UI Attention Ciceron Bridge
+## UI
 
-UI Attention Ciceron asks: where does attention go, and does it support the intended UI effect?
+An attention review asks where attention goes and whether it supports the intended effect. The earned-presence question is narrower: which attention peaks, sections, words, or controls do not earn their attention cost?
 
-Earned Presence Kondo asks: which attention peaks, sections, words, or controls do not earn their attention cost?
-
-Use this bridge when:
+Ask it when:
 
 - a competing CTA distracts from the primary action;
 - a decorative or loud element outranks the real task;
@@ -210,13 +206,11 @@ UI safety:
 - Do not delete legal or compliance content because it is visually boring.
 - Consider progressive disclosure before deletion.
 
-## Synthesis Code Hegel Bridge
+## Code
 
-Synthesis Code Hegel asks: does this real code change reveal a deeper tension in the existing system?
+A code review asks whether a real change reveals a deeper tension in the existing system. The earned-presence question is which code, abstraction, option, branch, file, or path no longer earns its maintenance cost.
 
-Earned Presence Kondo asks: which code, abstraction, option, branch, file, or path no longer earns its maintenance cost?
-
-Use this bridge when Hegel finds:
+Ask it when a real change shows:
 
 - harmful duplication;
 - wrong abstraction;
@@ -235,30 +229,10 @@ Code safety:
 - Prefer `deprecate` before `delete` when users, callers, or integrations may exist.
 - If evidence is weak, recommend `leave as-is` or `investigate further`.
 
-## Sofia Routing
-
-Use this skill independently when a user asks to simplify, declutter, reduce options, remove old structure, reduce complexity, or decide whether something deserves to stay.
-
-Also use it when Sofia or Aquinas infers a radical rebuild subtext: the user wants to play, break compatibility, ignore the old shape, stop preserving a stale structure, or build a new version without compatibility inertia.
-
-Use it as a bridge when:
-
-- Ciceron finds attention conflicts that may be solved by reducing competing UI elements;
-- Hegel finds real code tension where deletion, deprecation, inlining, replacement, or rebuild is plausible;
-- Sofia is about to add more structure and needs to ask what can disappear first.
-- Aquinas detects that the literal wording is mild but the intended request is destructive/reconstructive.
-
-Recommended routes:
-
-- UI: `Sofia -> UI Attention Ciceron -> Earned Presence Kondo -> implementation adjustment -> UI Ciceron re-review -> Synthesis Code Hegel -> validation`
-- Code: `Sofia -> Synthesis Code Hegel -> Earned Presence Kondo when subtraction is plausible -> tests/migration -> final validation`
-- Independent: `User asks "Can we simplify this?" -> Sofia -> Earned Presence Kondo -> specialist handoff if the artifact is UI or code`
-- Radical rebuild: `Sofia -> Grill Me Aquinas intent handoff -> Earned Presence Kondo destroy/preserve/rebuild judgment -> pattern-code-wittgenstein or implementation -> validation`
-
 ## Confidence Model
 
 - `High`: multiple evidence signals agree; removal or demotion has a clear safe path; value and cost are obvious.
 - `Medium`: evidence is useful but incomplete; recommend reversible changes, demotion, grouping, delay, progressive disclosure, or deprecation before deletion.
-- `Low`: intent, usage, references, or risk is unclear; recommend keep, investigate, or specialist review.
+- `Low`: intent, usage, references, or risk is unclear; recommend keep or investigate, and name the evidence that would settle it.
 
 Low confidence should almost never recommend direct deletion.

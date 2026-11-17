@@ -44,7 +44,8 @@ const STALE_VOCABULARY = [
 ];
 
 // Endings of names that once existed or are easy to misspell, on top of those derived from real slugs.
-const RETIRED_SKILL_ENDINGS = ["coordinator", "kahneman", "maxi"];
+// `coordinatior` and `wittgenstein` were removed in ADR 0004.
+const RETIRED_SKILL_ENDINGS = ["coordinator", "coordinatior", "kahneman", "maxi", "wittgenstein"];
 
 const README_OPENINGS = [
   { pattern: /^(?:# [^\r\n]+\r?\n\s*)?Philosopher idea:[ \t]*\S/, label: "Philosopher idea:" },

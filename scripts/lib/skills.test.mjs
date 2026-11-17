@@ -25,13 +25,11 @@ describe("skill validation helpers", () => {
     expect(skillsData.skills.map((skill) => skill.slug).sort()).toEqual([
       "audit-plan-descartes",
       "auditar-pec",
+      "boil-the-ocean-magallanes",
       "communication-review-ciceron",
       "earned-presence-kondo",
       "grill-me-aquinas",
-      "pattern-code-wittgenstein",
-      "sofia-coordinatior",
-      "synthesis-code-hegel",
-      "ui-attention-ciceron"
+      "synthesis-code-hegel"
     ]);
   });
 
@@ -42,33 +40,7 @@ describe("skill validation helpers", () => {
   });
 
   it("preserves opt-in developer trace metadata", async () => {
-    const sofia = await loadSkillRecord("sofia-coordinatior");
-    const wittgenstein = await loadSkillRecord("pattern-code-wittgenstein");
     const hegel = await loadSkillRecord("synthesis-code-hegel");
-
-    expect(sofia.developerTrace).toEqual({
-      status: "pilot",
-      mode: "opt-in",
-      surfaces: ["response"],
-      triggers: [
-        "developer mode",
-        "trace mode",
-        "impact evidence",
-        "show traces",
-        "skill trace",
-        "Sofia trace",
-        "skill contributions"
-      ],
-      contract: "references/developer-trace-contract.md"
-    });
-
-    expect(wittgenstein.developerTrace).toEqual({
-      status: "pilot",
-      mode: "opt-in",
-      surfaces: ["response"],
-      triggers: ["developer mode", "trace mode", "impact evidence", "show traces"],
-      contract: "references/developer-trace-contract.md"
-    });
 
     expect(hegel.developerTrace).toEqual({
       status: "pilot",
@@ -125,7 +97,7 @@ describe("skill lint rules", () => {
   });
 
   it("rejects a mention of a retired skill", () => {
-    const known = new Set(["sofia-coordinatior"]);
+    const known = new Set(["audit-plan-descartes"]);
 
     expect(findUnknownSiblingSkills("Run `check-with-maxi` first.", known)).toEqual(["check-with-maxi"]);
   });
@@ -149,10 +121,17 @@ describe("skill lint rules", () => {
     expect(findUnknownSiblingSkills("Use `ethics-reviw-kant`.", known)).toEqual(["ethics-reviw-kant"]);
   });
 
-  it("catches the natural misspelling of the coordinator's slug", () => {
-    const known = new Set(["sofia-coordinatior"]);
+  it("rejects mentions of the skills removed in ADR 0004, including the router's misspelling", () => {
+    const known = new Set(["synthesis-code-hegel", "communication-review-ciceron"]);
+    const content =
+      "Ask `sofia-coordinatior` or `sofia-coordinator`, then `pattern-code-wittgenstein` and `ui-attention-ciceron`.";
 
-    expect(findUnknownSiblingSkills("Ask `sofia-coordinator`.", known)).toEqual(["sofia-coordinator"]);
+    expect(findUnknownSiblingSkills(content, known)).toEqual([
+      "sofia-coordinatior",
+      "sofia-coordinator",
+      "pattern-code-wittgenstein",
+      "ui-attention-ciceron"
+    ]);
   });
 
   it("accepts a README that opens with the contract after an optional title", () => {

@@ -1,15 +1,15 @@
 # Synthesis Code Hegel
 
-Philosopher idea: Hegel's development through internal tension becomes a review habit: preserve what still works while changing what no longer fits.
+Philosopher idea: Hegel's development through internal tension becomes a code habit: before a change, set the new need against the patterns that already exist, and after it, preserve what still works while changing what no longer fits.
 
-Practical use: Use when code has changed and needs judgment before merge. It inspects the real diff and the code around it, then recommends whether the change should be left alone, renamed, extracted, merged, split, inlined, deprecated, or deleted.
+Practical use: Use before writing code, when precedent should decide whether to reuse, extend, extract, copy carefully, or create new, and after code changes, when a real diff needs judgment before merge. It inspects nearby code, call sites, tests, history, and the diff, then recommends one action with its evidence and the tests to mirror.
 
 ## What it does
 
-- Starts from the actual diff instead of abstract design intent.
-- Looks for real tensions such as harmful duplication, boundary drift, or a wrong abstraction.
-- Recommends the smallest behavior-preserving cleanup when one is justified.
-- Says `leave as-is` when the evidence does not support synthesis.
+- Before code: finds the nearest code family and judges resemblance by use, so call sites, tests, and effects outweigh shared names. This is Wittgenstein's meaning-through-use, carried over from the former Pattern Code Wittgenstein skill.
+- After code: starts from the actual diff, looks for real tensions such as harmful duplication, boundary drift, or a wrong abstraction, and recommends the smallest behavior-preserving cleanup.
+- Weighs whether a candidate for deletion still earns its cost, checks references first, and prefers deprecation where callers may exist.
+- Says `leave as-is` when the evidence does not support a change.
 
 ## Distribution boundary
 

@@ -1,15 +1,19 @@
 ---
 name: communication-review-ciceron
-description: "Review a message for intent, audience uptake, tone, emotional impact, clarity, and rewrite options. Use when communication may be misread or needs direct feedback."
+description: "Review how a message or a rendered screen lands with its audience: intent, uptake, tone, attention, and the smallest correction. Use when a message, proposal, or copy may be misread or needs direct feedback, at final validation of UI-changing work, or when reviewing a page, screenshot, or mockup."
 ---
 
 # Communication Review Ciceron
 
-Use this skill to review a message as a purposeful communicative act. The goal is to help the user express themselves more clearly, understand how their words may land, and improve the message without hiding necessary firmness.
+Judge a message or a screen by what it does to its audience, not only by what it says or shows. A message is a purposeful act; a screen argues, through hierarchy, contrast, position, motion, and wording, for what matters first. In both, keep what is observed apart from what is inferred and from what you advise, and say how confident you are.
+
+## Messages
+
+Review a message as a purposeful communicative act. The goal is to help the user express themselves more clearly, understand how their words may land, and improve the message without hiding necessary firmness.
 
 Keep the review practical. Do not lecture about rhetoric unless the user asks. Do not claim certainty about private intent. Separate observed wording, inferred intent, likely audience uptake, and revision advice.
 
-## Core Workflow
+### Core Workflow
 
 1. Identify the message and any stated context, audience, relationship, channel, or desired outcome.
 2. Close-read the literal wording before interpreting intent.
@@ -23,7 +27,7 @@ Keep the review practical. Do not lecture about rhetoric unless the user asks. D
 Load [references/rhetorical-framework.md](references/rhetorical-framework.md) when the user asks for deeper reasoning, scoring, theory, or a more careful multi-pass review.
 Load [references/output-format.md](references/output-format.md) when you need the standard report shape or examples.
 
-## Plan Mode Behavior
+### Plan Mode Behavior
 
 When this skill runs in plan mode, confirm the intended meaning before drafting, because a rewrite built on the wrong intent wastes the review. Outside plan mode, review and rewrite directly.
 
@@ -35,7 +39,7 @@ Use this confirmation question shape in plan mode:
 
 After the user confirms or corrects the intended meaning, draft the revised message from the confirmed intent and explain which wording problems the draft fixes.
 
-## Review Rules
+### Review Rules
 
 - Treat intention as an inference, not a fact. Name confidence when intent is ambiguous.
 - Quote or paraphrase the exact wording that supports each important claim.
@@ -46,7 +50,7 @@ After the user confirms or corrects the intended meaning, draft the revised mess
 - Prefer one strong rewrite over many cosmetic variants. Add variants only when the user needs a firmer, warmer, shorter, or more formal option.
 - If key context is missing, proceed with the best-supported reading and label the missing context that could change the review.
 
-## Default Output
+### Default Output
 
 Use this structure unless the user asks for a different format:
 
@@ -59,7 +63,7 @@ Use this structure unless the user asks for a different format:
 
 In Plan Mode, use the Plan Mode template in [references/output-format.md](references/output-format.md) instead of the default output, and pause before drafting.
 
-## Scoring
+### Scoring
 
 Only score when the user asks, or when a compact score will make the feedback easier to act on. Use dimensions instead of a single mystical number:
 
@@ -72,3 +76,11 @@ Only score when the user asks, or when a compact score will make the feedback ea
 - Style clarity
 
 Explain any low score in one sentence tied to wording, not taste.
+
+## Rendered UI
+
+Review a screen at final validation of UI-changing work, including visible copy, CTA labels, hierarchy, styling, animation, imagery, spacing, and responsive changes, or whenever the user asks about a page, screenshot, or mockup. At final validation there is no need to ask whether to run it, and small issues are reported as optional polish.
+
+Review the rendered result, not the source or the design intent. Use a screenshot or mockup you already have. Open a browser only when the user asked for this review or for browser work, and close any tab you opened; otherwise say the rendered review is pending and offer it in one line, rather than claiming a review of code you did not see rendered.
+
+Read [references/rendered-ui.md](references/rendered-ui.md) for the method: the intended effect, the two-pass attention read, the evidence matrix, severity, the fix, and the output.

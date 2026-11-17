@@ -8,8 +8,7 @@
     "subtraction",
     "review",
     "simplicity",
-    "rebuild",
-    "coordination"
+    "rebuild"
   ],
   "status": "draft",
   "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/earned-presence-kondo",
@@ -17,5 +16,5 @@
   "references": [
     "references/earned-presence-foundation.md"
   ],
-  "version": "0.2.0"
+  "version": "0.3.0"
 }

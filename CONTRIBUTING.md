@@ -53,7 +53,7 @@ Optional `developerTrace` metadata is allowed when the skill has an opt-in respo
 - a file under `references/` is not registered in the manifest;
 - the `SKILL.md` name does not match its folder, the description is missing, not on one line, or over 400 characters, or the file is over 500 lines;
 - the README does not open with `Philosopher idea:` after an optional title, or does not state `Practical use:`;
-- a bundled document uses vocabulary from the previous runtime, or mentions a sibling skill that does not exist.
+- a bundled document uses vocabulary from the previous runtime, or mentions a sibling skill that does not exist or was removed, such as the former `sofia-coordinatior`.
 
 ## Distribution Boundary
 

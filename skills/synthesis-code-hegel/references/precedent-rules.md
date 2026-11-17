@@ -1,6 +1,6 @@
-# Decision Rules
+# Precedent Rules
 
-Use these rules after building the evidence ledger.
+Use these rules before code is written, once the candidate families and their evidence are on the table, when the choice between them is close.
 
 ## `reuse`
 

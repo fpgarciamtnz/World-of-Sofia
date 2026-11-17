@@ -1,5 +1,7 @@
 # Pattern-Family Planner Worked Case
 
+> Historical record. This case ran against `pattern-code-wittgenstein` before ADR 0004 merged that skill into `synthesis-code-hegel`, where the same precedent method is now the "Before Code" section. File paths below are as they were then.
+
 ## Purpose
 
 This document records one worked-case evaluation for `pattern-code-wittgenstein`.

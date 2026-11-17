@@ -18,7 +18,7 @@ This skill is `exploratory`: surface viable subtractive options before narrowing
 
 The goal when called is to challenge all items on display and find arguments to avoid deleting them. The conclusion of the Earned Presence Test determines whether each one is removed, demoted, grouped, delayed, progressively disclosed, simplified, deprecated, or replaced.
 
-Load [references/earned-presence-foundation.md](references/earned-presence-foundation.md) when deeper doctrine, danger checks, bridge rules, or examples are needed.
+Load [references/earned-presence-foundation.md](references/earned-presence-foundation.md) when deeper doctrine, danger checks, UI or code specifics, or examples are needed.
 
 ## Earned Presence Test
 
@@ -49,7 +49,7 @@ For every candidate element, section, feature, code path, abstraction, copy bloc
 6. Recommend `delete` only when evidence is strong and the re-check is clear.
 7. Recommend `rebuild simpler` only when patching the old structure creates more risk than a bounded replacement.
 8. For radical rebuild requests, split the judgment into `destroy`, `preserve`, and `rebuild simpler`: what old structure can be erased, what essential value must survive, and what new form should carry that value more cheaply.
-9. Hand off to the right specialist when the artifact needs rendered UI evidence, real diff evidence, code pattern discovery, or planning audit.
+9. Judge from the artifact itself: the rendered screen for UI, the real diff and its references for code, and the stated purpose for docs and workflows. When that evidence is missing, say what is missing instead of judging without it.
 
 ## Safety Rules
 
@@ -65,13 +65,6 @@ For every candidate element, section, feature, code path, abstraction, copy bloc
 - `High`: multiple evidence signals agree; the action has a safe path; value and cost are clear.
 - `Medium`: evidence is useful but incomplete; prefer reversible demotion, grouping, delay, progressive disclosure, or deprecation.
 - `Low`: intent, usage, references, risk, or ownership is unclear; do not recommend direct deletion.
-
-## Sofia Bridges
-
-- With `ui-attention-ciceron`: when attention problems may be solved by reducing competing elements before making the primary element louder, review the costly peaks and recommend keep, demote, group, delay, simplify, or remove.
-- With `synthesis-code-hegel`: when a real diff suggests deletion, deprecation, inlining, replacement, or rebuilding simpler, run the Earned Presence Test and return evidence for Hegel's behavior-preserving review.
-- With `grill-me-aquinas`: when Aquinas detects the user means "be radical", "break the old shape", "play", "start over", "do not preserve compatibility", or "build the new thing without being trapped by the current form", receive the intent handoff and decide what to destroy, preserve, and rebuild simpler.
-- With Sofia routing: use this skill independently when the user asks to simplify, declutter, reduce options, remove old structure, start over, break compatibility, build a new version, or ask "why is this here?"
 
 ## Required Output
 
@@ -90,4 +83,3 @@ Use only sections with real findings:
 11. `Risks`
 12. `Re-check`
 13. `Confidence`
-14. `Sofia Handoff`

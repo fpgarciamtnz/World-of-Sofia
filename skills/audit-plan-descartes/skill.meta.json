@@ -3,17 +3,20 @@
   "slug": "audit-plan-descartes",
   "title": "Audit Plan Descartes",
   "philosopher": "Rene Descartes",
-  "summary": "A planning skill that separates verified facts, explicit constraints, and unresolved assumptions before committing to a plan or building on prior work.",
+  "summary": "A planning skill that separates verified facts, explicit constraints, and unresolved assumptions before committing to a plan or building on prior work, audits the limits and landfall of a Boil the Ocean Magallanes voyage, and reads a newly created drop back from Drop to verify it against the skill that made it.",
   "tags": [
     "planning",
     "verification",
-    "decision-making"
+    "decision-making",
+    "scope",
+    "drop"
   ],
   "status": "alpha",
   "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/audit-plan-descartes",
   "installCommand": "npm run install:skill -- audit-plan-descartes",
   "references": [
+    "references/drop-verification.md",
     "references/foundation-ledger.md"
   ],
-  "version": "0.2.0"
+  "version": "0.4.0"
 }

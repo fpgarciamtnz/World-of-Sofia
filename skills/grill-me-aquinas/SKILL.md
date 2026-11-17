@@ -29,7 +29,7 @@ Challenge vague, overloaded, or conflicting terms immediately, preferring the ca
 
 If the user rejects long question lists, answers several branches at once, or asks to stop choosing from lists, switch to decision-led mode: state the recommended direction in a sentence or two, name the single decision that would most change it, and ask only if evidence cannot answer.
 
-If the wording is mild but the subtext is "be radical", "play", "break compatibility", or "start over", hand off to `earned-presence-kondo`, separating what may be destroyed from what must survive.
+If the wording is mild but the subtext is "be radical", "play", "break compatibility", or "start over", record that subtext as what was meant, and separate what may be destroyed from what must survive, since that split is what a rebuild needs first.
 
 ## Holding Meaning Open
 
@@ -70,12 +70,12 @@ When the user says the skill learned wrong, acts from old memory, or ignores new
 
 ## Handoffs
 
-Give the next skill what it must preserve, avoid, or treat as unresolved, with evidence paths, and leave out the rest.
+Give the next step what it must preserve, avoid, or treat as unresolved, with evidence paths, and leave out the rest.
 
-- `audit-plan-descartes`: facts and constraints with direct support; unresolved assumptions and the evidence that would upgrade them; canonical terms; essence and project laws to preserve; accidents that should not become constraints; open potencies; places where the literal wording and intended essence diverge; non-goals and pause conditions.
-- `pattern-code-wittgenstein`: a repository-native task summary, bounded context, canonical terms and avoided aliases, essence to preserve, accidental style that should not drive abstraction, and false-similarity risks from reused words.
-- `earned-presence-kondo`: the literal rebuild language and inferred subtext; value that must survive; forms that deserve no default protection; safety constraints; and whether the user wants playful exploration, a bold rebuild, or actual destructive implementation.
-- Review skills: the said, meant, and happened record, and whether the diff preserved the essence or only matched the surface wording.
+- For a plan audit with `audit-plan-descartes`: facts and constraints with direct support; unresolved assumptions and the evidence that would upgrade them; canonical terms; essence and project laws to preserve; accidents that should not become constraints; open potencies; places where the literal wording and intended essence diverge; non-goals and pause conditions.
+- For code: the bounded context, canonical terms and the aliases to avoid, and the risk that a reused word hides a different concept.
+- For a rebuild: the value that must survive, the forms that deserve no default protection, and whether the user wants playful exploration, a bold rebuild, or actual destructive implementation.
+- For a review: whether the change preserved the essence or only matched the surface wording.
 
 ## Output
 

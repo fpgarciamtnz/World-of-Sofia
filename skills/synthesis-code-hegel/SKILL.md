@@ -1,25 +1,37 @@
 ---
 name: synthesis-code-hegel
-description: "Review a real code diff before merge and decide whether to leave, simplify, merge, split, or refactor it. Use for PRs, branches, staged changes, cleanup reviews, or questions like whether to refactor a change before it reaches main."
+description: "Judge the shape of code before and after a change. Before writing, decide from repository precedent whether to reuse, extend, extract, copy carefully, or create new; after, review the real diff and decide whether to leave, rename, merge, split, inline, deprecate, or delete it. Use before adding a helper or abstraction, and for PRs, branches, or staged changes."
 ---
 
 # Synthesis Code Hegel
 
-Use this skill only when code has already changed, and start from the actual diff rather than abstract design talk. If no diff exists yet, use `pattern-code-wittgenstein` to find the nearest code family; if its evidence already exists, treat it as input and still review the edited code itself.
+Code meets the system around it twice: before it is written, when a new need meets the patterns that already exist, and after, when the change lands among the code it touches. Both moments ask one question: does this code belong to the family it resembles, and does it leave that family simpler and less contradictory? Correctness bugs are a different question, and `code-review` covers them.
 
-This skill judges whether the change has the right shape in the system around it. For correctness bugs in the diff, use `code-review`.
+## Before Code: Precedent
 
-## Workflow
+Restate the task in the repository's own language and name its bounded context: endpoint, parser, workflow, test helper, UI component, migration, background job, or domain service. Search for identifiers, filenames, and adjacent modules, and read the closest candidates in full, along with their call sites and tests. Use `git log` when it matters how a pattern came to exist or whether it is being retired.
 
-1. Inspect the concrete change: PR diff, staged files, edited worktree, or branch delta.
-2. Summarize what objectively changed before recommending any cleanup.
-3. Compare it against nearby responsibilities, collaborators, existing patterns, and any ADRs.
-4. Classify the tension: `harmless variation`, `useful duplication`, `harmful duplication`, `wrong abstraction`, `narrow abstraction`, or `boundary drift`.
-5. Recommend the smallest safe action: `leave as-is`, `rename`, `extract`, `merge`, `split`, `inline`, `deprecate`, or `delete`.
+Classify each match as structural, behavioral, semantic, naming, domain, or historical, and judge it by use:
+
+- Family resemblance generates candidates; it does not prove the code should be shared.
+- Meaning comes from use, so call sites, tests, schemas, and observable effects outweigh shared words.
+- A shared word does not guarantee a shared concept, and a match across bounded contexts is suspect even when the code looks alike.
+- A pattern without tests is weaker than it looks.
+- Duplication can be cheaper than the wrong abstraction.
+
+Choose one recommendation: `reuse`, `extend`, `extract`, `copy carefully`, or `create new`. Prefer `reuse` only when context, behavior, and tests converge, and `extract` only after repeated concrete precedents reveal a stable interface. Read [references/precedent-rules.md](references/precedent-rules.md) when the choice is close.
+
+Report the candidate families with their strength, the evidence of resemblance, the false-similarity risks, the recommendation, what to preserve, vary, and avoid, the tests to mirror or add, and your confidence with the evidence that would raise it. Continue into implementation only if the user asked for it.
+
+## After Code: Synthesis
+
+Start from the actual change: PR diff, staged files, edited worktree, or branch delta. Summarize what objectively changed before recommending any cleanup, then compare it against nearby responsibilities, collaborators, existing patterns, and any ADRs.
+
+Classify the tension as `harmless variation`, `useful duplication`, `harmful duplication`, `wrong abstraction`, `narrow abstraction`, or `boundary drift`, and recommend the smallest safe action: `leave as-is`, `rename`, `extract`, `merge`, `split`, `inline`, `deprecate`, or `delete`.
 
 Preserve behavior first. When evidence is insufficient, recommend `leave as-is` or `investigate further`, because a speculative cleanup costs more than the tension it removes. Raise the bar for deletion or architectural movement when the change touches public APIs, persistence, security, concurrency, or high fan-in modules.
 
-## Real Contradiction Test
+### Real Contradiction Test
 
 A contradiction is real only when the same responsibility is now governed by incompatible behavior, invariants, dependency direction, or domain meaning in the same relevant context. These questions, strongest first, settle most cases:
 
@@ -30,15 +42,11 @@ A contradiction is real only when the same responsibility is now governed by inc
 
 A useful forcing question: if this code changes again next week, will the team reliably know the one place to edit, or several? Adapters, platform specializations, and test-only duplication are not contradictions unless the change collapses those boundaries. If a proposed synthesis needs many flags, conditionals, or public-surface changes, prefer `leave as-is` or a narrower extraction.
 
-## Earned Presence Kondo Bridge
+### Earned Presence
 
-When a real diff makes deletion, deprecation, inlining, replacement, or a simpler rebuild plausible, run `earned-presence-kondo` before recommending the subtraction. Typical cases are harmful duplication where one branch could go, a wrong or narrow abstraction that may not earn its maintenance cost, an old boundary that may need moving, and a stale flag, adapter, wrapper, config, or legacy branch.
+When the diff makes deletion, deprecation, inlining, replacement, or a simpler rebuild plausible, weigh what the candidate costs to keep against what would break or become unclear without it, before recommending the subtraction. Typical candidates are harmful duplication where one branch could go, a wrong or narrow abstraction that no longer earns its maintenance cost, an old boundary that may need moving, and a stale flag, adapter, wrapper, config, or legacy branch. Check references before recommending deletion, prefer `deprecate` before `delete` when callers may exist, and require tests or migration evidence before removal.
 
-Hegel's safety model stays in force afterward: prefer `deprecate` before `delete` when callers may exist, and require tests or migration evidence before removal.
-
-## Output
-
-Cover the change summary, the existing system affected, the tension found, the evidence, the recommendation, what to preserve, change, and delete, the tests, and your confidence, omitting a section only when it has nothing to report. State `leave as-is` plainly when that is the best answer. The review is finished at the recommendation; apply it only if the user asked for that.
+Report the change summary, the existing system affected, the tension found, the evidence, the recommendation, what to preserve, change, and delete, the tests, and your confidence, omitting a section only when it has nothing to report. State `leave as-is` plainly when that is the best answer. The review is finished at the recommendation; apply it only if the user asked for that.
 
 ## Developer Trace Mode
 

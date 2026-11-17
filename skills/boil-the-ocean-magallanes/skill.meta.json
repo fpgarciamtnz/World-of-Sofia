@@ -1,0 +1,19 @@
+{
+  "id": "world-of-sofia.boil-the-ocean-magallanes",
+  "slug": "boil-the-ocean-magallanes",
+  "title": "Boil the Ocean Magallanes",
+  "philosopher": "Ferdinand Magellan",
+  "summary": "Sofia's boil-the-ocean: it keeps the whole of onmax's full-scope method and adds a fixed destination, limits as premises, obstacles, the Panama Canal question, and an audit by Audit Plan Descartes.",
+  "tags": [
+    "scope",
+    "goals",
+    "limits",
+    "execution",
+    "verification"
+  ],
+  "status": "alpha",
+  "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/boil-the-ocean-magallanes",
+  "installCommand": "npm run install:skill -- boil-the-ocean-magallanes",
+  "references": [],
+  "version": "0.1.0"
+}

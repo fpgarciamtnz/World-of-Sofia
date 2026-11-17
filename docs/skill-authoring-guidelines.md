@@ -12,6 +12,8 @@ These skills run on Claude Opus in Claude Code, inside T3 Code. Current Claude m
 - Do not ask for reasoning to be reproduced in the output. Ask for evidence and outcomes; reproducing reasoning can trigger a refusal on current models.
 - Do not fix thinking depth or word counts in prose, or demand fixed report sections for judgment work. Name the sections that pin a format the reader relies on, and allow the rest to be omitted when empty.
 - State the completion condition when a workflow must continue through implementation, inspection, and targeted validation.
+- State the skill's degree of freedom in its body: `conservative`, `exploratory`, or `bold-by-default`, as the template defines them, with what it permits and what still needs a pause. Boldness changes which options get considered, never the evidence or validation a result needs.
+- Give each skill a job it carries to the end. Do not write routing, handoff tables, or bridge sections, since Claude Code already chooses skills from their descriptions; name another skill only for a pairing this one relies on, and say what it takes from it ([ADR 0004](adr/0004-few-coordinated-skills.md)).
 - Treat safety and destructive-action boundaries explicitly, without blanket permission gates for routine local work.
 
 ## Claude Code mechanics
@@ -20,7 +22,7 @@ These skills run on Claude Opus in Claude Code, inside T3 Code. Current Claude m
 - Users invoke it as `/skill-name`; the model invokes it with the Skill tool. It runs inline in the current conversation, so a handoff means carrying findings forward.
 - Use the tool names the harness provides, such as Grep, Glob, Read, and AskUserQuestion. Reach bundled scripts through `${CLAUDE_SKILL_DIR}`.
 - An installed skill is a copy of its folder, with no access to this repository's `node_modules`. A bundled script may use only the Node standard library and must be run from an installed copy once before it ships.
-- Frontmatter such as `allowed-tools`, `context: fork`, `paths`, `effort`, and `disable-model-invocation` is available. Add a field only when a real run shows the need; `disable-model-invocation` also stops Sofia from calling that skill.
+- Frontmatter such as `allowed-tools`, `context: fork`, `paths`, `effort`, and `disable-model-invocation` is available. Add a field only when a real run shows the need; `disable-model-invocation` also stops Claude from loading that skill on its own, so only `/skill-name` reaches it.
 
 ## Maintenance audit
 

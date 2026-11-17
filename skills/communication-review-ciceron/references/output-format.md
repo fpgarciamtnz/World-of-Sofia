@@ -1,6 +1,6 @@
 # Output Format
 
-Use this format for most communication reviews.
+Use this format for most message reviews. The output for a rendered screen is in `references/rendered-ui.md`.
 
 ## Standard Report
 
