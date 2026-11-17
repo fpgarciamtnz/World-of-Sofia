@@ -2,7 +2,7 @@
 
 Philosopher idea: la duda metódica de Descartes aplicada a una entrega académica: separa lo observado, lo exigido, lo supuesto y lo que falta antes de dar nada por bueno.
 
-Practical use: audita una PEC frente a su enunciado. Comprueba actualidad, tipos de fuente, DOI, citas frente a lista, páginas y estilo, y después valora si las fuentes sostienen las afirmaciones centrales.
+Practical use: audita una PEC frente a su enunciado y su rúbrica, y se detiene a pedir la rúbrica si no la encuentra. Comprueba actualidad, tipos de fuente, DOI, citas frente a lista, páginas y estilo, y después valora si las fuentes sostienen las afirmaciones centrales.
 
 ## Qué combina
 

@@ -7,7 +7,7 @@ Es la versión académica del libro de cimientos de `audit-plan-descartes`. Sirv
 | Categoría | Qué entra | Ejemplo |
 | --- | --- | --- |
 | **Hecho** | Observado directamente, con su procedencia | «18 de 21 referencias son de 2021 o posteriores (`fuentes.json`)» |
-| **Exigencia** | Lo pide el enunciado o el profesorado, con su procedencia | «70 % de los últimos 5 años (enunciado, p. 5)» |
+| **Exigencia** | Lo pide el enunciado, la rúbrica o el profesorado, con su procedencia | «70 % de los últimos 5 años (enunciado, p. 5)» |
 | **Supuesto** | Inferido o heredado, sin confirmar | «La tutora aceptará informes institucionales» |
 | **Falta** | Dato ausente y cómo conseguirlo | «Borrador final: pedir el PDF exportado» |
 
@@ -44,9 +44,10 @@ Ajusta el criterio al tipo de estudio: un estudio cualitativo se valora por su t
 2. **Bloqueante:** incumple una exigencia o afirma algo que la fuente no sostiene.
 3. **Conviene corregir:** debilita el trabajo sin incumplir una exigencia.
 4. **Exigencias:** cada una con su estado (cumple, no cumple, sin comprobar) y su evidencia.
-5. **Afirmaciones revisadas:** la tabla anterior.
-6. **Supuestos y faltas:** con cómo resolverlos.
-7. **Decisiones:** lo que debe decidir la persona o confirmar el profesorado.
-8. **Límites:** qué no se ha revisado.
+5. **Criterios de la rúbrica:** cada uno con su estado y su evidencia, sin calcular una nota, porque esa valoración corresponde al profesorado.
+6. **Afirmaciones revisadas:** la tabla anterior.
+7. **Supuestos y faltas:** con cómo resolverlos.
+8. **Decisiones:** lo que debe decidir la persona o confirmar el profesorado.
+9. **Límites:** qué no se ha revisado.
 
 Escribe en español, con hallazgos concretos y su ubicación. Ordena por gravedad y no exageres los problemas menores. Di también lo que está bien cuando eso cambie una decisión, como no tocar una referencia ya comprobada.

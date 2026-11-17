@@ -1,6 +1,6 @@
 ---
 name: auditar-pec
-description: "Audita una PEC o entrega académica frente a su enunciado: separa hechos, exigencias, supuestos y lagunas; comprueba referencias, citas y actualidad; y valora si cada fuente sostiene lo que se le atribuye. Úsala al revisar un marco teórico o una bibliografía antes de entregar."
+description: "Audita una PEC o entrega académica frente a su enunciado y su rúbrica: separa hechos, exigencias, supuestos y lagunas; comprueba referencias, citas y actualidad; y valora si cada fuente sostiene lo que se le atribuye. Úsala al revisar un marco teórico o una bibliografía antes de entregar."
 ---
 
 # Auditar PEC
@@ -13,10 +13,20 @@ El informe responde a una pregunta: ¿qué se puede entregar con seguridad y qu�
 
 `conservative`. La auditoría es de solo lectura: no toques `datos/`, `INICIO.html` ni el borrador. La autoría es de la persona que entrega, y el enunciado exige texto original: señala el problema y qué lo resolvería, sin reescribir, salvo que te lo pida. Si te lo pide, da el texto en el chat.
 
+## Primero, la rúbrica
+
+Ninguna auditoría empieza sin la rúbrica de esta entrega, porque es lo que decide cómo se corrige: sin ella, el informe podría dar por bueno lo que la corrección penaliza.
+
+Búscala antes que nada, en la carpeta de la entrega, en las rutas que cite `datos/proyecto.json` y dentro del enunciado, con nombres como `rubrica`, `rúbrica` o `criterios de evaluación` y en cualquier formato, también como imagen.
+
+- **Si no la encuentras, no puedes leerla o solo hay la de otra entrega:** detente ahí. No ejecutes la comprobación mecánica ni des un informe parcial. Di dónde has buscado y pide la ruta o el archivo, y termina el turno. Continúa solo cuando la tengas, o si la persona dice expresamente que no existe o que sigas sin ella; en ese caso, indícalo en los límites del informe.
+- **Si hay varias y no está claro cuál es la de esta entrega:** pregunta cuál usar antes de seguir.
+- **Si solo se lee en parte:** sigue, avisa de qué falta y deja esos criterios como «sin comprobar».
+
 ## Flujo
 
-1. **Reúne las fuentes de verdad.** El enunciado, el borrador, `datos/fuentes.json` y las correcciones del profesorado en `datos/proyecto.json`. El proyecto es la carpeta actual, salvo que la persona indique otra. Si el borrador puede no ser la última versión, dilo: el documento de trabajo vive en Google Drive.
-2. **Extrae las exigencias del enunciado.** Léelas de ese enunciado, no de memoria: cada entrega cambia. Cubre actualidad, tipos de fuente, páginas, formato, estilo, correcciones pendientes y requisitos de entrega.
+1. **Reúne las fuentes de verdad.** La rúbrica, el enunciado, el borrador, `datos/fuentes.json` y las correcciones del profesorado en `datos/proyecto.json`. El proyecto es la carpeta actual, salvo que la persona indique otra. Si el borrador puede no ser la última versión, dilo: el documento de trabajo vive en Google Drive.
+2. **Extrae las exigencias del enunciado y los criterios de la rúbrica.** Léelos de esos documentos, no de memoria: cada entrega cambia. Cubre actualidad, tipos de fuente, páginas, formato, estilo, correcciones pendientes y requisitos de entrega.
 3. **Ejecuta la comprobación mecánica** con esos valores:
 
    ```bash
@@ -38,8 +48,8 @@ El informe responde a una pregunta: ¿qué se puede entregar con seguridad y qu�
 
 ## Conflictos
 
-Si el enunciado, la adaptación UOC de APA y las indicaciones del profesorado se contradicen, no elijas por tu cuenta: presenta las versiones, di cuál seguirías y por qué, y deja la decisión a la persona o al profesorado.
+Si el enunciado, la rúbrica, la adaptación UOC de APA y las indicaciones del profesorado se contradicen, no elijas por tu cuenta: presenta las versiones, di cuál seguirías y por qué, y deja la decisión a la persona o al profesorado.
 
 ## Fin de la auditoría
 
-La auditoría acaba cuando cada exigencia tiene un estado, cada afirmación central revisada tiene un nivel de acceso y un veredicto, y lo no comprobado figura como tal.
+La auditoría acaba cuando cada exigencia y cada criterio de la rúbrica tienen un estado, cada afirmación central revisada tiene un nivel de acceso y un veredicto, y lo no comprobado figura como tal.
