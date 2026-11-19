@@ -32,7 +32,7 @@ Rerun the install command whenever skills change, since the installed skills are
 
 ## How the skills work together
 
-Call a skill by name, such as `/audit-plan-descartes`, or describe the work and let Claude load the skill that matches.
+Call a skill by name, such as `/audit-plan-descartes`, or describe the work and let Claude load the skill that matches. Auditar PEC is the exception: it runs only when you type `/auditar-pec`.
 
 **Something huge, or a far destination.** Boil the Ocean Magallanes is Sofia's boil-the-ocean: it keeps the whole of that skill, takes the request at its full size, and treats it as the destination. The destination and the limits stay fixed, and only the route changes. Whatever blocks the way is a limit, which stays; an obstacle, which it goes around, as far around as it takes; or a habit, such as "too much work", which never counts as a limit. Before a long detour it asks the Panama Canal question: do we need to go this far, or can we build a channel through the obstacle? Audit Plan Descartes keeps the voyage honest: every limit has a source, a "can't" is checked before it changes the destination, and arrival counts only when the oracle confirms it.
 
@@ -42,7 +42,7 @@ Call a skill by name, such as `/audit-plan-descartes`, or describe the work and 
 
 **Code.** Synthesis Code Hegel works on both sides of a change: before, it decides from precedent whether to reuse, extend, extract, copy, or create; after, it judges the real diff. Earned Presence Kondo asks whether something deserves to exist at all, and decides what a rebuild may destroy and what must survive.
 
-**Audience.** Communication Review Ciceron reviews how a message or a rendered screen lands. Auditar PEC audits an academic submission against its brief and rubric.
+**Audience.** Communication Review Ciceron reviews how a message or a rendered screen lands. Auditar PEC audits an academic submission against its brief and rubric. It always loads Grill Me Aquinas to settle what the brief asks, then Audit Plan Descartes to separate facts from assumptions, and its report lists every concept it checked.
 
 ## Skills
 
@@ -54,7 +54,7 @@ Call a skill by name, such as `/audit-plan-descartes`, or describe the work and 
 | [Synthesis Code Hegel](skills/synthesis-code-hegel) | Code is about to be written and precedent matters, or code has changed and needs judgment before merge. | `reuse`, `extend`, `extract`, `copy carefully`, or `create new`; or leave, rename, extract, merge, split, inline, deprecate, or delete. |
 | [Earned Presence Kondo](skills/earned-presence-kondo) | Something may not earn its cost, or you want a radical rebuild. | A keep-or-remove judgment, or destroy, preserve, and rebuild, with evidence and re-checks. |
 | [Communication Review Ciceron](skills/communication-review-ciceron) | A message, proposal, or copy must land with its audience, or UI work reaches final validation or a screen needs review. | Likely uptake, friction, and a better version; or an attention ranking, severity, and the smallest correction. |
-| [Auditar PEC](skills/auditar-pec) | A PEC, theoretical framework, or bibliography must be checked against its brief and rubric before delivery. It stops and asks if the rubric is missing. | Requirement and rubric status, reference and citation checks, an evidence ledger, and whether sources support the claims. |
+| [Auditar PEC](skills/auditar-pec) | You type `/auditar-pec` to check a PEC, theoretical framework, or bibliography against its brief and rubric before delivery; Claude never starts it alone. It stops and asks if the rubric is missing. | The Aquinas and Descartes concepts it checked, requirement and rubric status, reference and citation checks, an evidence ledger, and whether sources support the claims. |
 
 Each skill answers a different question. `code-review` from Claude Code looks for bugs in a diff, while Hegel asks whether the change has the right shape, and Ciceron makes no eye-tracking claim, ranking likely attention from observable evidence.
 

@@ -3,7 +3,7 @@
   "slug": "auditar-pec",
   "title": "Auditar PEC",
   "philosopher": "Rene Descartes",
-  "summary": "Audita una entrega académica frente a su enunciado y su rúbrica separando hechos, exigencias, supuestos y lagunas, y valorando si cada fuente sostiene lo que se le atribuye.",
+  "summary": "Audita una entrega académica frente a su enunciado y su rúbrica: fija con Aquinas qué se pide, separa con Descartes hechos, exigencias, supuestos y lagunas, valora si cada fuente sostiene lo que se le atribuye y nombra cada concepto revisado. Solo se inicia con /auditar-pec.",
   "tags": [
     "research",
     "verification",
@@ -15,5 +15,5 @@
   "references": [
     "references/libro-de-evidencias.md"
   ],
-  "version": "0.2.0"
+  "version": "0.3.0"
 }

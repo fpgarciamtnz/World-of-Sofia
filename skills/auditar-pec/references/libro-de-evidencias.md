@@ -41,13 +41,14 @@ Ajusta el criterio al tipo de estudio: un estudio cualitativo se valora por su t
 ## Formato del informe
 
 1. **Veredicto:** una o dos frases sobre qué se puede entregar y qué bloquea.
-2. **Bloqueante:** incumple una exigencia o afirma algo que la fuente no sostiene.
-3. **Conviene corregir:** debilita el trabajo sin incumplir una exigencia.
-4. **Exigencias:** cada una con su estado (cumple, no cumple, sin comprobar) y su evidencia.
-5. **Criterios de la rúbrica:** cada uno con su estado y su evidencia, sin calcular una nota, porque esa valoración corresponde al profesorado.
-6. **Afirmaciones revisadas:** la tabla anterior.
-7. **Supuestos y faltas:** con cómo resolverlos.
-8. **Decisiones:** lo que debe decidir la persona o confirmar el profesorado.
-9. **Límites:** qué no se ha revisado.
+2. **Conceptos revisados:** cada concepto de la tabla de `SKILL.md`, con la skill de la que viene y lo que se ha encontrado al aplicarlo, o por qué no aplicaba. Ninguno se omite en silencio. Si Aquinas o Descartes no estaban instaladas, dilo aquí.
+3. **Bloqueante:** incumple una exigencia o afirma algo que la fuente no sostiene.
+4. **Conviene corregir:** debilita el trabajo sin incumplir una exigencia.
+5. **Exigencias:** cada una con su estado (cumple, no cumple, sin comprobar) y su evidencia.
+6. **Criterios de la rúbrica:** cada uno con su estado y su evidencia, sin calcular una nota, porque esa valoración corresponde al profesorado.
+7. **Afirmaciones revisadas:** la tabla anterior.
+8. **Supuestos y faltas:** con cómo resolverlos.
+9. **Decisiones:** lo que debe decidir la persona o confirmar el profesorado.
+10. **Límites:** qué no se ha revisado.
 
 Escribe en español, con hallazgos concretos y su ubicación. Ordena por gravedad y no exageres los problemas menores. Di también lo que está bien cuando eso cambie una decisión, como no tocar una referencia ya comprobada.
