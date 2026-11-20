@@ -40,6 +40,8 @@ Call a skill by name, such as `/audit-plan-descartes`, or describe the work and 
 
 **A drop.** Right after a drop is created on Drop, Descartes reads it back and checks it against the rules of the skill that made it, since Drop's skills each set their own. Each fix goes into the drop's next version, so its link keeps working.
 
+**What goes unsaid.** Implicit Explicit Ortega separates what a request, plan, prompt, or document says from what it stands on without saying and what it conveys without meaning to, then decides what to state, what to cut, and what to leave implicit.
+
 **Code.** Synthesis Code Hegel works on both sides of a change: before, it decides from precedent whether to reuse, extend, extract, copy, or create; after, it judges the real diff. Earned Presence Kondo asks whether something deserves to exist at all, and decides what a rebuild may destroy and what must survive.
 
 **Audience.** Communication Review Ciceron reviews how a message or a rendered screen lands. Auditar PEC audits an academic submission against its brief and rubric. It always loads Grill Me Aquinas to settle what the brief asks, then Audit Plan Descartes to separate facts from assumptions, and its report lists every concept it checked.
@@ -51,6 +53,7 @@ Call a skill by name, such as `/audit-plan-descartes`, or describe the work and 
 | [Boil the Ocean Magallanes](skills/boil-the-ocean-magallanes) | A request is huge, such as a rewrite, a port, or a rebuild, or you know where you want to end up and the way looks long or blocked. | The request at full size as the destination, the limits with their sources, an oracle, a route around every obstacle, checked units, and a hand-back. |
 | [Audit Plan Descartes](skills/audit-plan-descartes) | A plan needs an evidence check, sources disagree, prior work or a drop just created needs verifying, or a voyage's limits and arrival need auditing. | A foundation ledger, the limits with their sources, open assumptions, and a final plan or verdict. |
 | [Grill Me Aquinas](skills/grill-me-aquinas) | The goal, terms, or scope are unclear, or you want a grill-me session. | A said, meant, and happened record, focused questions, essence candidates, and what a plan must preserve. |
+| [Implicit Explicit Ortega](skills/implicit-explicit-ortega) | Work will be read without your context, a misunderstanding came from something nobody said, or you want the implicit made explicit. | What the material says, what it stands on without saying, what it conveys without meaning to, and the sentences to add or cut. |
 | [Synthesis Code Hegel](skills/synthesis-code-hegel) | Code is about to be written and precedent matters, or code has changed and needs judgment before merge. | `reuse`, `extend`, `extract`, `copy carefully`, or `create new`; or leave, rename, extract, merge, split, inline, deprecate, or delete. |
 | [Earned Presence Kondo](skills/earned-presence-kondo) | Something may not earn its cost, or you want a radical rebuild. | A keep-or-remove judgment, or destroy, preserve, and rebuild, with evidence and re-checks. |
 | [Communication Review Ciceron](skills/communication-review-ciceron) | A message, proposal, or copy must land with its audience, or UI work reaches final validation or a screen needs review. | Likely uptake, friction, and a better version; or an attention ranking, severity, and the smallest correction. |
@@ -86,6 +89,7 @@ The names are memory handles for practical engineering habits:
 | Magallanes | Take the request on at its full size, keep the destination and the limits, and change the route: with the eastern route closed to him by treaty, Magellan sailed west to reach the Spice Islands. Before sailing the long way, ask whether a canal could cut through, as Panama later did. |
 | Descartes | Separate known facts, constraints, assumptions, and missing evidence before trusting a plan, including the limits it keeps and the cuts it makes. |
 | Aquinas | Separate what defines the goal from what merely happened, then build practical truth from evidence. |
+| Ortega | Tell the ideas we hold and state from the beliefs we stand on without noticing, and remember that every saying says less than it means and more than it intends. |
 | Hegel | Set new code against what already exists, then preserve what works, transform what no longer fits, and remove what is obsolete. It judges resemblance by use, as Wittgenstein taught: call sites and tests outweigh shared names. |
 | Kondo | Ask whether each surviving thing earns the cost of existing before adding more structure. |
 | Cicero | Judge communication and interfaces by how they direct attention and affect the audience. The UI review borrows its two-pass method from Kahneman. |

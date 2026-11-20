@@ -36,6 +36,7 @@ The table records the 2026-09-14 inventory. The 2026-11-06 migration in the log 
 | 2026-11-17 | Claude | All skill packages, tooling, and docs | Removed the router and all routing sections; merged Wittgenstein into Hegel and UI Attention into Communication Ciceron; added `boil-the-ocean-magallanes`, a destination-first skill that keeps its limits, paired with Descartes. Seven skills remain; see `docs/adr/0004-few-coordinated-skills.md`. |
 | 2026-11-17 | Claude | `audit-plan-descartes` | Added a use: right after a drop is created on Drop, read it back and verify it against the rules of the skill that made it, since Drop's skills each set their own. The method is in `references/drop-verification.md`. |
 | 2026-11-19 | Claude | `auditar-pec` | Runs only with `/auditar-pec`. It always loads Aquinas, then Descartes, and its report lists every concept it applied in a "Conceptos revisados" section; see `docs/adr/0005-auditar-pec-explicit-concepts.md`. Not yet run on a real PEC. |
+| 2026-11-20 | Claude | `implicit-explicit-ortega` | Added: separates what material says from what it stands on without saying and what it conveys without meaning to, after Ortega's ideas and beliefs. Eight skills remain; see `docs/adr/0006-implicit-explicit-ortega.md`. Not yet tried on a realistic prompt. |
 
 ## Next review checklist
 

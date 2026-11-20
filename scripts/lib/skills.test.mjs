@@ -29,6 +29,7 @@ describe("skill validation helpers", () => {
       "communication-review-ciceron",
       "earned-presence-kondo",
       "grill-me-aquinas",
+      "implicit-explicit-ortega",
       "synthesis-code-hegel"
     ]);
   });
