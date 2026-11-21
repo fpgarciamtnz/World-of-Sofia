@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { defaultPaths, describeLinks, linkSkills } from "./lib/link.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -64,3 +65,16 @@ await copyDirectory(templateRoot, targetDir, {
   "__TAG__": slug.split("-")[0] || "philosophy"
 });
 
+// Link it at once, so the new skill is live in Claude Code while it is being written.
+const { targetRoot, backupRoot } = defaultPaths();
+const result = linkSkills({ skillsRoot, targetRoot, backupRoot });
+for (const note of describeLinks(result)) {
+  console.log(`Sofia skills: ${note}.`);
+}
+
+if (result.linked.includes(slug)) {
+  console.log(`Created skills/${slug}. It is linked into ${targetRoot}, so Claude Code can use it now.`);
+  console.log("Fill it in, run npm run check, then commit and push.");
+} else {
+  console.log(`Created skills/${slug}, but it is not linked yet: see the note above, then run npm run link:skills.`);
+}

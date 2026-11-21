@@ -12,7 +12,7 @@
   ],
   "status": "draft",
   "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/earned-presence-kondo",
-  "installCommand": "npm run install:skill -- earned-presence-kondo",
+  "installCommand": "npx skills add fpgarciamtnz/World-of-Sofia --skill earned-presence-kondo",
   "references": [
     "references/earned-presence-foundation.md"
   ],

@@ -2,16 +2,16 @@
 
 ## Non-Negotiable Rule
 
-Skills must remain isolated. Do not spread a single skill across multiple folders, and do not let one skill depend on private files in another skill's directory or on this repository's `node_modules`. An installed skill is only a copy of its own folder.
+Skills must remain isolated. Do not spread a single skill across multiple folders, and do not let one skill depend on private files in another skill's directory or on this repository's `node_modules`. Whoever installs a skill with `npx skills add` gets only a copy of its own folder.
 
 ## Creating A New Skill
 
-1. Run `npm run new:skill -- "Skill Title" "Philosopher Name"`.
-2. Fill in `skill.meta.json`, `README.md`, `SKILL.md`, and any files under `references/`, following [the authoring guidelines](docs/skill-authoring-guidelines.md).
+1. Run `npm run new:skill -- "Skill Title" "Philosopher Name"`. It creates `skills/<slug>` and links it into `~/.claude/skills`, so the skill is live at once.
+2. Fill in `skill.meta.json`, `README.md`, `SKILL.md`, and any files under `references/`, following [the authoring guidelines](docs/skill-authoring-guidelines.md). Edit only in this repository.
 3. Start the README with `Philosopher idea:` and `Practical use:` before any longer sections.
 4. Run `npm run check`.
-5. Run `npm run install:skill -- <skill-slug>`, and confirm the skill appears under `~/.claude/skills`.
-6. Try it on a realistic prompt.
+5. Try it on a realistic prompt.
+6. Commit and push to `origin main`. Each Claude Code session pulls and relinks at its start, so nothing else needs installing.
 
 ## README Contract
 
@@ -23,9 +23,11 @@ Every skill README must explain the philosopher-derived habit before the practic
 - The root repository README is the GitHub landing page and should stay practical-first for engineers. It may use tables, diagrams, and workflow-oriented copy instead of the per-skill two-part shape.
 - The root skill catalog must still describe each listed skill in comparable practical terms so readers can quickly decide what to install or invoke.
 
-## Installing Skills
+## Linking Skills
 
-`npm run install:skills` copies all valid skills from `skills/*` into `~/.claude/skills`, or `$CLAUDE_CONFIG_DIR/skills` when set. `npm run install:skill -- <skill-slug>` copies one. Existing copies are backed up to `~/.claude/.backups/world-of-sofia/<slug>-<timestamp>` first. Pass `--dry-run` after `--` to preview.
+`npm run link:skills` (alias `install:skills`) makes `~/.claude/skills/<slug>`, or `$CLAUDE_CONFIG_DIR/skills/<slug>` when set, a link to each `skills/<slug>` that has a `SKILL.md`: a directory junction on Windows, a symlink elsewhere. It removes links whose skill is gone, replaces an installed copy that matches the repository, and moves any other folder in the way to `~/.claude/.backups/world-of-sofia/<slug>-<timestamp>`. It never touches other skills.
+
+With `--pull` it first fetches from GitHub, within 10 seconds, and fast-forwards; a pull that cannot fast-forward is reported and skipped. It prints only what needs attention and logs each run to `.git/sofia-sync.log`. A SessionStart hook runs it with `--pull`; the README shows the hook, and [ADR 0007](docs/adr/0007-linked-not-copied.md) records why.
 
 ## Manifest Contract
 

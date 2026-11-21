@@ -21,7 +21,7 @@ These skills run on Claude Opus in Claude Code, inside T3 Code. Current Claude m
 - A skill is `<name>/SKILL.md` under `~/.claude/skills` or a project's `.claude/skills`. Changes are picked up live.
 - Users invoke it as `/skill-name`; the model invokes it with the Skill tool. It runs inline in the current conversation, so a handoff means carrying findings forward.
 - Use the tool names the harness provides, such as Grep, Glob, Read, and AskUserQuestion. Reach bundled scripts through `${CLAUDE_SKILL_DIR}`.
-- An installed skill is a copy of its folder, with no access to this repository's `node_modules`. A bundled script may use only the Node standard library and must be run from an installed copy once before it ships.
+- On this machine `~/.claude/skills/<slug>` is a link to the skill's folder here, but `npx skills add` installs a copy of the folder alone, with no access to this repository's `node_modules`. A bundled script may use only the Node standard library, and must be run once from a copy outside this repository before it ships, since through the link Node still finds this repository's packages.
 - Frontmatter such as `allowed-tools`, `context: fork`, `paths`, `effort`, and `disable-model-invocation` is available. Add a field only when a real run shows the need; `disable-model-invocation` also stops Claude from loading that skill on its own, so only `/skill-name` reaches it.
 
 ## Maintenance audit

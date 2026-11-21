@@ -21,4 +21,4 @@ This folder must stay self-contained. Do not reference private files in another 
 
 ## Installation
 
-Install it into `~/.claude/skills/earned-presence-kondo` with `npm run install:skill -- earned-presence-kondo`; the instructions are contained inside this folder.
+Install it with `npx skills add fpgarciamtnz/World-of-Sofia --skill earned-presence-kondo`; the instructions are contained inside this folder.

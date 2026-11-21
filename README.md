@@ -12,23 +12,47 @@ npx skills add fpgarciamtnz/World-of-Sofia
 
 The [skills CLI](https://github.com/vercel-labs/skills) asks which skills, agents, and scope to install. Each skill works alone, but install Boil the Ocean Magallanes together with Audit Plan Descartes, since they audit each other's claims. Run `npx skills update` to pick up new versions.
 
-To install from a clone instead, for example while editing the skills:
+### Work from a clone
+
+To use the skills straight from a clone, for example while editing them, link them instead of copying them:
 
 ```bash
 npm install
 npm run check
-npm run install:skills
+npm run link:skills
 ```
 
-The installer copies each valid `skills/<slug>` folder into `~/.claude/skills`, or `$CLAUDE_CONFIG_DIR/skills` when that is set. Existing copies are moved to `~/.claude/.backups/world-of-sofia/<slug>-<timestamp>` first. It only adds and updates: a skill removed from this repository stays installed until you delete its folder. Claude Code picks up the changes live, so a new session is usually not needed.
+`link:skills` makes each `~/.claude/skills/<slug>`, or `$CLAUDE_CONFIG_DIR/skills/<slug>` when that is set, a link to `skills/<slug>`: a directory junction on Windows, a symlink elsewhere. An edit in the repository is live at once, a new skill gets a link, and the link of a removed skill is deleted. A folder already in the way is replaced when it matches the repository, and moved to `~/.claude/.backups/world-of-sofia/` otherwise. Skills from anywhere else are never touched.
 
-To install or update one skill:
+To have a machine update itself, add a SessionStart hook to `~/.claude/settings.json` that runs the linker with `--pull`, using the path of your clone:
 
-```bash
-npm run install:skill -- audit-plan-descartes
+```json
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"C:/Users/you/World-of-Sofia/scripts/link-skills.mjs\" --pull",
+            "timeout": 20
+          }
+        ]
+      }
+    ]
+  }
+}
 ```
 
-Rerun the install command whenever skills change, since the installed skills are copies.
+At the start of each session it fetches from GitHub, within 10 seconds, fast-forwards, and relinks. It never merges or rewrites local work: when the pull cannot fast-forward, it says why and skips it. It stays silent unless a skill was linked or removed, the pull was skipped, or work is waiting to be committed and pushed, and it logs each run to `.git/sofia-sync.log`. See [ADR 0007](docs/adr/0007-linked-not-copied.md).
+
+## Build a new skill
+
+1. Run `npm run new:skill -- "Stoic Triage" "Epictetus"`. It creates `skills/stoic-triage` and links it, so the skill is live at once.
+2. Edit it only in this repository, following [the authoring guidelines](docs/skill-authoring-guidelines.md) and [CONTRIBUTING.md](CONTRIBUTING.md).
+3. Run `npm run check`, then commit and push.
+4. Every Claude Code session on a machine with the hook pulls and relinks at its start, so the skill shows up there by itself.
 
 ## How the skills work together
 
@@ -65,14 +89,14 @@ Each skill answers a different question. `code-review` from Claude Code looks fo
 
 ```bash
 npm run check            # lint, validate skills and traces, run tests
-npm run install:skills   # install every skill into Claude Code
-npm run new:skill -- "Stoic Triage" "Epictetus"
+npm run link:skills      # link every skill into Claude Code (alias: install:skills)
+npm run new:skill -- "Stoic Triage" "Epictetus"   # create a skill and link it
 ```
 
 ## Repository layout
 
 - `skills/<slug>`: one self-contained skill per folder.
-- `scripts`: skill creation, validation, and installation.
+- `scripts`: skill creation, validation, and linking.
 - `templates/skill`: source template for new skills.
 - `docs`: authoring guidelines, decisions, evaluations, and the research behind the skills.
 - `.agents/skills`: skills vendored from `mattpocock/skills`, tracked by `skills-lock.json`. Claude Code does not load them.
