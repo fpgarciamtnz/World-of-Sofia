@@ -1,0 +1,14 @@
+node_modules/
+**/node_modules/
+.nuxt/
+**/.nuxt/
+.logs/
+.output/
+.data/
+dist/
+coverage/
+test-results/
+*.tsbuildinfo
+.env
+.env.*
+npm-debug.log*

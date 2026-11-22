@@ -1,0 +1,19 @@
+{
+  "id": "world-of-sofia.implicit-explicit-ortega",
+  "slug": "implicit-explicit-ortega",
+  "title": "Implicit Explicit Ortega",
+  "philosopher": "José Ortega y Gasset",
+  "summary": "Separates what a piece of work says explicitly from what it leaves implicit: the beliefs it stands on without stating and what it conveys without meaning to, then decides what to state, cut, leave, or ask.",
+  "tags": [
+    "communication",
+    "assumptions",
+    "writing"
+  ],
+  "status": "alpha",
+  "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/implicit-explicit-ortega",
+  "installCommand": "npx skills add fpgarciamtnz/World-of-Sofia --skill implicit-explicit-ortega",
+  "references": [
+    "references/examples.md"
+  ],
+  "version": "0.1.0"
+}

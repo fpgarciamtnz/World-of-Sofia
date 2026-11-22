@@ -1,0 +1,23 @@
+{
+  "id": "world-of-sofia.communication-review-ciceron",
+  "slug": "communication-review-ciceron",
+  "title": "Communication Review Ciceron",
+  "philosopher": "Marcus Tullius Cicero",
+  "summary": "An audience review skill for messages and rendered UI that identifies rhetorical intent and likely uptake, ranks attention from observable evidence, and recommends the smallest correction.",
+  "tags": [
+    "communication",
+    "rhetoric",
+    "feedback",
+    "ui",
+    "attention"
+  ],
+  "status": "alpha",
+  "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/communication-review-ciceron",
+  "installCommand": "npx skills add fpgarciamtnz/World-of-Sofia --skill communication-review-ciceron",
+  "references": [
+    "references/rhetorical-framework.md",
+    "references/output-format.md",
+    "references/rendered-ui.md"
+  ],
+  "version": "0.3.0"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "world-of-sofia.banco-animaciones-aristoteles",
+  "slug": "banco-animaciones-aristoteles",
+  "title": "Banco Animaciones Aristoteles",
+  "philosopher": "Aristotle",
+  "summary": "Banco de 703 prompts de animación en código para Opus 5.5, clasificados por formato, tema, estilo, técnica, salida y estado, con un buscador para la IA y para probarlos a mano.",
+  "tags": [
+    "animation",
+    "motion-graphics",
+    "prompts",
+    "catalog"
+  ],
+  "status": "alpha",
+  "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/banco-animaciones-aristoteles",
+  "installCommand": "npx skills add fpgarciamtnz/World-of-Sofia --skill banco-animaciones-aristoteles",
+  "references": [
+    "references/taxonomia.md"
+  ],
+  "version": "0.1.0"
+}

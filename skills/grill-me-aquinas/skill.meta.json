@@ -1,0 +1,19 @@
+{
+  "id": "world-of-sofia.grill-me-aquinas",
+  "slug": "grill-me-aquinas",
+  "title": "Grill Me Aquinas",
+  "philosopher": "Thomas Aquinas",
+  "summary": "An Aquinas-derived intent-clarification and learning skill built from https://github.com/onmax/skills/tree/main/skills/grill-with-docs for grill-me sessions, planning, and essence-aware handoffs to Audit Plan Descartes.",
+  "tags": [
+    "aquinas",
+    "intent",
+    "context"
+  ],
+  "status": "draft",
+  "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/grill-me-aquinas",
+  "installCommand": "npx skills add fpgarciamtnz/World-of-Sofia --skill grill-me-aquinas",
+  "references": [
+    "references/aquinas-essence-map.md"
+  ],
+  "version": "0.3.0"
+}

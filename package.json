@@ -1,0 +1,31 @@
+{
+  "name": "world-of-sofia",
+  "private": true,
+  "version": "0.2.0",
+  "description": "Claude Code skill collection and toolkit for philosopher-derived software work habits.",
+  "scripts": {
+    "lint": "eslint scripts skills",
+    "validate:skills": "node ./scripts/validate-skills.mjs",
+    "validate:skill-traces": "node ./scripts/validate-skill-traces.mjs",
+    "check": "npm run lint && npm run validate:skills && npm run validate:skill-traces && npm run test",
+    "test": "vitest run scripts/lib/skills.test.mjs scripts/lib/link.test.mjs skills/auditar-pec/tests/auditoria-core.test.mjs skills/banco-animaciones-aristoteles/tests/banco.test.mjs skills/boil-the-ocean-magallanes/tests/original-coverage.test.mjs",
+    "new:skill": "node ./scripts/new-skill.mjs",
+    "link:skills": "node ./scripts/link-skills.mjs",
+    "install:skills": "node ./scripts/link-skills.mjs"
+  },
+  "dependencies": {
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^24.10.0",
+    "eslint": "^9.39.1",
+    "globals": "^16.5.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.4",
+    "vitest": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  }
+}
