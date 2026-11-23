@@ -27,6 +27,26 @@ Before adding more, ask what can be removed, demoted, grouped, delayed, progress
 
 This is not minimalism for its own sake. It is presence discipline: every surviving thing must justify its cost.
 
+## Space Is A Luxury
+
+Empty space is something an artifact has, not something it lacks. Room around an element is what lets it be seen; a short screen, file, or list is what lets a reader hold it whole; an unclaimed slot is what lets the next real need land without moving anything else. Filling a space spends that room, and everything around the filler pays for it.
+
+So treat empty space as the option to beat. A proposed filler must show that it serves better than the space it takes, not only that it is useful. Space that a removal frees stays empty by default: the urge to backfill a freed slot is the additive bias returning.
+
+Space shows up as:
+
+- UI: whitespace, margins, a quiet column, a screen with one action, a section with nothing to say yet.
+- Code: a function without an option, a module without an extension point, a slot without a placeholder, a file without a speculative helper.
+- Docs and prompts: a paragraph that ends when its point is made, a section not written because nothing belongs there.
+- Workflows and products: a step not taken, a setting that does not exist, a menu with room left.
+
+Empty space loses when:
+
+- an empty state leaves the user without a next action or a way to recover;
+- the gap reads as broken, loading, or missing content;
+- a label, warning, error message, or accessibility affordance belongs there;
+- the absence hides a decision a reader needs to see, such as an unhandled case or a silent catch.
+
 ## Radical Rebuild Triggers
 
 Use the skill when the user explicitly says or strongly implies:
@@ -129,6 +149,7 @@ Prefer concrete verbs:
 - `delete`
 - `replace`
 - `rebuild simpler`
+- `leave empty`
 - `leave as-is`
 - `investigate further`
 
@@ -147,6 +168,8 @@ Avoid vague verbs such as `improve`, `optimize`, `clean up`, `make better`, or `
 - Duplicate logic keeps drifting.
 - A compatibility layer has no migration deadline.
 - New work keeps patching around an obsolete assumption.
+- Something was added because a space looked empty.
+- A slot freed by a removal is backfilled in the same change.
 - The artifact needs a long explanation to justify why it still exists.
 - Users, developers, or reviewers keep asking: "Why is this here?"
 
@@ -195,7 +218,8 @@ Ask it when:
 - a decorative or loud element outranks the real task;
 - explanatory copy exists because the underlying UI is confusing;
 - a new section is proposed before an existing section has been merged, delayed, or deleted;
-- a stronger primary CTA is proposed before competing CTAs have been demoted or removed.
+- a stronger primary CTA is proposed before competing CTAs have been demoted or removed;
+- a layout is filled because an area looked empty, or an area a removal freed is about to be backfilled.
 
 UI safety:
 
@@ -216,7 +240,8 @@ Ask it when a real change shows:
 - wrong abstraction;
 - narrow abstraction;
 - boundary drift;
-- plausible deletion, deprecation, inlining, replacement, or rebuild.
+- plausible deletion, deprecation, inlining, replacement, or rebuild;
+- a placeholder, option, extension point, or helper added to fill a slot no caller needs yet.
 
 Code safety:
 
