@@ -18,6 +18,7 @@ The log below records each review of the skill packages, newest last. Earlier hi
 | 2026-11-20 | Claude | `implicit-explicit-ortega` | Added: separates what material says from what it stands on without saying and what it conveys without meaning to, after Ortega's ideas and beliefs. Eight skills remain; see `docs/adr/0006-implicit-explicit-ortega.md`. Not yet tried on a realistic prompt. |
 | 2026-11-22 | Claude | `banco-animaciones-aristoteles` | Added: 703 animation prompts classed by Aristotle's categories, with a search script. Nine skills remain; see `docs/adr/0008-banco-animaciones-aristoteles.md`. |
 | 2026-11-26 | Claude | `sofia` | Added back as the coordinator, called with `/sofia`: it picks, orders, and hands off between specialists, which keep no routing of their own. Ten skills remain; see `docs/adr/0009-sofia-coordinates.md`. Not yet tried on a realistic multi-skill prompt. |
+| 2026-11-26 | Claude | `sofia` | Added phases: make it work, make it efficient, make it look right, in that order, each with its leads, the gaps to look for, and a condition that closes it, in `references/phases.md`. See `docs/adr/0010-sofia-phases.md`. Not yet tried on a realistic prompt. |
 
 ## Next review checklist
 

@@ -3,7 +3,7 @@
   "slug": "sofia",
   "title": "Sofia",
   "philosopher": "Aristotle",
-  "summary": "Coordinates the Sofia skills: picks the specialists a task needs, orders them, carries each one's findings to the next, and hands back one result.",
+  "summary": "Coordinates the Sofia skills by phase (make it work, make it efficient, make it look right): picks and orders the specialists each phase needs, looks for its gaps, carries findings between them, and hands back one result.",
   "tags": [
     "coordination",
     "workflow",
@@ -12,6 +12,8 @@
   "status": "beta",
   "sourceRepo": "https://github.com/fpgarciamtnz/World-of-Sofia/tree/main/skills/sofia",
   "installCommand": "npx skills add fpgarciamtnz/World-of-Sofia --skill sofia",
-  "references": [],
-  "version": "1.0.0"
+  "references": [
+    "references/phases.md"
+  ],
+  "version": "1.1.0"
 }

@@ -58,7 +58,7 @@ At the start of each session it fetches from GitHub, within 10 seconds, fast-for
 
 Call a skill by name, such as `/audit-plan-descartes`, or describe the work and let Claude load the skill that matches. Auditar PEC is the exception: it runs only when you type `/auditar-pec`.
 
-**Several at once.** Sofia coordinates work that needs more than one skill: it loads only the specialists that change the outcome, puts meaning before planning, precedent before code, and the audience last, and keeps each verdict attributed. Call `/sofia` alone to see the family.
+**Several at once.** Sofia coordinates work that needs more than one skill, in three phases that run in order. First, make it work: Aquinas, Magallanes, and Descartes until an oracle confirms that a real case runs end to end. Then make it efficient: Kondo, Hegel, and Descartes get the same result with less, while the oracle keeps passing. Last, make it look right: Ciceron, Ortega, and Kondo make it organized and clear. Sofia tells the phase from the evidence, looks for the gaps each phase leaves, and says where the work stands and what the next phase would close. Call `/sofia` alone to see the phases and the family.
 
 **Something huge, or a far destination.** Boil the Ocean Magallanes is Sofia's boil-the-ocean: it keeps the whole of that skill, takes the request at its full size, and treats it as the destination. The destination and the limits stay fixed, and only the route changes. Whatever blocks the way is a limit, which stays; an obstacle, which it goes around, as far around as it takes; or a habit, such as "too much work", which never counts as a limit. Before a long detour it asks the Panama Canal question: do we need to go this far, or can we build a channel through the obstacle? Audit Plan Descartes keeps the voyage honest: every limit has a source, a "can't" is checked before it changes the destination, and arrival counts only when the oracle confirms it.
 
@@ -78,7 +78,7 @@ Call a skill by name, such as `/audit-plan-descartes`, or describe the work and 
 
 | Skill | Call when | Produces |
 | --- | --- | --- |
-| [Sofia](skills/sofia) | Work needs more than one skill, you are not sure which fits, or you want to see the family. | The deliverable you asked for, with the specialists used, their order, and why. |
+| [Sofia](skills/sofia) | Work needs more than one skill, you are not sure which fits, or you want to see the family. | The deliverable you asked for, the phase it reached (works, efficient, looks right), the gaps left for the next, and the specialists used and why. |
 | [Boil the Ocean Magallanes](skills/boil-the-ocean-magallanes) | A request is huge, such as a rewrite, a port, or a rebuild, or you know where you want to end up and the way looks long or blocked. | The request at full size as the destination, the limits with their sources, an oracle, a route around every obstacle, checked units, and a hand-back. |
 | [Audit Plan Descartes](skills/audit-plan-descartes) | A plan needs an evidence check, sources disagree, prior work or a drop just created needs verifying, or a voyage's limits and arrival need auditing. | A foundation ledger, the limits with their sources, open assumptions, and a final plan or verdict. |
 | [Grill Me Aquinas](skills/grill-me-aquinas) | The goal, terms, or scope are unclear, or you want a grill-me session. | A said, meant, and happened record, focused questions, essence candidates, and what a plan must preserve. |

@@ -1,6 +1,6 @@
 ---
 name: sofia
-description: "Coordinate the Sofia skills when work needs more than one: choose which apply and in what order, carry what each finds to the next, and hand back one result. Use when the user calls Sofia, asks which Sofia skill fits, or a task spans several concerns, such as meaning, plan, code, and review, and their order matters."
+description: "Coordinate the Sofia skills by phase: tell whether the work must first work, then become efficient, then look right, choose and order the skills that phase needs, look for its gaps, and hand back one result. Use when the user calls Sofia, asks which Sofia skill fits, or a task spans several concerns and their order matters."
 ---
 
 # Sofia
@@ -8,6 +8,20 @@ description: "Coordinate the Sofia skills when work needs more than one: choose 
 Sofia coordinates the family. Each specialist carries its own method from start to finish and works alone; Sofia decides which of them a task needs, in what order, and what each must hand the next, then carries the work to the result the user asked for. Coordination is a means: the deliverable is the plan, change, review, or answer, never the routing.
 
 Most tasks need one or two specialists, and some need none. Skip a specialist when it would not change the outcome, since each one loaded costs context and a step. When a single specialist fits, load it and let it run: Sofia adds nothing on top of it.
+
+## Phases
+
+Work goes through three phases, in this order:
+
+1. **Make it work** (hacer que funcione): one real case runs end to end, and an oracle, such as a test, a command, or a page that loads, says so. Aquinas, Magallanes, and Descartes lead.
+2. **Make it efficient** (mejorar): the same result with less, keeping only what truly matters. Kondo, Hegel, and Descartes lead.
+3. **Make it look right** (cómo se ve): organized, clear, and intuitive for whoever uses or reads it. Ciceron, Ortega, and Kondo lead.
+
+Tell the phase from the evidence as well as the words. Nothing runs yet, the oracle fails, or nobody has said what "works" means: phase 1. It works, and the request is about speed, size, cost, or excess: phase 2. It works and is lean, and the request is about appearance, order, or clarity: phase 3. When the user names a phase, take it.
+
+When the request is for a later phase and an earlier one is not met, say what is missing in a line. Close the gap first when it blocks the asked-for work, since what does not run cannot be measured or polished; otherwise do what was asked and list the gap.
+
+Once the phase is known, read its section in [references/phases.md](references/phases.md): who leads and what each is asked, the gaps to look for, what to leave for later, and what closes the phase. It also shows where common requests start. Finish the phase the request asks for, and go on to the next only when the user asked for the whole way, since deciding when something is good enough to improve is theirs.
 
 ## The family
 
@@ -29,7 +43,7 @@ Load a specialist with the Skill tool, by the name the session lists, which may 
 
 Some pairings already live inside the specialists: Magallanes is audited by Descartes, Aquinas gives Descartes the essence to preserve, and Auditar PEC loads Aquinas and then Descartes. Let them run as they are written and do not load the same specialist twice for one pass.
 
-## Order
+## Order within a phase
 
 Order matters where one specialist's output is another's input:
 
@@ -45,7 +59,7 @@ After each specialist, state in a line or two what the next one must keep: the e
 
 ## Called without a task
 
-When the user calls Sofia with nothing to do, such as `/sofia` alone or "who are you", answer with the family: each specialist, the question it answers, and how to call it, in a short list. Then ask what they want to do.
+When the user calls Sofia with nothing to do, such as `/sofia` alone or "who are you", answer with the three phases and the family: each specialist, the question it answers, and how to call it, in a short list. Then ask what they want to do.
 
 ## Degree Of Freedom
 
@@ -53,4 +67,4 @@ When the user calls Sofia with nothing to do, such as `/sofia` alone or "who are
 
 ## Completion
 
-Give the result the user asked for. Report the coordination only where it helps them follow the work: which specialists ran, in what order and why, and any plausible one you skipped. The work is complete when the deliverable exists and every specialist that ran has reached its own completion condition with its validation run, or when you have said what could not be validated.
+Give the result the user asked for. Say which phase the work reached and, in a line each, the gaps left for the next one. Report the coordination only where it helps them follow the work: which specialists ran, in what order and why, and any plausible one you skipped. The work is complete when the deliverable exists and every specialist that ran has reached its own completion condition with its validation run, or when you have said what could not be validated.
