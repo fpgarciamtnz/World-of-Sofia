@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted, 2026-11-17. Ends the routing role `sofia-coordinatior` held from 2026-05-31. ADR 0002 still holds.
+Accepted, 2026-11-17. Ends the routing role `sofia-coordinatior` held from 2026-05-31. ADR 0002 still holds. ADR 0009 reverses the removal of a coordinator on 2026-11-26: Sofia coordinates again, and the specialists still carry no routing.
 
 ## Context
 

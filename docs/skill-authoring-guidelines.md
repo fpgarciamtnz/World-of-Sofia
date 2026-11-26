@@ -13,7 +13,7 @@ These skills run on Claude Opus in Claude Code, inside T3 Code. Current Claude m
 - Do not fix thinking depth or word counts in prose, or demand fixed report sections for judgment work. Name the sections that pin a format the reader relies on, and allow the rest to be omitted when empty.
 - State the completion condition when a workflow must continue through implementation, inspection, and targeted validation.
 - State the skill's degree of freedom in its body: `conservative`, `exploratory`, or `bold-by-default`, as the template defines them, with what it permits and what still needs a pause. Boldness changes which options get considered, never the evidence or validation a result needs.
-- Give each skill a job it carries to the end. Do not write routing, handoff tables, or bridge sections, since Claude Code already chooses skills from their descriptions; name another skill only for a pairing this one relies on, and say what it takes from it ([ADR 0004](adr/0004-few-coordinated-skills.md)).
+- Give each skill a job it carries to the end. Do not write routing, handoff tables, or bridge sections into a specialist, since Claude Code already chooses skills from their descriptions and Sofia coordinates work that needs several; name another skill only for a pairing this one relies on, and say what it takes from it ([ADR 0004](adr/0004-few-coordinated-skills.md), [ADR 0009](adr/0009-sofia-coordinates.md)).
 - Treat safety and destructive-action boundaries explicitly, without blanket permission gates for routine local work.
 
 ## Claude Code mechanics

@@ -31,6 +31,7 @@ describe("skill validation helpers", () => {
       "earned-presence-kondo",
       "grill-me-aquinas",
       "implicit-explicit-ortega",
+      "sofia",
       "synthesis-code-hegel"
     ]);
   });
